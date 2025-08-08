@@ -46,7 +46,23 @@
 }
 
 .card-hover {
-  @apply hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-2;
+  @apply hover:border-blue-500/50 transform hover:-translate-y-2;
+}
+
+/* Préservation du border-radius pour les cartes de services */
+.service-card {
+  border-radius: 1.5rem !important; /* rounded-3xl = 24px */
+}
+
+.service-card > div,
+.service-card .bg-gradient-to-br {
+  border-radius: 1.5rem !important; /* Force le border-radius sur la div interne */
+  overflow: hidden;
+}
+
+/* S'assurer que Tailwind rounded-3xl fonctionne correctement */
+.rounded-3xl {
+  border-radius: 1.5rem !important;
 }
 
 /* === BUTTON STYLES === */
@@ -441,7 +457,6 @@ img {
 .card-hover:hover {
   transform: translateY(-8px);
   border-color: rgba(59, 130, 246, 0.3);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
 }
 
 /* Classes de badges */

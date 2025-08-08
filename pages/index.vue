@@ -124,7 +124,7 @@
             @click="$router.push('/services')"
             :data-gsap="`service-card-${index}`"
           >
-            <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-4 hover:rotate-y-12 h-full flex flex-col">
+            <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 transform hover:-translate-y-4 hover:rotate-y-12 h-full flex flex-col overflow-hidden">
               <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 flex-shrink-0">
                 <!-- Code Icon -->
                 <svg v-if="service.icon === 'CodeIcon'" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="w-10 h-10">
