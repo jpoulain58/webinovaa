@@ -1,7 +1,6 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { TextPlugin } from 'gsap/TextPlugin'
-import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin'
 
 export default defineNuxtPlugin(() => {
   if (process.client) {

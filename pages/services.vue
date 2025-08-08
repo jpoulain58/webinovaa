@@ -5,7 +5,7 @@
       <!-- Particules Interactives -->
       <div class="absolute inset-0" ref="particlesContainer"></div>
       
-      <!-- Effet de Parallaxe -->
+      <!-- Effet de fond animé -->
       <div class="absolute inset-0 opacity-20">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -519,7 +519,7 @@ const {
 onMounted(async () => {
   // Particules interactives via composable
   const { createParticles } = useParticles()
-  createParticles('.absolute.inset-0', 40)
+  createParticles('.absolute.inset-0', 12)
 
   // 🎭 ANIMATIONS GSAP ÉPIQUES ET ULTRA RAPIDES
   await nextTick()

@@ -1,11 +1,21 @@
 export const useParticles = () => {
-  const createParticles = (containerSelector: string, particleCount: number = 30) => {
+  const createParticles = (containerSelector: string, particleCount: number = 15) => {
+    // Réduire le nombre de particules pour de meilleures performances
+    if (process.server) return
+    
     const particlesContainer = document.querySelector(containerSelector)
     if (!particlesContainer) return
 
-    for (let i = 0; i < particleCount; i++) {
+    // Vérifier si l'utilisateur préfère les animations réduites
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
+    // Réduire le nombre sur les appareils moins puissants
+    const actualCount = (navigator.hardwareConcurrency || 4) < 4 ? Math.floor(particleCount / 2) : particleCount
+
+    for (let i = 0; i < actualCount; i++) {
       const particle = document.createElement('div')
-      particle.className = 'absolute w-1 h-1 bg-white/30 rounded-full'
+      particle.className = 'absolute w-1 h-1 bg-white/20 rounded-full'
       particle.style.left = Math.random() * 100 + '%'
       particle.style.top = Math.random() * 100 + '%'
       particle.style.animation = `float ${Math.random() * 4 + 3}s ease-in-out infinite`

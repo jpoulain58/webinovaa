@@ -5,7 +5,7 @@
       <!-- Particules Interactives -->
       <div class="absolute inset-0" ref="particlesContainer"></div>
       
-      <!-- Effet de Parallaxe -->
+      <!-- Effet de fond animé -->
       <div class="absolute inset-0 opacity-20">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -42,17 +42,18 @@
           <div 
             v-for="(project, index) in projects" 
             :key="project.title"
-            class="group cursor-pointer perspective-1000 gsap-optimized project-card transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-2"
+            class="group cursor-pointer perspective-1000 gsap-optimized project-card"
             :data-gsap="`project-card-${index}`"
           >
-            <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25">
+            <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-[1.02] hover:-translate-y-1">
               <!-- Project Image -->
               <div class="relative h-64 overflow-hidden">
                 <img 
                   :src="project.image" 
                   :alt="project.title" 
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  :class="project.title === 'Webinovaa' ? 'object-[center_bottom] scale-115' : 'object-center scale-107'"
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  :class="project.title === 'Webinovaa' ? 'object-[center_bottom] scale-110' : 'object-center scale-105'"
+                  loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
               </div>
@@ -201,7 +202,7 @@ useHead({
 // Utilisation du composable centralisé
 const { projects, getProjectLink } = useProjectData()
 
-// 🚀 Animations GSAP épiques
+// Animations GSAP épiques
 const { 
   animateTextReveal, 
   animateCardsStagger,
@@ -217,7 +218,7 @@ onMounted(async () => {
   // Attendre que GSAP soit disponible
   await nextTick()
   
-  // 🎭 TITRES TOUJOURS VISIBLES - PAS D'ANIMATION GSAP SUR EUX
+  // Titres toujours visibles - pas d'animation GSAP sur eux
   // Récupérer GSAP
   const { $gsap: gsapInstance } = useNuxtApp()
   
@@ -233,7 +234,7 @@ onMounted(async () => {
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
   
-  // 💫 ANIMATION STAGGER DES CARTES PROJETS - ULTRA RAPIDE
+  // Animation stagger des cartes projets - ultra rapide
   animateOnScroll('[data-gsap="projects-grid"]',
     animateCardsStagger('.project-card', {
       duration: 0.5, // Encore plus rapide
@@ -246,27 +247,14 @@ onMounted(async () => {
     }
   )
   
-  // 🎯 EFFET ZOOM BUMP SIMPLE - PAS D'EFFET MAGNÉTIQUE
-  // Les cartes ont maintenant un simple effet hover:scale-105 en CSS
+  // Effet zoom bump simple - pas d'effet magnétique
+  // Les cartes ont maintenant un simple effet hover:scale en CSS
   
-  // 🌊 PARALLAXE FLUIDE AVEC GSAP
-  const { $gsap } = useNuxtApp()
-  if (process.client) {
-    $gsap.to('.absolute:not([data-gsap])', {
-      yPercent: -30,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "body",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1
-      }
-    })
-  }
+  // Effet de parallaxe désactivé pour éviter les backgrounds qui bougent bizarrement
   
-  // 🔮 PARTICULES INTERACTIVES AVANCÉES
+  // Particules interactives optimisées
   const { createParticles } = useParticles()
-  createParticles('.absolute.inset-0', 60)
+  createParticles('.absolute.inset-0', 20)
 })
 
 // Nettoyage à la destruction
@@ -320,5 +308,18 @@ onUnmounted(() => {
 /* Effet de hover 3D */
 .group:hover .transform {
   transform: translateZ(20px);
+}
+
+/* Optimisations pour éviter le scintillement des images */
+.project-card img {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Stabilisation des transformations */
+.project-card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 </style> 

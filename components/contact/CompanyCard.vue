@@ -29,13 +29,13 @@
         <!-- Services/Spécialités -->
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1 bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-full text-purple-300 text-xs font-medium">
-            🎨 Design
+            Design
           </span>
           <span class="px-3 py-1 bg-gradient-to-r from-indigo-600/20 to-blue-600/20 border border-indigo-500/30 rounded-full text-indigo-300 text-xs font-medium">
-            ⚡ Performance
+            Performance
           </span>
           <span class="px-3 py-1 bg-gradient-to-r from-cyan-600/20 to-teal-600/20 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-medium">
-            🚀 Innovation
+            Innovation
           </span>
         </div>
       </div>

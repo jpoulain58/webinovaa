@@ -1,0 +1,130 @@
+import { gsap } from 'gsap'
+
+export const useTextAnimations = () => {
+  const { $gsap } = useNuxtApp()
+
+  // Configuration adaptative basée sur les performances de l'appareil
+  const getAdaptiveConfig = (options: any = {}) => {
+    if (process.server) return options
+    
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isLowEnd = (navigator.hardwareConcurrency || 1) <= 2
+    
+    if (prefersReduced) {
+      return { ...options, duration: 0.01, ease: "none" }
+    }
+    
+    if (isLowEnd) {
+      return { 
+        ...options, 
+        duration: (options.duration || 1) * 0.5,
+        stagger: (options.stagger || 0.1) * 0.5
+      }
+    }
+    
+    return options
+  }
+
+  // Animation de révélation de texte caractère par caractère
+  const animateTextReveal = (selector: string, options = {}) => {
+    const defaults = {
+      duration: 0.4,
+      stagger: 0.02,
+      ease: "power2.out",
+      delay: 0
+    }
+    const config = getAdaptiveConfig({ ...defaults, ...options })
+
+    return gsap.fromTo(selector, 
+      {
+        opacity: 0,
+        y: 100,
+        rotationX: -90,
+        transformOrigin: "50% 50% -50px"
+      },
+      {
+        opacity: 1,
+        y: 0,
+        rotationX: 0,
+        duration: config.duration,
+        stagger: config.stagger,
+        ease: config.ease,
+        delay: config.delay
+      }
+    )
+  }
+
+  // Animation typewriter avec curseur clignotant
+  const animateTypewriter = (selector: string, text: string, options = {}) => {
+    const defaults = {
+      duration: 2,
+      ease: "none"
+    }
+    const config = { ...defaults, ...options }
+
+    const tl = gsap.timeline()
+    
+    // Efface le texte existant
+    tl.set(selector, { text: "" })
+    
+    // Animation typewriter
+    tl.to(selector, {
+      duration: config.duration,
+      text: text,
+      ease: config.ease
+    })
+
+    // Ajoute le curseur clignotant
+    tl.set(selector, {
+      onComplete: () => {
+        const element = document.querySelector(selector)
+        if (element) {
+          element.innerHTML += '<span class="cursor-blink">|</span>'
+        }
+      }
+    })
+
+    return tl
+  }
+
+  // Animation de split text (divise le texte en caractères) - préserve HTML et espaces
+  const splitText = (selector: string) => {
+    const elements = document.querySelectorAll(selector)
+    
+    elements.forEach(element => {
+      const text = element.textContent || ''
+      const chars = text.split('')
+      
+      element.innerHTML = chars
+        .map(char => {
+          if (char === ' ') {
+            return '<span class="char">&nbsp;</span>'
+          }
+          return `<span class="char">${char}</span>`
+        })
+        .join('')
+    })
+  }
+
+  // Animation de split words (divise le texte en mots)
+  const splitWords = (selector: string) => {
+    const elements = document.querySelectorAll(selector)
+    
+    elements.forEach(element => {
+      const text = element.textContent || ''
+      const words = text.split(' ')
+      
+      element.innerHTML = words
+        .map(word => `<span class="word">${word}</span>`)
+        .join(' ')
+    })
+  }
+
+  return {
+    animateTextReveal,
+    animateTypewriter,
+    splitText,
+    splitWords,
+    getAdaptiveConfig
+  }
+} 

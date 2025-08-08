@@ -26,10 +26,10 @@
         <!-- Stats/Badges -->
         <div class="flex flex-wrap gap-2">
           <span class="px-3 py-1 bg-gradient-to-r from-green-600/20 to-emerald-600/20 border border-green-500/30 rounded-full text-green-300 text-xs font-medium">
-            ✅ Disponible
+            Disponible
           </span>
           <span class="px-3 py-1 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30 rounded-full text-blue-300 text-xs font-medium">
-            🚀 Réponse < 24h
+            Réponse < 24h
           </span>
         </div>
       </div>
