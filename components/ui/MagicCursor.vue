@@ -113,17 +113,12 @@ let particleId = 0
 let animationFrame: number
 let lastTime = 0
 
-// Offsets simples basés sur les tailles CSS exactes
+// Offsets fixes pour desktop uniquement (curseur désactivé sur mobile)
 const getCursorOffset = () => {
-  if (typeof window === 'undefined') {
-    return { main: 10, trail: 7.5, distortion: 60 }
-  }
-  
-  const isSmallScreen = window.innerWidth <= 768
   return {
-    main: isSmallScreen ? 7.5 : 10,  // 15px/2 : 20px/2
-    trail: 7.5,                       // 15px/2 (taille fixe)
-    distortion: 60                    // 120px/2
+    main: 10,       // 20px/2
+    trail: 7.5,     // 15px/2
+    distortion: 60  // 120px/2
   }
 }
 
@@ -139,6 +134,8 @@ onMounted(() => {
   startAnimation()
   loadSettings()
   setupResponsiveHandler()
+  // Vérifier la taille d'écran au montage
+  handleResize()
 })
 
 onUnmounted(() => {
@@ -160,21 +157,22 @@ const setupResponsiveHandler = () => {
 }
 
 const handleResize = () => {
-  // Réévaluer si on est sur un appareil tactile lors du redimensionnement
+  // Désactiver le curseur magique sur petits écrans et appareils tactiles
+  const isSmallScreen = window.innerWidth <= 768
   const isTouchDevice = 'ontouchstart' in window || 
                        navigator.maxTouchPoints > 0 || 
                        /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
                        (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
   
-  if (isTouchDevice) {
+  const shouldDisable = isSmallScreen || isTouchDevice
+  
+  if (shouldDisable) {
     document.body.classList.add('touch-device')
     isEnabled.value = false
   } else {
     document.body.classList.remove('touch-device')
     isEnabled.value = props.settings.enabled
   }
-  
-  // Les offsets sont recalculés automatiquement via getCursorOffset()
 }
 
 const hideDefaultCursor = () => {
@@ -265,46 +263,17 @@ const handleElementLeave = () => {
   distortionScale.value = 1
 }
 
-// Fonctions de gestion des événements tactiles (mobile)
+// Fonctions de gestion des événements tactiles (curseur désactivé sur mobile)
 const handleTouchMove = (e: TouchEvent) => {
-  if (e.touches.length > 0) {
-    const touch = e.touches[0]
-    if (touch) {
-      cursorPosition.value = { x: touch.clientX, y: touch.clientY }
-      
-      // Effet de traînée avec interpolation
-      if (props.settings.showTrail) {
-        setTimeout(() => {
-          trailPosition.value = { 
-            x: touch.clientX + (Math.random() - 0.5) * 10, 
-            y: touch.clientY + (Math.random() - 0.5) * 10 
-          }
-        }, 50)
-      }
-      
-      // Créer des particules lors du mouvement (réduit sur mobile)
-      if (props.settings.showParticles && Math.random() < 0.1) {
-        createParticle(touch.clientX, touch.clientY)
-      }
-    }
-  }
+  // Le curseur est désactivé sur mobile, pas de logique nécessaire
 }
 
 const handleTouchStart = (e: TouchEvent) => {
-  if (e.touches.length > 0) {
-    const touch = e.touches[0]
-    if (touch) {
-      cursorPosition.value = { x: touch.clientX, y: touch.clientY }
-      cursorScale.value = 1.2
-      trailScale.value = 1.1
-    }
-  }
+  // Le curseur est désactivé sur mobile, pas de logique nécessaire
 }
 
 const handleTouchEnd = () => {
-  // Ne pas masquer complètement le curseur sur mobile
-  cursorScale.value = 1
-  trailScale.value = 1
+  // Le curseur est désactivé sur mobile, pas de logique nécessaire
 }
 
 const createParticle = (x: number, y: number) => {
@@ -643,25 +612,5 @@ const loadSettings = () => {
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .cursor-main {
-    width: 15px;
-    height: 15px;
-  }
-  
-  .cursor-ring {
-    width: 30px;
-    height: 30px;
-    top: -7.5px;
-    left: -7.5px;
-  }
-  
-  .cursor-pulse {
-    width: 45px;
-    height: 45px;
-    top: -15px;
-    left: -15px;
-  }
-}
+/* Plus de CSS responsive - curseur désactivé sur petits écrans */
 </style> 
