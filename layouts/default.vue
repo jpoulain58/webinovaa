@@ -8,7 +8,7 @@
           <NuxtLink to="/" class="flex items-center space-x-3 group cursor-pointer">
             <div class="relative">
               <div class="w-24 h-24 flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
-                <img src="/logos/logo-webinovaa.png" alt="Webinovaa" class="w-32 h-32 object-contain" />
+                <NuxtImg src="/logos/logo-webinovaa.png" alt="Webinovaa" class="w-32 h-32 object-contain" loading="eager" />
               </div>
             </div>
             <span class="text-2xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
@@ -17,12 +17,12 @@
           </NuxtLink>
 
           <!-- Navigation Desktop avec Effets Hover -->
-          <div class="hidden md:flex items-center space-x-8">
+          <div class="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
             <NuxtLink 
               v-for="item in navigationItems" 
               :key="item.path"
               :to="item.path"
-              class="relative group text-slate-300 hover:text-blue-400 transition-colors duration-300 font-medium text-lg px-4 py-2 rounded-lg hover:bg-white/5 border-b-2 border-transparent hover:border-blue-400"
+              class="relative group text-slate-300 hover:text-blue-400 transition-colors duration-300 font-medium text-base lg:text-lg px-2 lg:px-3 xl:px-4 py-2 rounded-lg hover:bg-white/5 border-b-2 border-transparent hover:border-blue-400"
               active-class="text-blue-400 bg-white/10 border-blue-400"
             >
               {{ item.label }}
@@ -30,14 +30,17 @@
           </div>
 
           <!-- CTA Button avec Effet Élégant -->
-          <div class="hidden md:block">
-                          <NuxtLink 
-                to="/contact"
+          <div class="hidden md:block ml-4 lg:ml-6 xl:ml-8">
+            <NuxtLink 
+              to="/contact"
               class="cta-button"
-              >
-              <span class="cta-text">Discutons de votre projet</span>
+            >
+              <span class="cta-text">
+                <span class="hidden xl:inline">Discutons de votre projet</span>
+                <span class="xl:hidden">Votre projet</span>
+              </span>
               <div class="cta-glow"></div>
-              </NuxtLink>
+            </NuxtLink>
           </div>
 
           <!-- Mobile Menu Button avec Animation -->
@@ -284,18 +287,38 @@ onMounted(() => {
 .cta-button {
   position: relative;
   display: inline-block;
-  padding: 16px 32px;
+  padding: 12px 20px;
   background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
   color: white;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 14px;
   text-decoration: none;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
     0 4px 15px rgba(59, 130, 246, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+/* Responsive pour écrans moyens */
+@media (min-width: 900px) {
+  .cta-button {
+    padding: 14px 24px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+}
+
+/* Responsive pour grands écrans */
+@media (min-width: 1200px) {
+  .cta-button {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 16px;
+  }
 }
 
 .cta-button:hover {

@@ -40,7 +40,8 @@
                 <span 
                   v-for="tech in technologies" 
                   :key="tech"
-                  class="px-4 py-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-xl text-blue-300 text-sm font-medium"
+                  :class="getTechClasses(tech)"
+                  class="px-4 py-2 rounded-xl text-sm font-medium border transition-medium hover:scale-105 hover:shadow-lg"
                 >
                   {{ tech }}
                 </span>
@@ -145,4 +146,24 @@ const props = withDefaults(defineProps<Props>(), {
   badgeClasses: 'from-blue-600/20 to-purple-600/20 border-blue-500/30',
   badgeTextClass: 'text-blue-300'
 })
+
+// Fonction pour définir les couleurs spécifiques à chaque technologie
+const getTechClasses = (tech: string) => {
+  const techColors: Record<string, string> = {
+    'Nuxt': 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500/30 text-green-300 hover:shadow-green-500/25',
+    'Vue': 'bg-gradient-to-r from-green-600/20 to-teal-600/20 border-green-500/30 text-green-300 hover:shadow-green-500/25',
+    'Tailwind CSS': 'bg-gradient-to-r from-cyan-600/20 to-blue-600/20 border-cyan-500/30 text-cyan-300 hover:shadow-cyan-500/25',
+    'Strapi': 'bg-gradient-to-r from-purple-600/20 to-indigo-600/20 border-purple-500/30 text-purple-300 hover:shadow-purple-500/25',
+    'MySQL': 'bg-gradient-to-r from-orange-600/20 to-red-600/20 border-orange-500/30 text-orange-300 hover:shadow-orange-500/25',
+    'Stripe': 'bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border-blue-500/30 text-blue-300 hover:shadow-blue-500/25',
+    'TypeScript': 'bg-gradient-to-r from-blue-600/20 to-sky-600/20 border-blue-500/30 text-blue-300 hover:shadow-blue-500/25',
+    'JavaScript': 'bg-gradient-to-r from-yellow-600/20 to-orange-600/20 border-yellow-500/30 text-yellow-300 hover:shadow-yellow-500/25',
+    'Node.js': 'bg-gradient-to-r from-green-600/20 to-lime-600/20 border-green-500/30 text-green-300 hover:shadow-green-500/25',
+    'React': 'bg-gradient-to-r from-cyan-600/20 to-blue-600/20 border-cyan-500/30 text-cyan-300 hover:shadow-cyan-500/25',
+    'MongoDB': 'bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500/30 text-green-300 hover:shadow-green-500/25',
+    'PostgreSQL': 'bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border-blue-500/30 text-blue-300 hover:shadow-blue-500/25'
+  }
+  
+  return techColors[tech] || 'bg-gradient-to-r from-slate-600/20 to-gray-600/20 border-slate-500/30 text-slate-300 hover:shadow-slate-500/25'
+}
 </script> 

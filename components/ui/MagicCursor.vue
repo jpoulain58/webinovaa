@@ -124,6 +124,7 @@ onMounted(() => {
   setupEventListeners()
   startAnimation()
   loadSettings()
+  setupResponsiveHandler()
 })
 
 onUnmounted(() => {
@@ -131,12 +132,34 @@ onUnmounted(() => {
   if (animationFrame) {
     cancelAnimationFrame(animationFrame)
   }
+  // Nettoyer les event listeners de redimensionnement
+  window.removeEventListener('resize', handleResize)
 })
 
 // Écouter les changements de paramètres
 watch(() => props.settings, (newSettings) => {
   updateCursorBehavior(newSettings)
 }, { deep: true })
+
+const setupResponsiveHandler = () => {
+  window.addEventListener('resize', handleResize)
+}
+
+const handleResize = () => {
+  // Réévaluer si on est sur un appareil tactile lors du redimensionnement
+  const isTouchDevice = 'ontouchstart' in window || 
+                       navigator.maxTouchPoints > 0 || 
+                       /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                       (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
+  
+  if (isTouchDevice) {
+    document.body.classList.add('touch-device')
+    isEnabled.value = false
+  } else {
+    document.body.classList.remove('touch-device')
+    isEnabled.value = props.settings.enabled
+  }
+}
 
 const hideDefaultCursor = () => {
   if (props.settings.enabled) {
@@ -148,9 +171,15 @@ const hideDefaultCursor = () => {
 }
 
 const setupEventListeners = () => {
+  // Événements de souris (desktop)
   document.addEventListener('mousemove', handleMouseMove)
   document.addEventListener('mouseenter', handleMouseEnter)
   document.addEventListener('mouseleave', handleMouseLeave)
+  
+  // Événements tactiles (mobile)
+  document.addEventListener('touchmove', handleTouchMove, { passive: true })
+  document.addEventListener('touchstart', handleTouchStart, { passive: true })
+  document.addEventListener('touchend', handleTouchEnd, { passive: true })
   
   // Détecter les éléments interactifs
   const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, [role="button"]')
@@ -158,14 +187,22 @@ const setupEventListeners = () => {
     if (el instanceof HTMLElement) {
       el.addEventListener('mouseenter', handleElementHover)
       el.addEventListener('mouseleave', handleElementLeave)
+      el.addEventListener('touchstart', handleElementHover, { passive: true })
+      el.addEventListener('touchend', handleElementLeave, { passive: true })
     }
   })
 }
 
 const removeEventListeners = () => {
+  // Supprimer les événements de souris
   document.removeEventListener('mousemove', handleMouseMove)
   document.removeEventListener('mouseenter', handleMouseEnter)
   document.removeEventListener('mouseleave', handleMouseLeave)
+  
+  // Supprimer les événements tactiles
+  document.removeEventListener('touchmove', handleTouchMove)
+  document.removeEventListener('touchstart', handleTouchStart)
+  document.removeEventListener('touchend', handleTouchEnd)
 }
 
 const handleMouseMove = (e: MouseEvent) => {
@@ -210,6 +247,48 @@ const handleElementLeave = () => {
   cursorScale.value = 1
   trailScale.value = 1
   distortionScale.value = 1
+}
+
+// Fonctions de gestion des événements tactiles (mobile)
+const handleTouchMove = (e: TouchEvent) => {
+  if (e.touches.length > 0) {
+    const touch = e.touches[0]
+    if (touch) {
+      cursorPosition.value = { x: touch.clientX, y: touch.clientY }
+      
+      // Effet de traînée avec interpolation
+      if (props.settings.showTrail) {
+        setTimeout(() => {
+          trailPosition.value = { 
+            x: touch.clientX + (Math.random() - 0.5) * 10, 
+            y: touch.clientY + (Math.random() - 0.5) * 10 
+          }
+        }, 50)
+      }
+      
+      // Créer des particules lors du mouvement (réduit sur mobile)
+      if (props.settings.showParticles && Math.random() < 0.1) {
+        createParticle(touch.clientX, touch.clientY)
+      }
+    }
+  }
+}
+
+const handleTouchStart = (e: TouchEvent) => {
+  if (e.touches.length > 0) {
+    const touch = e.touches[0]
+    if (touch) {
+      cursorPosition.value = { x: touch.clientX, y: touch.clientY }
+      cursorScale.value = 1.2
+      trailScale.value = 1.1
+    }
+  }
+}
+
+const handleTouchEnd = () => {
+  // Ne pas masquer complètement le curseur sur mobile
+  cursorScale.value = 1
+  trailScale.value = 1
 }
 
 const createParticle = (x: number, y: number) => {

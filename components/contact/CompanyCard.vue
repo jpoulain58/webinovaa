@@ -4,10 +4,12 @@
       <!-- Logo entreprise grand -->
       <div class="relative">
         <div class="w-32 h-32 md:w-40 md:h-40 rounded-3xl overflow-hidden bg-gradient-to-br from-white to-blue-50 p-6 shadow-2xl shadow-purple-500/30 group-hover:scale-105 transition-all duration-500">
-          <img 
+          <NuxtImg 
             src="/logos/logo-webinovaa.png" 
             alt="Logo Webinovaa" 
-            class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+            class="w-full h-full object-contain group-hover:scale-110 transition-slow"
+            loading="lazy"
+            sizes="sm:128px md:160px"
           />
         </div>
         <!-- Effet de glow animé -->

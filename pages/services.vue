@@ -505,13 +505,13 @@ onMounted(async () => {
     { start: "top 90%" }
   )
 
-  // 💰 ANIMATIONS PRICING - ULTRA RAPIDES x2
+  // 💰 ANIMATIONS PRICING - PLUS LENTES ET FLUIDES
   splitText('[data-gsap="pricing-title"]')
   animateOnScroll('[data-gsap="pricing-title"]',
     animateTextReveal('[data-gsap="pricing-title"] .char', {
-      duration: 0.15, // x2 plus rapide
-      stagger: 0.01, // x2 plus rapide
-      ease: "power3.out"
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.05, // Plus lent et fluide
+      ease: "power1.out"
     }),
     { start: "top 85%" }
   )
@@ -519,29 +519,29 @@ onMounted(async () => {
   splitWords('[data-gsap="pricing-subtitle"]')
   animateOnScroll('[data-gsap="pricing-subtitle"]',
     animateTextReveal('[data-gsap="pricing-subtitle"] .word', {
-      duration: 0.1, // x2 plus rapide
-      stagger: 0.01, // x2 plus rapide
-      ease: "power2.out"
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
+      ease: "power1.out"
     }),
     { start: "top 85%" }
   )
 
   animateOnScroll('[data-gsap="pricing-grid"]',
     animateCardsStagger('[data-gsap^="pricing-card"]', {
-      duration: 0.2, // x2 plus rapide
-      stagger: 0.04, // x2 plus rapide
-      ease: "back.out(1.7)"
+      duration: 1.2, // Plus lent et fluide
+      stagger: 0.2, // Plus lent et fluide
+      ease: "power1.out"
     }),
     { start: "top 90%" }
   )
 
-  // 🎉 ANIMATION CTA FINALE - ULTRA RAPIDE x2
+  // 🎉 ANIMATION CTA FINALE - PLUS LENTE ET FLUIDE
   splitText('[data-gsap="cta-title"]')
   animateOnScroll('[data-gsap="cta-title"]',
     animateTextReveal('[data-gsap="cta-title"] .char', {
-      duration: 0.15, // x2 plus rapide
-      stagger: 0.01, // x2 plus rapide
-      ease: "power3.out"
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.05, // Plus lent et fluide
+      ease: "power1.out"
     }),
     { start: "top 85%" }
   )
@@ -549,26 +549,26 @@ onMounted(async () => {
   splitWords('[data-gsap="cta-subtitle"]')
   animateOnScroll('[data-gsap="cta-subtitle"]',
     animateTextReveal('[data-gsap="cta-subtitle"] .word', {
-      duration: 0.1, // x2 plus rapide
-      stagger: 0.01, // x2 plus rapide
-      ease: "power2.out"
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
+      ease: "power1.out"
     }),
     { start: "top 85%" }
   )
 
   animateOnScroll('[data-gsap="cta-buttons"]',
     animateCardsStagger('[data-gsap="cta-buttons"] > *', {
-      duration: 0.25, // x2 plus rapide
-      stagger: 0.05, // x2 plus rapide
-      ease: "back.out(1.7)"
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.15, // Plus lent et fluide
+      ease: "power1.out"
     }),
     { start: "top 95%" }
   )
 
-  // 🧲 Effets magnétiques fluides
+  // 🧲 Effets magnétiques subtils
   addMagneticHover('.magnetic', {
-    strength: 0.3,
-    speed: 0.5 // Plus lent et fluide
+    strength: 0.08, // Plus subtil
+    speed: 0.4 // Fluide
   })
 })
 

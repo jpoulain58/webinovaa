@@ -4,10 +4,12 @@
       <!-- Photo de profil grande -->
       <div class="relative">
         <a href="https://linkedin.com/in/jérémy-poulain-8a6038227" target="_blank" class="block rounded-3xl">
-          <img 
+          <NuxtImg 
             src="/images/photo.jpeg" 
             alt="Jérémy POULAIN - Développeur web freelance" 
-            class="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover object-center scale-110 group-hover:scale-115 transition-all duration-300 cursor-pointer shadow-2xl shadow-blue-500/30"
+            class="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover object-center scale-110 group-hover:scale-115 transition-slow cursor-pointer shadow-2xl shadow-blue-500/30"
+            loading="lazy"
+            sizes="sm:128px md:160px"
           />
         </a>
       </div>

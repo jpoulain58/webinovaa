@@ -388,10 +388,10 @@ onMounted(async () => {
     }
   )
   
-  // 🧲 Effets magnétiques fluides
+  // 🧲 Effets magnétiques subtils
   addMagneticHover('.magnetic', {
-    strength: 0.3,
-    speed: 0.5 // Plus lent et fluide
+    strength: 0.08, // Plus subtil
+    speed: 0.4 // Fluide
   })
   
   // Type de projet depuis l'URL

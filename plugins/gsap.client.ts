@@ -8,15 +8,16 @@ export default defineNuxtPlugin(() => {
     // Enregistrement des plugins GSAP
     gsap.registerPlugin(ScrollTrigger, TextPlugin)
     
-    // Configuration globale
+    // Configuration globale pour des animations équilibrées
     gsap.defaults({
-      duration: 1,
-      ease: "power2.out"
+      duration: 0.8, // Équilibré entre fluidité et réactivité
+      ease: "power1.out" // Ease plus douce
     })
 
-    // Configuration ScrollTrigger
+    // Configuration ScrollTrigger optimisée
     ScrollTrigger.config({
-      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+      ignoreMobileResize: true // Améliore les performances sur mobile
     })
 
     // Injection globale pour utiliser dans les composants

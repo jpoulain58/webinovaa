@@ -306,14 +306,38 @@ body.magic-cursor-active {
 }
 
 /* Responsive - Version corrigée */
+/* Désactiver les effets sur les vrais appareils tactiles */
+.touch-device .magic-cursor-active * {
+  cursor: auto !important;
+}
+
+.touch-device .magic-cursor-active .magic-cursor-container {
+  display: none;
+}
+
+/* Responsive pour petits écrans desktop */
 @media (max-width: 768px) {
-  /* Désactiver les effets sur mobile pour les performances */
-  .magic-cursor-active * {
-    cursor: auto !important;
+  .magic-cursor-container {
+    transform: scale(0.8);
   }
   
-  .magic-cursor-active .magic-cursor-container {
-    display: none;
+  .cursor-main {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .cursor-ring {
+    width: 32px;
+    height: 32px;
+    top: -8px;
+    left: -8px;
+  }
+  
+  .cursor-pulse {
+    width: 48px;
+    height: 48px;
+    top: -16px;
+    left: -16px;
   }
 }
 

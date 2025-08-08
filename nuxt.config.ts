@@ -37,6 +37,7 @@ export default defineNuxtConfig({
 
   // Modules
   modules: [
+    '@nuxt/image'
   ],
 
   // Configuration runtime
@@ -64,6 +65,11 @@ export default defineNuxtConfig({
       '@tailwindcss/postcss': {},
       autoprefixer: {},
     },
+  },
+
+  // Optimisations de performance
+  experimental: {
+    payloadExtraction: false, // Améliore les performances
   },
 
   // Configuration du développement

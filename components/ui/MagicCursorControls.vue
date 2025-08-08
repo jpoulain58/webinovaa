@@ -1,5 +1,6 @@
 <template>
-    <div class="magic-cursor-controls" :class="{ 'controls-hidden': !showControls }">
+    <!-- Masquer complètement sur mobile/tactile -->
+    <div v-if="!isMobile" class="magic-cursor-controls" :class="{ 'controls-hidden': !showControls }">
     <div class="try-me-hint" v-if="!showControls">Essayez-moi</div>
     <button
       @click="toggleControls"
@@ -170,6 +171,9 @@ const emit = defineEmits<{
 const showControls = ref(false)
 const cursorEnabled = ref(true)
 
+// Détection mobile/tactile
+const isMobile = ref(false)
+
 const settings = ref<CursorSettings>({
   enabled: true,
   showRing: true,
@@ -184,6 +188,21 @@ const settings = ref<CursorSettings>({
 })
 
 onMounted(() => {
+  // Détecter si c'est un appareil mobile/tactile de façon plus précise
+  const isTouchDevice = 'ontouchstart' in window || 
+                       navigator.maxTouchPoints > 0 || 
+                       /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                       (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
+  
+  isMobile.value = isTouchDevice
+  
+  // Ajouter la classe touch-device au body si c'est un appareil tactile
+  if (isTouchDevice) {
+    document.body.classList.add('touch-device')
+  } else {
+    document.body.classList.remove('touch-device')
+  }
+  
   loadSettings()
   setupGlobalEvents()
   emitSettingsUpdate()

@@ -470,10 +470,10 @@ onMounted(async () => {
     }
   )
   
-  // 🧲 EFFETS MAGNÉTIQUES FLUIDES
+  // 🧲 EFFETS MAGNÉTIQUES SUBTILS
   addMagneticHover('.magnetic', {
-    strength: 0.4,
-    speed: 0.5 // Plus lent et fluide
+    strength: 0.08, // Plus subtil
+    speed: 0.4 // Fluide
   })
   
   // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - PLUS LENTE ET FLUIDE !

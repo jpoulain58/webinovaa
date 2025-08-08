@@ -3,16 +3,38 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export const useGsapAnimations = () => {
   const { $gsap, $ScrollTrigger } = useNuxtApp()
+  
+  // Configuration adaptative basée sur les performances de l'appareil
+  const getAdaptiveConfig = (options: any = {}) => {
+    if (process.server) return options
+    
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const isLowEnd = (navigator.hardwareConcurrency || 1) <= 2
+    
+    if (prefersReduced) {
+      return { ...options, duration: 0.01, ease: "none" }
+    }
+    
+    if (isLowEnd) {
+      return { 
+        ...options, 
+        duration: (options.duration || 1) * 0.5,
+        stagger: (options.stagger || 0.1) * 0.5
+      }
+    }
+    
+    return options
+  }
 
   // Animation de révélation de texte caractère par caractère - PLUS LENTE ET FLUIDE
   const animateTextReveal = (selector: string, options = {}) => {
     const defaults = {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
+      duration: 0.6, // Équilibré
+      stagger: 0.03, // Équilibré
       ease: "power2.out", // Ease plus douce
       delay: 0
     }
-    const config = { ...defaults, ...options }
+    const config = getAdaptiveConfig({ ...defaults, ...options })
 
     return gsap.fromTo(selector, 
       {
@@ -69,8 +91,8 @@ export const useGsapAnimations = () => {
   // Animation de cards avec effet stagger sophistiqué - PLUS LENTE ET FLUIDE
   const animateCardsStagger = (selector: string, options = {}) => {
     const defaults = {
-      duration: 1.0, // Plus lent et fluide
-      stagger: 0.15, // Plus lent et fluide
+      duration: 0.7, // Équilibré
+      stagger: 0.1, // Équilibré
       ease: "power2.out", // Ease plus douce
       distance: 100
     }
@@ -273,11 +295,14 @@ export const useGsapAnimations = () => {
     })
   }
 
-  // Animation de hover magnétique pour les cartes
+  // Animation de hover magnétique pour les cartes - PLUS SUBTILE
   const addMagneticHover = (selector: string, options = {}) => {
+    // Configuration adaptée selon l'appareil
+    const isMobile = process.server ? false : ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+    
     const defaults = {
-      strength: 0.3,
-      speed: 0.5 // Plus lent et fluide
+      strength: isMobile ? 0.05 : 0.1, // Encore plus subtil sur mobile
+      speed: isMobile ? 0.3 : 0.4 // Plus rapide sur mobile
     }
     const config = { ...defaults, ...options }
 
@@ -289,18 +314,18 @@ export const useGsapAnimations = () => {
       element.addEventListener('mouseenter', () => {
         gsap.to(magnetic, {
           duration: config.speed,
-          scale: 1.05,
-          ease: "power2.out"
+          scale: 1.02, // Réduit de 1.05 à 1.02 pour plus de subtilité
+          ease: "power1.out" // Ease plus douce
         })
       })
 
       element.addEventListener('mouseleave', () => {
         gsap.to(magnetic, {
-          duration: config.speed * 1.5,
+          duration: config.speed * 1.2, // Plus rapide pour le retour
           x: 0,
           y: 0,
           scale: 1,
-          ease: "elastic.out(1, 0.3)"
+          ease: "power1.out" // Ease plus douce sans élasticité
         })
       })
 
@@ -311,9 +336,9 @@ export const useGsapAnimations = () => {
 
         gsap.to(magnetic, {
           duration: config.speed,
-          x: x * config.strength,
-          y: y * config.strength,
-          ease: "power2.out"
+          x: x * config.strength, // Maintenant avec strength: 0.1
+          y: y * config.strength, // Plus subtil
+          ease: "power1.out" // Ease plus douce
         })
       })
     })

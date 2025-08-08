@@ -341,4 +341,117 @@ h1, h2, h3, h4, h5, h6 {
   word-break: keep-all !important;
   overflow-wrap: break-word !important;
   hyphens: none !important;
+}
+
+/* === OPTIMISATIONS PERFORMANCES === */
+/* Durées d'animations équilibrées pour tous */
+* {
+  transition-duration: 400ms !important; /* Équilibré entre fluidité et réactivité */
+}
+
+/* Classes spécifiques pour différentes vitesses d'animation */
+.transition-slow {
+  transition-duration: 600ms !important;
+}
+
+.transition-medium {
+  transition-duration: 400ms !important;
+}
+
+.transition-fast {
+  transition-duration: 250ms !important;
+}
+
+/* Support pour prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Désactive les transformations complexes */
+  .gsap-optimized {
+    transform: none !important;
+  }
+}
+
+/* Désactiver seulement les contrôles sur mobile/tactile */
+@media (hover: none) and (pointer: coarse) {
+  /* Masque seulement le bouton de contrôle du curseur sur mobile */
+  .magic-cursor-controls {
+    display: none !important;
+  }
+  
+  /* Réduit les effets magnétiques sur mobile pour de meilleures performances */
+  .magnetic {
+    transition-duration: 200ms !important;
+  }
+}
+
+/* Optimisations générales pour de meilleures performances */
+.performance-optimized {
+  will-change: auto;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Images optimisées */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+}
+
+/* Réduction de la complexité des box-shadows */
+.shadow-optimized {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ease plus douces pour toutes les animations */
+* {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* === CLASSES UTILITAIRES === */
+/* Gradient de texte */
+.text-gradient {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Classes de cartes */
+.card-base {
+  background: linear-gradient(135deg, rgba(51, 65, 85, 0.8), rgba(30, 41, 59, 0.8));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+}
+
+/* Classes de badges */
+.badge-base {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 } 
