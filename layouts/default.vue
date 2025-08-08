@@ -1,14 +1,24 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" lang="fr">
     <!-- Header Sticky avec Effets 3D -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-slate-900/90 via-blue-900/90 to-slate-900/90 backdrop-blur-2xl border-b border-white/10">
       <nav class="container-custom py-6">
         <div class="flex items-center justify-between">
           <!-- Logo avec Animation 3D -->
-          <NuxtLink to="/" class="flex items-center space-x-3 group cursor-pointer">
+          <NuxtLink to="/" class="flex items-center space-x-3 group cursor-pointer" aria-label="Accueil - Webinovaa">
             <div class="relative">
               <div class="w-24 h-24 flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
-                <NuxtImg src="/logos/logo-webinovaa.png" alt="Webinovaa" class="w-32 h-32 object-contain" loading="eager" />
+                <NuxtImg 
+                  src="/logos/logo-webinovaa.png" 
+                  alt="Logo Webinovaa - Agence web créative" 
+                  class="w-32 h-32 object-contain" 
+                  loading="eager"
+                  width="128"
+                  height="128"
+                  format="webp"
+                  quality="80"
+                  sizes="128px"
+                />
               </div>
             </div>
             <span class="text-2xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
@@ -102,7 +112,16 @@
           <div class="col-span-1 md:col-span-2">
             <div class="flex items-center space-x-3 mb-8">
               <div class="w-20 h-20 flex items-center justify-center">
-                <img src="/logos/logo-webinovaa.png" alt="Webinovaa" class="w-24 h-24 object-contain" />
+                <NuxtImg 
+                  src="/logos/logo-webinovaa.png" 
+                  alt="Logo Webinovaa - Agence web créative" 
+                  class="w-24 h-24 object-contain" 
+                  width="96"
+                  height="96"
+                  format="webp"
+                  quality="80"
+                  sizes="96px"
+                />
               </div>
               <span class="text-2xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
                 Webinovaa
@@ -113,13 +132,23 @@
               Création de sites performants, responsives et SEO-friendly.
             </p>
             <div class="flex space-x-6">
-              <a href="https://linkedin.com/in/jérémy-poulain-8a6038227" target="_blank" class="group p-3 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/25">
-                <svg class="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+              <a 
+                href="https://linkedin.com/in/jérémy-poulain-8a6038227" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Profil LinkedIn de Jérémy Poulain"
+                class="group p-3 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl border border-white/10 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/25"
+              >
+                <svg class="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
               </a>
-              <a href="mailto:contact.webinovaa@gmail.com" class="group p-3 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl border border-white/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/25">
-                <svg class="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <a 
+                href="mailto:contact.webinovaa@gmail.com" 
+                aria-label="Envoyer un email à contact.webinovaa@gmail.com"
+                class="group p-3 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl border border-white/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/25"
+              >
+                <svg class="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </a>

@@ -7,13 +7,18 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Webinovaa - Agence Web Créative',
+      htmlAttrs: {
+        lang: 'fr'
+      },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Agence web créative spécialisée dans la conception de sites web modernes et innovants' },
         { name: 'theme-color', content: '#0ea5e9' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' }
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+        { name: 'language', content: 'fr' },
+        { name: 'robots', content: 'index, follow' }
       ],
       link: [
         // Favicons standard
@@ -39,6 +44,30 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image'
   ],
+
+  // Configuration de l'image
+  image: {
+    quality: 80,
+    format: ['webp', 'avif', 'png'],
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+    presets: {
+      logo: {
+        modifiers: {
+          format: 'webp',
+          quality: 80,
+          width: 128,
+          height: 128
+        }
+      }
+    }
+  },
 
   // Configuration runtime
   runtimeConfig: {
