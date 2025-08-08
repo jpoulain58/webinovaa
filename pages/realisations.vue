@@ -42,22 +42,19 @@
           <div 
             v-for="(project, index) in projects" 
             :key="project.title"
-            class="magnetic group cursor-pointer perspective-1000 gsap-optimized project-card"
+            class="group cursor-pointer perspective-1000 gsap-optimized project-card transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-2"
             :data-gsap="`project-card-${index}`"
           >
-            <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-4 hover:rotate-y-12">
+            <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25">
               <!-- Project Image -->
               <div class="relative h-64 overflow-hidden">
                 <img 
                   :src="project.image" 
                   :alt="project.title" 
-                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-117"
+                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                   :class="project.title === 'Webinovaa' ? 'scale-125' : 'scale-107'"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 class="text-2xl font-bold text-white">{{ project.title }}</h3>
-                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
               </div>
 
               <!-- Project Content -->
@@ -210,7 +207,6 @@ const {
   animateCardsStagger,
   animateHeroSequence,
   animateOnScroll,
-  addMagneticHover,
   splitText,
   splitWords,
   cleanupScrollTriggers
@@ -237,12 +233,12 @@ onMounted(async () => {
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1, ease: "power2.out" }
   )
   
-  // 💫 ANIMATION STAGGER DES CARTES PROJETS - ULTRA RAPIDE x2
+  // 💫 ANIMATION STAGGER DES CARTES PROJETS - PLUS LENTE ET FLUIDE
   animateOnScroll('[data-gsap="projects-grid"]',
     animateCardsStagger('.project-card', {
-      duration: 0.4, // x2 plus rapide
-      stagger: 0.07, // x2 plus rapide
-      ease: "power3.out",
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.2, // Plus lent et fluide
+      ease: "power2.out",
       distance: 150
     }),
     {
@@ -250,11 +246,8 @@ onMounted(async () => {
     }
   )
   
-  // 🧲 EFFETS MAGNÉTIQUES PREMIUM ULTRA RAPIDES
-  addMagneticHover('.magnetic', {
-    strength: 0.5,
-    speed: 0.1 // x2 plus rapide
-  })
+  // 🎯 EFFET ZOOM BUMP SIMPLE - PAS D'EFFET MAGNÉTIQUE
+  // Les cartes ont maintenant un simple effet hover:scale-105 en CSS
   
   // 🌊 PARALLAXE FLUIDE AVEC GSAP
   const { $gsap } = useNuxtApp()

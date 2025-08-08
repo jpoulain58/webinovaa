@@ -464,13 +464,13 @@ onMounted(async () => {
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1, ease: "power2.out" }
   )
 
-  // 🚀 ANIMATIONS AU SCROLL - SERVICES - ULTRA RAPIDES x2
+  // 🚀 ANIMATIONS AU SCROLL - SERVICES - PLUS LENTES ET FLUIDES
   splitText('[data-gsap="process-title"]')
   animateOnScroll('[data-gsap="process-title"]',
     animateTextReveal('[data-gsap="process-title"] .char', {
-      duration: 0.15, // x2 plus rapide
-      stagger: 0.01, // x2 plus rapide
-      ease: "power3.out"
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
+      ease: "power2.out"
     }),
     { start: "top 85%" }
   )
@@ -478,28 +478,28 @@ onMounted(async () => {
   splitWords('[data-gsap="process-subtitle"]')
   animateOnScroll('[data-gsap="process-subtitle"]',
     animateTextReveal('[data-gsap="process-subtitle"] .word', {
-      duration: 0.1, // x2 plus rapide
-      stagger: 0.01, // x2 plus rapide
+      duration: 0.6, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
       ease: "power2.out"
     }),
     { start: "top 85%" }
   )
 
-  // 💫 ANIMATION STAGGER DES SERVICES - ULTRA RAPIDE x2
+  // 💫 ANIMATION STAGGER DES SERVICES - PLUS LENTE ET FLUIDE
   animateOnScroll('[data-gsap="services-grid"]',
     animateCardsStagger('[data-gsap^="service-card"]', {
-      duration: 0.2, // x2 plus rapide
-      stagger: 0.025, // x2 plus rapide
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.15, // Plus lent et fluide
       ease: "back.out(1.7)"
     }),
     { start: "top 90%" }
   )
 
-  // 🎯 ANIMATION STAGGER DES ÉTAPES PROCESSUS - ULTRA RAPIDE x2
+  // 🎯 ANIMATION STAGGER DES ÉTAPES PROCESSUS - PLUS LENTE ET FLUIDE
   animateOnScroll('[data-gsap="process-grid"]',
     animateCardsStagger('[data-gsap^="process-step"]', {
-      duration: 0.2, // x2 plus rapide
-      stagger: 0.025, // x2 plus rapide
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.15, // Plus lent et fluide
       ease: "back.out(1.7)"
     }),
     { start: "top 90%" }
@@ -565,10 +565,10 @@ onMounted(async () => {
     { start: "top 95%" }
   )
 
-  // 🧲 Effets magnétiques ultra rapides
+  // 🧲 Effets magnétiques fluides
   addMagneticHover('.magnetic', {
     strength: 0.3,
-    speed: 0.1 // x2 plus rapide
+    speed: 0.5 // Plus lent et fluide
   })
 })
 

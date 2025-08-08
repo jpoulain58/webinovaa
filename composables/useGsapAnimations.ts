@@ -4,12 +4,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 export const useGsapAnimations = () => {
   const { $gsap, $ScrollTrigger } = useNuxtApp()
 
-  // Animation de révélation de texte caractère par caractère - ULTRA ACCÉLÉRÉE x2
+  // Animation de révélation de texte caractère par caractère - PLUS LENTE ET FLUIDE
   const animateTextReveal = (selector: string, options = {}) => {
     const defaults = {
-      duration: 0.25, // Réduit de 0.5 à 0.25 (x2 plus rapide)
-      stagger: 0.01, // Réduit de 0.02 à 0.01 (x2 plus rapide)
-      ease: "power3.out", // Ease plus rapide
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
+      ease: "power2.out", // Ease plus douce
       delay: 0
     }
     const config = { ...defaults, ...options }
@@ -66,12 +66,12 @@ export const useGsapAnimations = () => {
     return tl
   }
 
-  // Animation de cards avec effet stagger sophistiqué - ULTRA ACCÉLÉRÉE x2
+  // Animation de cards avec effet stagger sophistiqué - PLUS LENTE ET FLUIDE
   const animateCardsStagger = (selector: string, options = {}) => {
     const defaults = {
-      duration: 0.4, // Réduit de 0.8 à 0.4 (x2 plus rapide)
-      stagger: 0.05, // Réduit de 0.1 à 0.05 (x2 plus rapide)
-      ease: "power3.out",
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.15, // Plus lent et fluide
+      ease: "power2.out", // Ease plus douce
       distance: 100
     }
     const config = { ...defaults, ...options }
@@ -131,7 +131,7 @@ export const useGsapAnimations = () => {
     return tl
   }
 
-    // Animation de héro section épique - ULTRA RAPIDE
+    // Animation de héro section épique - PLUS LENTE ET FLUIDE
   const animateHeroSequence = (selectors: {
     title: string,
     subtitle: string,
@@ -160,7 +160,7 @@ export const useGsapAnimations = () => {
           opacity: 1,
           scale: 1,
           filter: "blur(0px)",
-          duration: 1, // x2 plus rapide
+          duration: 2, // Plus lent et fluide
           ease: "power2.out"
         }
       )
@@ -182,22 +182,22 @@ export const useGsapAnimations = () => {
             y: 0,
             rotationY: 0,
             scale: 1,
-            duration: 0.5, // Réduit de 1.0 à 0.5 (x2 plus rapide)
+            duration: 1.2, // Plus lent et fluide
             stagger: {
-              amount: 0.25, // Réduit de 0.5 à 0.25 (x2 plus rapide)
+              amount: 0.8, // Plus lent et fluide
               from: "center",
-              ease: "power3.out"
+              ease: "power2.out"
             },
-            ease: "power3.out"
+            ease: "power2.out"
           },
-          selectors.background ? "-=0.75" : "0"
+          selectors.background ? "-=1.5" : "0"
         )
       } else {
         // Fallback si pas de .char
         tl.fromTo(selectors.title,
           { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-          selectors.background ? "-=0.75" : "0"
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          selectors.background ? "-=1.5" : "0"
         )
       }
     }
@@ -216,18 +216,18 @@ export const useGsapAnimations = () => {
             opacity: 1,
             y: 0,
             skewX: 0,
-            duration: 0.4, // x2 plus rapide
-            stagger: 0.05, // x2 plus rapide
+            duration: 0.8, // Plus lent et fluide
+            stagger: 0.1, // Plus lent et fluide
             ease: "power2.out"
           },
-          "-=0.4"
+          "-=0.8"
         )
       } else {
         // Fallback si pas de .word
         tl.fromTo(selectors.subtitle,
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-          "-=0.4"
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+          "-=0.8"
         )
       }
     }
@@ -246,11 +246,11 @@ export const useGsapAnimations = () => {
           y: 0,
           scale: 1,
           rotation: 0,
-                  duration: 0.5, // x2 plus rapide
-        stagger: 0.1, // x2 plus rapide
-        ease: "elastic.out(1, 0.5)"
+          duration: 1, // Plus lent et fluide
+          stagger: 0.2, // Plus lent et fluide
+          ease: "elastic.out(1, 0.5)"
         },
-        "-=0.5"
+        "-=1"
       )
     }
 
@@ -277,7 +277,7 @@ export const useGsapAnimations = () => {
   const addMagneticHover = (selector: string, options = {}) => {
     const defaults = {
       strength: 0.3,
-      speed: 0.3
+      speed: 0.5 // Plus lent et fluide
     }
     const config = { ...defaults, ...options }
 
@@ -347,11 +347,11 @@ export const useGsapAnimations = () => {
     })
   }
 
-  // Animation spéciale "Pourquoi me choisir" - ÉPIQUE ET ULTRA RAPIDE x2
+  // Animation spéciale "Pourquoi me choisir" - PLUS LENTE ET FLUIDE
   const animateWhyChooseMe = (selector: string, options = {}) => {
     const defaults = {
-      duration: 0.3, // Réduit de 0.6 à 0.3 (x2 plus rapide)
-      stagger: 0.04, // Réduit de 0.08 à 0.04 (x2 plus rapide)
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.12, // Plus lent et fluide
       ease: "power2.out"
     }
     const config = { ...defaults, ...options }
@@ -372,12 +372,12 @@ export const useGsapAnimations = () => {
         y: 0,
         scale: 1,
         rotationX: 0,
-        duration: config.duration / 2, // x2 plus rapide
+        duration: config.duration * 0.8, // Plus lent et fluide
         ease: "back.out(1.7)"
       }
     )
 
-    // Animation des éléments de liste avec effet cascade rapide
+    // Animation des éléments de liste avec effet cascade fluide
     tl.fromTo(`${selector} li`,
       {
         opacity: 0,
@@ -392,11 +392,11 @@ export const useGsapAnimations = () => {
         scale: 1,
         rotationY: 0,
         filter: "blur(0px)",
-        duration: config.duration / 2, // x2 plus rapide
-        stagger: config.stagger / 2, // x2 plus rapide
+        duration: config.duration * 0.8, // Plus lent et fluide
+        stagger: config.stagger, // Plus lent et fluide
         ease: config.ease
       },
-      "-=0.3"
+      "-=0.6"
     )
 
     // Animation des icônes SVG avec effet pop et rotation
@@ -410,11 +410,11 @@ export const useGsapAnimations = () => {
         scale: 1,
         rotation: 0,
         opacity: 1,
-        duration: 0.25, // x2 plus rapide
-        stagger: config.stagger / 2, // x2 plus rapide
+        duration: 0.6, // Plus lent et fluide
+        stagger: config.stagger, // Plus lent et fluide
         ease: "elastic.out(1, 0.7)"
       },
-      "-=0.4"
+      "-=0.8"
     )
     
     // Animation des SVG à l'intérieur avec un délai
@@ -426,8 +426,8 @@ export const useGsapAnimations = () => {
       {
         scale: 1,
         rotationY: 0,
-        duration: 0.15, // x2 plus rapide
-        stagger: config.stagger * 0.25, // x2 plus rapide
+        duration: 0.4, // Plus lent et fluide
+        stagger: config.stagger * 0.5, // Plus lent et fluide
         ease: "back.out(1.7)"
       },
       "-=0.2"

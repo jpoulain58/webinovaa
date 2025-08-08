@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Hero Section avec Effets 3D -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <section class="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden flex flex-col justify-center">
       <!-- Particules Interactives -->
       <div class="absolute inset-0" ref="particlesContainer"></div>
       
@@ -13,12 +13,10 @@
       </div>
 
       <!-- Content avec Animations GSAP -->
-      <div class="container-custom relative z-10 text-center">
-        <div class="max-w-6xl mx-auto">
-
-
+      <div class="container-custom relative z-10 py-20">
+        <div class="text-center max-w-5xl mx-auto">
           <!-- Titre Principal avec Animation GSAP -->
-          <h1 ref="mainTitle" class="text-6xl md:text-8xl lg:text-9xl font-black mb-12 leading-none gsap-3d force-visible">
+          <h1 ref="mainTitle" class="text-6xl md:text-8xl font-black mb-12 gsap-3d force-visible">
             <span class="block bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent gsap-optimized force-visible" data-gsap="title-line-1">
               Créons un site
             </span>
@@ -28,15 +26,13 @@
           </h1>
 
           <!-- Sous-titre avec Animation Typewriter -->
-          <div class="text-2xl md:text-3xl text-slate-300 mb-16 max-w-4xl mx-auto leading-relaxed">
-            <p ref="subtitle" class="gsap-optimized force-visible" data-gsap="subtitle">
-              Développeur web freelance spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
-              Je crée des sites performants, responsives et SEO-friendly qui transforment votre vision en réalité.
-            </p>
-          </div>
+          <p class="text-2xl md:text-3xl text-slate-300 mb-16 leading-relaxed gsap-optimized force-visible" ref="subtitle" data-gsap="subtitle">
+            Développeur web freelance spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
+            Je crée des sites performants, responsives et SEO-friendly qui transforment votre vision en réalité.
+          </p>
 
           <!-- Boutons CTA avec Animations GSAP -->
-          <div ref="ctaButtons" class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20" data-gsap="cta-buttons">
+          <div ref="ctaButtons" class="flex flex-col sm:flex-row gap-6 justify-center items-center" data-gsap="cta-buttons">
             <button 
               @click="scrollToContact"
               class="magnetic px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xl font-bold rounded-2xl gsap-optimized"
@@ -55,19 +51,6 @@
               </svg>
             </NuxtLink>
           </div>
-
-                    <!-- Stats avec Animations -->
-          <div ref="stats" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <div class="text-center group">
-              <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="95">0</div>
-              <div class="text-slate-300">Performance moyenne</div>
-            </div>
- 
-            <div class="text-center group">
-              <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter" data-target="24">0</div>
-              <div class="text-slate-300">Temps de réponse</div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -75,6 +58,39 @@
       <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
           <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Stats avec Effets 3D -->
+    <section class="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white relative overflow-hidden">
+      <!-- Effet de fond animé -->
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container-custom relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Chiffres <span class="bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">clés</span>
+          </h2>
+          <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+            Quelques statistiques qui témoignent de la qualité de mes réalisations
+          </p>
+        </div>
+
+        <!-- Stats avec Animations -->
+        <div ref="stats" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div class="text-center group">
+            <div class="text-4xl md:text-5xl font-bold text-blue-400 mb-2 counter group-hover:text-blue-300 transition-colors duration-300" data-target="95">0</div>
+            <div class="text-slate-300 text-lg">Performance moyenne</div>
+          </div>
+ 
+          <div class="text-center group">
+            <div class="text-4xl md:text-5xl font-bold text-blue-400 mb-2 counter group-hover:text-blue-300 transition-colors duration-300" data-target="24">0</div>
+            <div class="text-slate-300 text-lg">Temps de réponse</div>
+          </div>
         </div>
       </div>
     </section>
@@ -422,21 +438,21 @@ onMounted(async () => {
     "-=0.5"
   )
   
-  // 🚀 ANIMATIONS AU SCROLL - SERVICES - ULTRA RAPIDES x2
+  // 🚀 ANIMATIONS AU SCROLL - SERVICES - PLUS LENTES ET FLUIDES
   // Animation d'entrée pour le titre services
   animateOnScroll('[data-gsap="services-title"]', 
     animateTextReveal('[data-gsap="services-title"] .char', {
-      duration: 0.3, // x2 plus rapide
-      stagger: 0.02, // x2 plus rapide  
-      ease: "power3.out"
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
+      ease: "power2.out"
     })
   )
   
   // Animation du sous-titre services
   animateOnScroll('[data-gsap="services-subtitle"]',
     animateTextReveal('[data-gsap="services-subtitle"] .word', {
-      duration: 0.2, // x2 plus rapide
-      stagger: 0.02, // x2 plus rapide
+      duration: 0.6, // Plus lent et fluide
+      stagger: 0.04, // Plus lent et fluide
       ease: "power2.out"
     })
   )
@@ -444,9 +460,9 @@ onMounted(async () => {
   // 💫 ANIMATION STAGGER DES CARTES SERVICES
   animateOnScroll('[data-gsap="services-grid"]',
     animateCardsStagger('.service-card', {
-      duration: 0.4, // x2 plus rapide
-      stagger: 0.05, // x2 plus rapide
-      ease: "power3.out",
+      duration: 1.0, // Plus lent et fluide
+      stagger: 0.15, // Plus lent et fluide
+      ease: "power2.out",
       distance: 120
     }),
     {
@@ -454,18 +470,18 @@ onMounted(async () => {
     }
   )
   
-  // 🧲 EFFETS MAGNÉTIQUES RAPIDES
+  // 🧲 EFFETS MAGNÉTIQUES FLUIDES
   addMagneticHover('.magnetic', {
     strength: 0.4,
-    speed: 0.2 // Plus rapide
+    speed: 0.5 // Plus lent et fluide
   })
   
-  // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - ÉPIQUE ULTRA RAPIDE x2 !
+  // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - PLUS LENTE ET FLUIDE !
   animateOnScroll('[data-gsap="why-choose-me"]',
     animateWhyChooseMe('[data-gsap="why-choose-me"]', {
-      duration: 0.15, // x2 plus rapide
-      stagger: 0.02, // x2 plus rapide
-      ease: "power3.out"
+      duration: 0.8, // Plus lent et fluide
+      stagger: 0.12, // Plus lent et fluide
+      ease: "power2.out"
     }),
     {
       start: "top 85%"
