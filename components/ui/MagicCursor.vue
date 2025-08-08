@@ -169,9 +169,21 @@ const handleResize = () => {
   if (shouldDisable) {
     document.body.classList.add('touch-device')
     isEnabled.value = false
+    // IMPORTANT: Réactiver le curseur système
+    document.body.style.cursor = 'auto'
+    document.documentElement.style.cursor = 'auto'
+    document.body.classList.remove('magic-cursor-active')
+    document.documentElement.classList.remove('magic-cursor-active')
   } else {
     document.body.classList.remove('touch-device')
     isEnabled.value = props.settings.enabled
+    // Réactiver le curseur magique si les settings le permettent
+    if (props.settings.enabled) {
+      document.body.style.cursor = 'none'
+      document.documentElement.style.cursor = 'none'
+      document.body.classList.add('magic-cursor-active')
+      document.documentElement.classList.add('magic-cursor-active')
+    }
   }
 }
 
