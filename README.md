@@ -1,15 +1,15 @@
 # Webinovaa - Site Vitrine Freelance
 
-Site vitrine professionnel pour l'activité de développement web freelance **Webinovaa**. Développé avec Nuxt 3, Vue.js et Tailwind CSS.
+Site vitrine professionnel pour l'activité de développement web freelance **Webinovaa**. Développé avec Nuxt, Vue.js et Tailwind CSS.
 
 ## 🚀 Technologies
 
 - **Framework** : Nuxt
-- **Frontend** : Vue.js 3
+- **Frontend** : Vue.js
 - **Styling** : Tailwind CSS
 - **Animations** : GSAP
-- **State Management** : Pinia
-- **UI Components** : Nuxt UI
+- **Icons** : Composant Icons.vue réutilisable
+- **Cursor Effects** : MagicCursor avec effets avancés
 - **PWA** : @nuxtjs/pwa
 - **SEO** : @nuxtjs/robots, @nuxtjs/sitemap
 - **Fonts** : Google Fonts (Inter)
@@ -19,17 +19,33 @@ Site vitrine professionnel pour l'activité de développement web freelance **We
 ```
 Webinovaa/
 ├── components/
-│   ├── sections/          # Sections de pages
+│   ├── animations/       # Composants d'animations (supprimés)
+│   ├── contact/          # Composants de contact
+│   │   ├── ProfileCard.vue
+│   │   └── CompanyCard.vue
+│   ├── sections/         # Sections de pages
 │   │   ├── HeroSection.vue
 │   │   ├── ServicesTeaserSection.vue
-│   │   └── VisionSection.vue
-│   └── ui/               # Composants UI réutilisables
+│   │   ├── VisionSection.vue
+│   │   └── home/
+│   │       └── ServicesSection.vue
+│   └── ui/              # Composants UI réutilisables
 │       ├── ServiceCard.vue
-│       └── ProjectCard.vue
-├── composables/          # Logique métier réutilisable
+│       ├── ProjectCard.vue
+│       ├── Icons.vue
+│       ├── MagicCursor.vue
+│       └── MagicCursorControls.vue
+├── composables/         # Logique métier réutilisable
+│   ├── animations/      # Composables d'animations
+│   │   ├── useTextAnimations.ts
+│   │   ├── useCardAnimations.ts
+│   │   └── useScrollAnimations.ts
 │   ├── useServices.ts
-│   ├── useProjects.ts
-│   └── useNavigation.ts
+│   ├── useProjectData.ts
+│   ├── useHomeData.ts
+│   ├── useNavigation.ts
+│   ├── useParticles.ts
+│   └── useGsapAnimations.ts
 ├── layouts/             # Layouts de l'application
 │   └── default.vue
 ├── pages/               # Pages de l'application
@@ -37,13 +53,20 @@ Webinovaa/
 │   ├── services.vue
 │   ├── realisations.vue
 │   └── contact.vue
-├── store/               # Gestion d'état Pinia
-│   └── index.ts
+├── plugins/             # Plugins Nuxt
+│   └── gsap.client.ts
+├── server/              # API routes
+│   ├── api/
+│   │   └── contact.post.ts
+│   └── utils/
+│       └── email.ts
 ├── public/              # Assets statiques
 │   └── manifest.json
 └── assets/              # Assets de l'application
     └── css/
-        └── main.css
+        ├── main.css
+        ├── components.css
+        └── cursor-effects.css
 ```
 
 ## 🎨 Design System
@@ -77,11 +100,14 @@ Webinovaa/
 - ✅ SEO optimisé (meta tags, Open Graph, Twitter Cards)
 - ✅ PWA installable
 - ✅ Responsive design
-- ✅ Animations GSAP
+- ✅ Animations GSAP avancées (modulaires)
+- ✅ Curseur magique avec effets visuels
+- ✅ Système de particules optimisé
 - ✅ Formulaire de contact avec validation
 - ✅ Protection anti-spam (honeypot)
-- ✅ Performance optimisée
+- ✅ Performance optimisée (code refactorisé)
 - ✅ Accessibilité
+- ✅ Architecture modulaire et maintenable
 
 ## 🛠️ Installation
 
@@ -118,8 +144,11 @@ Le projet est configuré pour un déploiement automatique sur Vercel.
 
 ### Optimisations
 - Lazy loading des composants
-- Images optimisées
-- CSS purgé automatiquement
+- Images optimisées avec loading="lazy"
+- CSS drastiquement réduit (cursor-effects optimisé)
+- Composables modulaires (animations séparées)
+- Code inutilisé supprimé (plugins GSAP, composants)
+- Particules adaptatives selon les performances
 - Service Worker pour le cache
 - Compression gzip
 
@@ -143,6 +172,16 @@ Le projet est configuré pour un déploiement automatique sur Vercel.
 - Robots.txt
 - Schema.org markup
 
+## 🚀 Récentes Optimisations
+
+### v2024.01 - Optimisation Majeure
+- **Architecture refactorisée** : Composables GSAP séparés en modules spécialisés
+- **Performance** : -797 lignes de code inutile supprimées
+- **Composants réutilisables** : Icons.vue centralisé, ServicesSection.vue extrait
+- **Bug fixes** : Titre "collé", scintillement images, backgrounds parallax
+- **CSS optimisé** : cursor-effects réduit de >200 lignes à 10 lignes essentielles
+- **Code cleaning** : Suppression composants/plugins inutilisés
+
 ## 🤝 Contribution
 
 1. Fork le projet
@@ -157,10 +196,10 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 📞 Contact
 
-- **Email** : contact@webinovaa.com
-- **LinkedIn** : /in/webinovaa
-- **GitHub** : /webinovaa
+- **Email** : contact.webinovaa@gmail.com
+- **LinkedIn** : [Jérémy POULAIN](https://linkedin.com/in/jérémy-poulain-8a6038227)
+- **Site Web** : [Webinovaa.com](https://webinovaa.com)
 
 ---
 
-Développé avec ❤️ par Webinovaa
+Développé avec ❤️ par [Jérémy POULAIN](https://linkedin.com/in/jérémy-poulain-8a6038227) - Webinovaa
