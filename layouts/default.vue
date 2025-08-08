@@ -46,7 +46,7 @@
           <!-- Mobile Menu Button avec Animation -->
           <button 
             @click="toggleMobileMenu"
-            class="md:hidden relative p-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 border border-white/10 hover:border-blue-500/50 transition-all duration-300 group"
+            class="md:hidden relative p-3 rounded-xl bg-gradient-to-r from-slate-800 to-slate-700 border border-white/10 hover:border-blue-500/50 transition-all duration-300 group cursor-pointer"
           >
             <div class="w-6 h-6 flex flex-col justify-center items-center">
               <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300" :class="isMobileMenuOpen ? 'rotate-45 translate-y-1' : ''"></span>
