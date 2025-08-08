@@ -1,0 +1,334 @@
+/* Effets de curseur avancés - Version corrigée */
+
+/* Masquer le curseur par défaut seulement quand le curseur magique est actif */
+html.magic-cursor-active,
+body.magic-cursor-active {
+  cursor: none !important;
+}
+.magic-cursor-active * {
+  cursor: none !important;
+}
+
+/* Exception pour le panneau de contrôle du curseur magique */
+.magic-cursor-active .magic-cursor-controls {
+  cursor: auto !important;
+}
+
+.magic-cursor-active .magic-cursor-controls * {
+  cursor: auto !important;
+}
+
+.magic-cursor-active .magic-cursor-controls .controls-toggle,
+.magic-cursor-active .magic-cursor-controls .controls-toggle *,
+.magic-cursor-active .magic-cursor-controls .toggle-icon {
+  cursor: pointer !important;
+}
+
+.magic-cursor-active .magic-cursor-controls .try-me-hint {
+  cursor: auto !important;
+}
+
+/* Exceptions pour les éléments qui nécessitent le curseur par défaut */
+.magic-cursor-active input, 
+.magic-cursor-active textarea, 
+.magic-cursor-active select, 
+.magic-cursor-active [contenteditable] {
+  cursor: text !important;
+}
+
+/* Effets de distorsion sur les éléments interactifs - Version corrigée */
+.magic-cursor-active a:hover:not(.cta-button):not(.cta-button-mobile), 
+.magic-cursor-active button:hover:not(.cta-button):not(.cta-button-mobile), 
+.magic-cursor-active .btn-primary:hover:not(.cta-button):not(.cta-button-mobile), 
+.magic-cursor-active .btn-secondary:hover:not(.cta-button):not(.cta-button-mobile) {
+  transform: scale(1.02);
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Effet de pulsation sur les cartes - Version corrigée */
+.magic-cursor-active .card:hover {
+  animation: cardPulse 0.6s ease-in-out;
+}
+
+@keyframes cardPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+/* Effet de distorsion sur les images - Version corrigée */
+.magic-cursor-active img:hover {
+  filter: brightness(1.05) contrast(1.05);
+  transition: filter 0.3s ease;
+}
+
+/* Effet de particules sur les liens - Version corrigée */
+.magic-cursor-active a {
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-cursor-active a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.magic-cursor-active a:hover::before {
+  left: 100%;
+}
+
+/* Effet de distorsion sur les boutons - Version corrigée */
+.magic-cursor-active .btn-primary:not(.cta-button):not(.cta-button-mobile), 
+.magic-cursor-active .btn-secondary:not(.cta-button):not(.cta-button-mobile) {
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-cursor-active .btn-primary:not(.cta-button):not(.cta-button-mobile)::after, 
+.magic-cursor-active .btn-secondary:not(.cta-button):not(.cta-button-mobile)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.magic-cursor-active .btn-primary:not(.cta-button):not(.cta-button-mobile):hover::after, 
+.magic-cursor-active .btn-secondary:not(.cta-button):not(.cta-button-mobile):hover::after {
+  width: 150px;
+  height: 150px;
+}
+
+/* Effet de distorsion sur les sections - Version corrigée */
+.magic-cursor-active .section-padding {
+  position: relative;
+}
+
+.magic-cursor-active .section-padding::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+              rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.magic-cursor-active .section-padding:hover::before {
+  opacity: 1;
+}
+
+/* Effet de distorsion sur les titres - Version corrigée */
+.magic-cursor-active h1, 
+.magic-cursor-active h2, 
+.magic-cursor-active h3, 
+.magic-cursor-active h4, 
+.magic-cursor-active h5, 
+.magic-cursor-active h6 {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.magic-cursor-active h1:hover, 
+.magic-cursor-active h2:hover, 
+.magic-cursor-active h3:hover, 
+.magic-cursor-active h4:hover, 
+.magic-cursor-active h5:hover, 
+.magic-cursor-active h6:hover {
+  transform: translateX(3px);
+}
+
+/* Effet de distorsion sur les paragraphes - Version corrigée */
+.magic-cursor-active p {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.magic-cursor-active p:hover {
+  transform: translateY(-1px);
+}
+
+/* Effet de distorsion sur les listes - Version corrigée */
+.magic-cursor-active ul, 
+.magic-cursor-active ol {
+  position: relative;
+}
+
+.magic-cursor-active li {
+  transition: transform 0.2s ease, padding-left 0.2s ease;
+}
+
+.magic-cursor-active li:hover {
+  transform: translateX(5px);
+  padding-left: 5px;
+}
+
+/* Effet de distorsion sur les formulaires - Version corrigée */
+.magic-cursor-active input, 
+.magic-cursor-active textarea, 
+.magic-cursor-active select {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.magic-cursor-active input:focus, 
+.magic-cursor-active textarea:focus, 
+.magic-cursor-active select:focus {
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: scale(1.01);
+}
+
+/* Effet de distorsion sur les images de projet - Version corrigée */
+.magic-cursor-active .project-card img {
+  transition: all 0.3s ease;
+}
+
+.magic-cursor-active .project-card:hover img {
+  transform: scale(1.03);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* Effet de distorsion sur les cartes de service - Version corrigée */
+.magic-cursor-active .service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-cursor-active .service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magic-cursor-active .service-card:hover::before {
+  opacity: 1;
+}
+
+/* Effet de distorsion sur la navigation - Version corrigée */
+.magic-cursor-active nav {
+  position: relative;
+}
+
+.magic-cursor-active nav a {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.magic-cursor-active nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+  transition: width 0.3s ease;
+}
+
+.magic-cursor-active nav a:hover::after {
+  width: 100%;
+}
+
+/* Effet de distorsion sur le footer - Version corrigée */
+.magic-cursor-active footer {
+  position: relative;
+}
+
+.magic-cursor-active footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #3B82F6, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.magic-cursor-active footer:hover::before {
+  opacity: 1;
+}
+
+/* Effet de distorsion sur les icônes - Version corrigée */
+.magic-cursor-active .icon {
+  transition: all 0.3s ease;
+}
+
+.magic-cursor-active .icon:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Effet de distorsion sur les badges - Version corrigée */
+.magic-cursor-active .badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-cursor-active .badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.magic-cursor-active .badge:hover::before {
+  left: 100%;
+}
+
+/* Responsive - Version corrigée */
+@media (max-width: 768px) {
+  /* Désactiver les effets sur mobile pour les performances */
+  .magic-cursor-active * {
+    cursor: auto !important;
+  }
+  
+  .magic-cursor-active .magic-cursor-container {
+    display: none;
+  }
+}
+
+/* Mode sombre - Version corrigée */
+@media (prefers-color-scheme: dark) {
+  .controls-panel {
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+  }
+  
+  .control-label {
+    color: #ccc;
+  }
+  
+  .control-label:hover {
+    color: white;
+  }
+} 
