@@ -536,15 +536,15 @@ onMounted(async () => {
   const heroTl = gsapInstance.timeline()
   heroTl.fromTo('.absolute.inset-0',
     { opacity: 0, scale: 1.5, filter: "blur(20px)" },
-    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1, ease: "power2.out" }
+    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
 
-  // 🚀 ANIMATIONS AU SCROLL - SERVICES - PLUS LENTES ET FLUIDES
+  // 🚀 ANIMATIONS AU SCROLL - SERVICES - RAPIDES ET FLUIDES
   splitText('[data-gsap="process-title"]')
   animateOnScroll('[data-gsap="process-title"]',
     animateTextReveal('[data-gsap="process-title"] .char', {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
+      duration: 0.5, // Plus rapide
+      stagger: 0.025, // Plus rapide
       ease: "power2.out"
     }),
     { start: "top 85%" }
@@ -553,18 +553,18 @@ onMounted(async () => {
   splitWords('[data-gsap="process-subtitle"]')
   animateOnScroll('[data-gsap="process-subtitle"]',
     animateTextReveal('[data-gsap="process-subtitle"] .word', {
-      duration: 0.6, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
+      duration: 0.4, // Plus rapide
+      stagger: 0.025, // Plus rapide
       ease: "power2.out"
     }),
     { start: "top 85%" }
   )
 
-  // 💫 ANIMATION STAGGER DES SERVICES - PLUS LENTE ET FLUIDE
+  // 💫 ANIMATION STAGGER DES SERVICES - RAPIDE ET FLUIDE
   animateOnScroll('[data-gsap="services-grid"]',
     animateCardsStagger('[data-gsap^="service-card"]', {
-      duration: 1.0, // Plus lent et fluide
-      stagger: 0.15, // Plus lent et fluide
+      duration: 0.7, // Plus rapide
+      stagger: 0.1, // Plus rapide
       ease: "back.out(1.7)"
     }),
     { start: "top 90%" }
@@ -573,20 +573,20 @@ onMounted(async () => {
   // 🎯 ANIMATION STAGGER DES ÉTAPES PROCESSUS - TIMELINE VERTICALE
   animateOnScroll('[data-gsap="process-grid"]',
     animateCardsStagger('[data-gsap^="process-step"]', {
-      duration: 1.2, // Plus lent pour timeline
-      stagger: 0.3, // Plus d'espacement entre les étapes
+      duration: 0.8, // Plus rapide
+      stagger: 0.2, // Plus rapide
       ease: "power2.out",
       distance: 100 // Animation depuis le bas
     }),
     { start: "top 90%" }
   )
 
-  // 💰 ANIMATIONS PRICING - PLUS LENTES ET FLUIDES
+  // 💰 ANIMATIONS PRICING - RAPIDES ET FLUIDES
   splitText('[data-gsap="pricing-title"]')
   animateOnScroll('[data-gsap="pricing-title"]',
     animateTextReveal('[data-gsap="pricing-title"] .char', {
-      duration: 1.0, // Plus lent et fluide
-      stagger: 0.05, // Plus lent et fluide
+      duration: 0.6, // Plus rapide
+      stagger: 0.03, // Plus rapide
       ease: "power1.out"
     }),
     { start: "top 85%" }
@@ -595,8 +595,8 @@ onMounted(async () => {
   splitWords('[data-gsap="pricing-subtitle"]')
   animateOnScroll('[data-gsap="pricing-subtitle"]',
     animateTextReveal('[data-gsap="pricing-subtitle"] .word', {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
+      duration: 0.5, // Plus rapide
+      stagger: 0.025, // Plus rapide
       ease: "power1.out"
     }),
     { start: "top 85%" }
@@ -604,8 +604,8 @@ onMounted(async () => {
 
   animateOnScroll('[data-gsap="pricing-grid"]',
     animateCardsStagger('[data-gsap^="pricing-card"]', {
-      duration: 1.2, // Plus lent et fluide
-      stagger: 0.2, // Plus lent et fluide
+      duration: 0.8, // Plus rapide
+      stagger: 0.15, // Plus rapide
       ease: "power1.out"
     }),
     { start: "top 90%" }

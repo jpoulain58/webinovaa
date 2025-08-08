@@ -428,22 +428,22 @@ onMounted(async () => {
   // Animation du background
   heroTl.fromTo('.absolute.inset-0',
     { opacity: 0, scale: 1.5, filter: "blur(20px)" },
-    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1, ease: "power2.out" }
+    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
   
   // Animation des boutons
   heroTl.fromTo('[data-gsap="cta-buttons"]',
     { opacity: 0, y: 100, scale: 0.5 },
-    { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.7)" },
-    "-=0.5"
+    { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+    "-=0.3"
   )
   
-  // 🚀 ANIMATIONS AU SCROLL - SERVICES - PLUS LENTES ET FLUIDES
+  // 🚀 ANIMATIONS AU SCROLL - SERVICES - RAPIDES ET FLUIDES
   // Animation d'entrée pour le titre services
   animateOnScroll('[data-gsap="services-title"]', 
     animateTextReveal('[data-gsap="services-title"] .char', {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
+      duration: 0.5, // Plus rapide
+      stagger: 0.025, // Plus rapide
       ease: "power2.out"
     })
   )
@@ -451,8 +451,8 @@ onMounted(async () => {
   // Animation du sous-titre services
   animateOnScroll('[data-gsap="services-subtitle"]',
     animateTextReveal('[data-gsap="services-subtitle"] .word', {
-      duration: 0.6, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
+      duration: 0.4, // Plus rapide
+      stagger: 0.025, // Plus rapide
       ease: "power2.out"
     })
   )

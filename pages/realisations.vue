@@ -230,14 +230,14 @@ onMounted(async () => {
   const heroTl = gsapInstance.timeline()
   heroTl.fromTo('.absolute.inset-0',
     { opacity: 0, scale: 1.5, filter: "blur(20px)" },
-    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1, ease: "power2.out" }
+    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
   
-  // 💫 ANIMATION STAGGER DES CARTES PROJETS - PLUS LENTE ET FLUIDE
+  // 💫 ANIMATION STAGGER DES CARTES PROJETS - RAPIDE ET FLUIDE
   animateOnScroll('[data-gsap="projects-grid"]',
     animateCardsStagger('.project-card', {
-      duration: 1.0, // Plus lent et fluide
-      stagger: 0.2, // Plus lent et fluide
+      duration: 0.7, // Plus rapide
+      stagger: 0.15, // Plus rapide
       ease: "power2.out",
       distance: 150
     }),

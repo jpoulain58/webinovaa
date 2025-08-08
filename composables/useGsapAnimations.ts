@@ -26,11 +26,11 @@ export const useGsapAnimations = () => {
     return options
   }
 
-  // Animation de révélation de texte caractère par caractère - PLUS LENTE ET FLUIDE
+  // Animation de révélation de texte caractère par caractère - RAPIDE ET FLUIDE
   const animateTextReveal = (selector: string, options = {}) => {
     const defaults = {
-      duration: 0.6, // Équilibré
-      stagger: 0.03, // Équilibré
+      duration: 0.4, // Plus rapide
+      stagger: 0.02, // Plus rapide
       ease: "power2.out", // Ease plus douce
       delay: 0
     }
@@ -372,11 +372,11 @@ export const useGsapAnimations = () => {
     })
   }
 
-  // Animation spéciale "Pourquoi me choisir" - PLUS LENTE ET FLUIDE
+  // Animation spéciale "Pourquoi me choisir" - RAPIDE ET FLUIDE
   const animateWhyChooseMe = (selector: string, options = {}) => {
     const defaults = {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.12, // Plus lent et fluide
+      duration: 0.5, // Plus rapide
+      stagger: 0.08, // Plus rapide
       ease: "power2.out"
     }
     const config = { ...defaults, ...options }
@@ -397,7 +397,7 @@ export const useGsapAnimations = () => {
         y: 0,
         scale: 1,
         rotationX: 0,
-        duration: config.duration * 0.8, // Plus lent et fluide
+        duration: config.duration * 0.6, // Plus rapide
         ease: "back.out(1.7)"
       }
     )
@@ -417,8 +417,8 @@ export const useGsapAnimations = () => {
         scale: 1,
         rotationY: 0,
         filter: "blur(0px)",
-        duration: config.duration * 0.8, // Plus lent et fluide
-        stagger: config.stagger, // Plus lent et fluide
+        duration: config.duration * 0.6, // Plus rapide
+        stagger: config.stagger, // Plus rapide
         ease: config.ease
       },
       "-=0.6"
@@ -435,8 +435,8 @@ export const useGsapAnimations = () => {
         scale: 1,
         rotation: 0,
         opacity: 1,
-        duration: 0.6, // Plus lent et fluide
-        stagger: config.stagger, // Plus lent et fluide
+        duration: 0.4, // Plus rapide
+        stagger: config.stagger, // Plus rapide
         ease: "elastic.out(1, 0.7)"
       },
       "-=0.8"
