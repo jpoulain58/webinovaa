@@ -51,8 +51,8 @@
                 <img 
                   :src="project.image" 
                   :alt="project.title" 
-                  class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                  :class="project.title === 'Webinovaa' ? 'scale-125' : 'scale-107'"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  :class="project.title === 'Webinovaa' ? 'object-[center_bottom] scale-115' : 'object-center scale-107'"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
               </div>
