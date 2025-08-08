@@ -233,11 +233,11 @@ onMounted(async () => {
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
   
-  // 💫 ANIMATION STAGGER DES CARTES PROJETS - RAPIDE ET FLUIDE
+  // 💫 ANIMATION STAGGER DES CARTES PROJETS - ULTRA RAPIDE
   animateOnScroll('[data-gsap="projects-grid"]',
     animateCardsStagger('.project-card', {
-      duration: 0.7, // Plus rapide
-      stagger: 0.15, // Plus rapide
+      duration: 0.5, // Encore plus rapide
+      stagger: 0.1, // Encore plus rapide
       ease: "power2.out",
       distance: 150
     }),
