@@ -31,16 +31,16 @@
 
           <!-- CTA Button avec Effet Élégant -->
           <div class="hidden md:block ml-4 lg:ml-6 xl:ml-8">
-            <NuxtLink 
-              to="/contact"
+                          <NuxtLink 
+                to="/contact"
               class="cta-button"
-            >
+              >
               <span class="cta-text">
                 <span class="hidden xl:inline">Discutons de votre projet</span>
                 <span class="xl:hidden">Votre projet</span>
               </span>
               <div class="cta-glow"></div>
-            </NuxtLink>
+              </NuxtLink>
           </div>
 
           <!-- Mobile Menu Button avec Animation -->

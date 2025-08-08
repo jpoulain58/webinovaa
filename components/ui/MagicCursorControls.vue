@@ -291,10 +291,10 @@ const setupGlobalEvents = () => {
 }
 
 const handleKeydown = (e: KeyboardEvent) => {
-  if (e.ctrlKey && e.key === 'c') {
-    e.preventDefault()
-    toggleControls()
-  }
+    if (e.ctrlKey && e.key === 'c') {
+      e.preventDefault()
+      toggleControls()
+    }
   
   // Fermer avec Escape
   if (e.key === 'Escape' && showControls.value) {
