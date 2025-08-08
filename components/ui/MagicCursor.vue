@@ -4,8 +4,8 @@
     <div 
       class="cursor-main"
       :style="{ 
-        left: (cursorPosition.x - cursorOffsets.main) + 'px', 
-        top: (cursorPosition.y - cursorOffsets.main) + 'px',
+        left: (cursorPosition.x - getCursorOffset().main) + 'px', 
+        top: (cursorPosition.y - getCursorOffset().main) + 'px',
         transform: `scale(${cursorScale})`,
         '--primary-color': settings.primaryColor,
         '--secondary-color': settings.secondaryColor
@@ -21,8 +21,8 @@
       v-if="settings.showTrail"
       class="cursor-trail"
       :style="{ 
-        left: (trailPosition.x - cursorOffsets.trail) + 'px', 
-        top: (trailPosition.y - cursorOffsets.trail) + 'px',
+        left: (trailPosition.x - getCursorOffset().trail) + 'px', 
+        top: (trailPosition.y - getCursorOffset().trail) + 'px',
         transform: `scale(${trailScale})`,
         '--primary-color': settings.primaryColor
       }"
@@ -51,8 +51,8 @@
       v-if="isHovering && settings.showDistortion"
       class="cursor-distortion"
       :style="{ 
-        left: (cursorPosition.x - cursorOffsets.distortion) + 'px', 
-        top: (cursorPosition.y - cursorOffsets.distortion) + 'px',
+        left: (cursorPosition.x - getCursorOffset().distortion) + 'px', 
+        top: (cursorPosition.y - getCursorOffset().distortion) + 'px',
         transform: `scale(${distortionScale})`,
         '--primary-color': settings.primaryColor
       }"
@@ -108,34 +108,22 @@ const trailScale = ref(1)
 const isHovering = ref(false)
 const distortionScale = ref(1)
 
-// Offsets réactifs pour le repositionnement
-const cursorOffsets = ref({
-  main: 12,
-  trail: 7.5,
-  distortion: 60
-})
-
 const particles = ref<Particle[]>([])
 let particleId = 0
 let animationFrame: number
 let lastTime = 0
 
-// Calcul des offsets selon la taille d'écran
+// Offsets simples basés sur les tailles CSS exactes
 const getCursorOffset = () => {
-  // Vérifier si nous sommes côté client pour éviter les erreurs SSR
   if (typeof window === 'undefined') {
-    return {
-      main: 12, // Valeur par défaut pour le serveur
-      trail: 7.5,
-      distortion: 60
-    }
+    return { main: 10, trail: 7.5, distortion: 60 }
   }
   
   const isSmallScreen = window.innerWidth <= 768
   return {
-    main: isSmallScreen ? 7.5 : 12, // 15px/2 ou 20px/2 + 2px de marge
-    trail: isSmallScreen ? 6 : 7.5,  // Proportionnel au curseur principal
-    distortion: isSmallScreen ? 45 : 60 // Proportionnel aux autres éléments
+    main: isSmallScreen ? 7.5 : 10,  // 15px/2 : 20px/2
+    trail: 7.5,                       // 15px/2 (taille fixe)
+    distortion: 60                    // 120px/2
   }
 }
 
@@ -151,8 +139,6 @@ onMounted(() => {
   startAnimation()
   loadSettings()
   setupResponsiveHandler()
-  // Mettre à jour les offsets côté client
-  updateCursorOffsets()
 })
 
 onUnmounted(() => {
@@ -168,13 +154,6 @@ onUnmounted(() => {
 watch(() => props.settings, (newSettings) => {
   updateCursorBehavior(newSettings)
 }, { deep: true })
-
-const updateCursorOffsets = () => {
-  if (typeof window !== 'undefined') {
-    const offsets = getCursorOffset()
-    cursorOffsets.value = offsets
-  }
-}
 
 const setupResponsiveHandler = () => {
   window.addEventListener('resize', handleResize)
@@ -195,8 +174,7 @@ const handleResize = () => {
     isEnabled.value = props.settings.enabled
   }
   
-  // Force le recalcul de la position du curseur avec les nouveaux offsets
-  updateCursorOffsets()
+  // Les offsets sont recalculés automatiquement via getCursorOffset()
 }
 
 const hideDefaultCursor = () => {
