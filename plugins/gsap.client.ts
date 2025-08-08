@@ -13,11 +13,21 @@ export default defineNuxtPlugin(() => {
       ease: "power1.out" // Ease plus douce
     })
 
-    // Configuration ScrollTrigger optimisée
+    // Configuration ScrollTrigger optimisée pour mobile
     ScrollTrigger.config({
       autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
-      ignoreMobileResize: true // Améliore les performances sur mobile
+      ignoreMobileResize: true, // Améliore les performances sur mobile
+      syncInterval: 60 // Synchronisation plus fréquente pour mobile
     })
+
+    // Optimisations spécifiques pour mobile
+    if (window.innerWidth <= 768) {
+      // Réduire la fréquence des animations sur mobile
+      ScrollTrigger.config({
+        syncInterval: 120, // Synchronisation moins fréquente sur mobile
+        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load,resize"
+      })
+    }
 
     // Injection globale pour utiliser dans les composants
     return {

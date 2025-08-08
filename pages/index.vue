@@ -343,23 +343,35 @@ onMounted(async () => {
     }
   )
   
-  // 🧲 EFFETS MAGNÉTIQUES SUBTILS
-  addMagneticHover('.magnetic', {
-    strength: 0.08, // Plus subtil
-    speed: 0.4 // Fluide
-  })
+  // 🧲 EFFETS MAGNÉTIQUES SUBTILS - DÉSACTIVÉS SUR MOBILE
+  if (window.innerWidth > 768) {
+    addMagneticHover('.magnetic', {
+      strength: 0.08, // Plus subtil
+      speed: 0.4 // Fluide
+    })
+  }
   
-  // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - PLUS LENTE ET FLUIDE !
-  animateOnScroll('[data-gsap="why-choose-me"]',
-    animateWhyChooseMe('[data-gsap="why-choose-me"]', {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.12, // Plus lent et fluide
-      ease: "power2.out"
-    }),
-    {
-      start: "top 85%"
-    }
-  )
+  // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - OPTIMISÉE POUR MOBILE
+  const isMobile = window.innerWidth <= 768
+  
+  if (!isMobile) {
+    // Animation complète sur desktop
+    animateOnScroll('[data-gsap="why-choose-me"]',
+      animateWhyChooseMe('[data-gsap="why-choose-me"]', {
+        duration: 0.8, // Plus lent et fluide
+        stagger: 0.12, // Plus lent et fluide
+        ease: "power2.out"
+      }),
+      {
+        start: "top 85%"
+      }
+    )
+  } else {
+    // Animation simplifiée sur mobile pour éviter le scroll saccadé
+    gsapInstance.set('[data-gsap="why-choose-me"]', { opacity: 1, y: 0, scale: 1 })
+    gsapInstance.set('[data-gsap="why-choose-title"]', { opacity: 1 })
+    gsapInstance.set('[data-gsap="why-choose-item-1"], [data-gsap="why-choose-item-2"], [data-gsap="why-choose-item-3"], [data-gsap="why-choose-item-4"]', { opacity: 1, y: 0 })
+  }
   
   // ⚡ ANIMATION DES COMPTEURS AVEC GSAP - PROTÉGÉ CONTRE NaN
   const { $gsap } = useNuxtApp()
@@ -433,5 +445,48 @@ onUnmounted(() => {
 </script> 
 
 <style scoped>
-/* Styles spécifiques à la page d'accueil uniquement */
+/* Optimisations pour mobile - évite le scroll saccadé */
+@media (max-width: 768px) {
+  /* Désactiver les animations complexes sur mobile */
+  .gsap-optimized {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  
+  /* Optimiser les performances de scroll */
+  section {
+    will-change: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Réduire les effets de blur sur mobile */
+  .blur-3xl {
+    filter: blur(1rem) !important;
+  }
+  
+  /* Optimiser les animations de hover */
+  .group:hover .transform {
+    transform: none !important;
+  }
+}
+
+/* Animation des gradients */
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 </style> 

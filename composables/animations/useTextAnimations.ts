@@ -27,6 +27,18 @@ export const useTextAnimations = () => {
 
   // Animation de révélation de texte caractère par caractère
   const animateTextReveal = (selector: string, options = {}) => {
+    // Vérifier si on est sur mobile
+    const isMobile = process.server ? false : window.innerWidth <= 768
+    
+    // Sur mobile, utiliser des animations plus simples
+    if (isMobile) {
+      const elements = gsap.utils.toArray(selector)
+      elements.forEach((element: any) => {
+        gsap.set(element, { opacity: 1, y: 0, rotationX: 0 })
+      })
+      return gsap.timeline()
+    }
+    
     const defaults = {
       duration: 0.4,
       stagger: 0.02,
