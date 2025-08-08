@@ -10,7 +10,7 @@
       <span class="toggle-icon">✨</span>
     </button>
     
-    <div v-if="showControls" class="controls-panel">
+    <div v-if="showControls" ref="panelRef" class="controls-panel">
       <h3>Curseur Magique</h3>
       
       <div class="control-group">
@@ -140,7 +140,7 @@
           Réinitialiser
         </button>
         <button @click="toggleCursor" class="toggle-cursor-btn">
-          {{ cursorEnabled ? 'Désactiver' : 'Activer' }}
+          {{ settings.enabled ? 'Désactiver' : 'Activer' }}
         </button>
       </div>
     </div>
@@ -148,7 +148,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 
 interface CursorSettings {
   enabled: boolean
@@ -170,6 +170,7 @@ const emit = defineEmits<{
 
 const showControls = ref(false)
 const cursorEnabled = ref(true)
+const panelRef = ref<HTMLElement>()
 
 // Détection mobile/tactile
 const isMobile = ref(false)
@@ -208,12 +209,18 @@ onMounted(() => {
   emitSettingsUpdate()
 })
 
+onUnmounted(() => {
+  removeGlobalEvents()
+})
+
 const toggleControls = () => {
   showControls.value = !showControls.value
   // Le curseur système reste géré par MagicCursor + CSS.
 }
 
 const updateSettings = () => {
+  // Synchroniser cursorEnabled avec settings.enabled
+  cursorEnabled.value = settings.value.enabled
   saveSettings()
   emitSettingsUpdate()
 }
@@ -235,8 +242,8 @@ const resetSettings = () => {
 }
 
 const toggleCursor = () => {
-  cursorEnabled.value = !cursorEnabled.value
-  settings.value.enabled = cursorEnabled.value
+  settings.value.enabled = !settings.value.enabled
+  cursorEnabled.value = settings.value.enabled
   updateSettings()
 }
 
@@ -265,14 +272,39 @@ const emitSettingsUpdate = () => {
   emit('settings-updated', settings.value)
 }
 
+const handleClickOutside = (event: MouseEvent) => {
+  if (showControls.value && panelRef.value && !panelRef.value.contains(event.target as Node)) {
+    // Vérifier aussi que ce n'est pas le bouton toggle
+    const toggleButton = document.querySelector('.controls-toggle')
+    if (toggleButton && !toggleButton.contains(event.target as Node)) {
+      showControls.value = false
+    }
+  }
+}
+
 const setupGlobalEvents = () => {
   // Raccourci clavier pour afficher/masquer les contrôles
-  document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.key === 'c') {
-      e.preventDefault()
-      toggleControls()
-    }
-  })
+  document.addEventListener('keydown', handleKeydown)
+  
+  // Fermer le panneau en cliquant en dehors
+  document.addEventListener('mousedown', handleClickOutside)
+}
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.ctrlKey && e.key === 'c') {
+    e.preventDefault()
+    toggleControls()
+  }
+  
+  // Fermer avec Escape
+  if (e.key === 'Escape' && showControls.value) {
+    showControls.value = false
+  }
+}
+
+const removeGlobalEvents = () => {
+  document.removeEventListener('keydown', handleKeydown)
+  document.removeEventListener('mousedown', handleClickOutside)
 }
 </script>
 
