@@ -4,8 +4,8 @@
     <div 
       class="cursor-main"
       :style="{ 
-        left: (cursorPosition.x - 12) + 'px', 
-        top: (cursorPosition.y - 12) + 'px',
+        left: (cursorPosition.x - getCursorOffset().main) + 'px', 
+        top: (cursorPosition.y - getCursorOffset().main) + 'px',
         transform: `scale(${cursorScale})`,
         '--primary-color': settings.primaryColor,
         '--secondary-color': settings.secondaryColor
@@ -21,8 +21,8 @@
       v-if="settings.showTrail"
       class="cursor-trail"
       :style="{ 
-        left: (trailPosition.x - 7.5) + 'px', 
-        top: (trailPosition.y - 7.5) + 'px',
+        left: (trailPosition.x - getCursorOffset().trail) + 'px', 
+        top: (trailPosition.y - getCursorOffset().trail) + 'px',
         transform: `scale(${trailScale})`,
         '--primary-color': settings.primaryColor
       }"
@@ -51,8 +51,8 @@
       v-if="isHovering && settings.showDistortion"
       class="cursor-distortion"
       :style="{ 
-        left: (cursorPosition.x - 60) + 'px', 
-        top: (cursorPosition.y - 60) + 'px',
+        left: (cursorPosition.x - getCursorOffset().distortion) + 'px', 
+        top: (cursorPosition.y - getCursorOffset().distortion) + 'px',
         transform: `scale(${distortionScale})`,
         '--primary-color': settings.primaryColor
       }"
@@ -113,6 +113,16 @@ let particleId = 0
 let animationFrame: number
 let lastTime = 0
 
+// Calcul des offsets selon la taille d'écran
+const getCursorOffset = () => {
+  const isSmallScreen = window.innerWidth <= 768
+  return {
+    main: isSmallScreen ? 7.5 : 12, // 15px/2 ou 20px/2 + 2px de marge
+    trail: isSmallScreen ? 6 : 7.5,  // Proportionnel au curseur principal
+    distortion: isSmallScreen ? 45 : 60 // Proportionnel aux autres éléments
+  }
+}
+
 // Couleurs pour les particules
 const particleColors: string[] = [
   '#3B82F6', '#8B5CF6', '#06B6D4', '#10B981', 
@@ -159,6 +169,10 @@ const handleResize = () => {
     document.body.classList.remove('touch-device')
     isEnabled.value = props.settings.enabled
   }
+  
+  // Force le recalcul de la position du curseur avec les nouveaux offsets
+  // En déclenchant une mise à jour forcée du template
+  cursorScale.value = cursorScale.value
 }
 
 const hideDefaultCursor = () => {
