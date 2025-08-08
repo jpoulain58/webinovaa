@@ -139,32 +139,63 @@
       <div class="container-custom relative z-10">
         <div class="text-center mb-20">
           <h2 class="text-5xl md:text-7xl font-black mb-8 gsap-optimized" data-gsap="process-title">
-            Mon <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">processus</span>
+            Mon processus de <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">collaboration</span>
           </h2>
           <p class="text-2xl text-slate-300 max-w-4xl mx-auto gsap-optimized" data-gsap="process-subtitle">
-            Une méthodologie éprouvée pour garantir la réussite de votre projet
+            Un accompagnement structuré en 5 étapes pour transformer votre vision en une solution digitale performante et durable.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-gsap="process-grid">
+        <div class="max-w-6xl mx-auto" data-gsap="process-grid">
           <div 
             v-for="(step, index) in processSteps" 
             :key="step.title"
-            class="group text-center magnetic gsap-optimized"
+            class="group relative mb-16 last:mb-0 magnetic gsap-optimized"
             :data-gsap="`process-step-${index + 1}`"
           >
-            <div class="relative mb-8">
-              <div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl shadow-blue-500/50">
-                <span class="text-2xl font-black text-white">{{ index + 1 }}</span>
+            <!-- Timeline Line -->
+            <div v-if="index < processSteps.length - 1" class="absolute left-8 top-20 w-0.5 h-full bg-gradient-to-b from-blue-500/50 to-purple-500/50 transform translate-x-6"></div>
+            
+            <!-- Step Card -->
+            <div class="flex items-start gap-8">
+              <!-- Step Number -->
+              <div class="relative flex-shrink-0">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-2xl shadow-blue-500/50 relative z-10">
+                  <span class="text-xl font-black text-white">{{ step.number }}</span>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-400 to-cyan-400 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
               </div>
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-400 to-cyan-400 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              
+              <!-- Step Content -->
+              <div class="flex-1 bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10 group-hover:border-blue-500/50 transition-all duration-500">
+                <!-- Step Header -->
+                <div class="mb-6">
+                  <h3 class="text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                    {{ step.title }}
+                  </h3>
+                  <h4 class="text-xl text-blue-300 font-medium mb-4">
+                    {{ step.subtitle }}
+                  </h4>
+                  <p class="text-slate-300 leading-relaxed text-lg">
+                    {{ step.description }}
+                  </p>
+                </div>
+                
+                <!-- Step Features -->
+                <div class="space-y-3">
+                  <div 
+                    v-for="feature in step.features" 
+                    :key="feature"
+                    class="flex items-start gap-3 group/feature"
+                  >
+                    <div class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-3 flex-shrink-0 group-hover/feature:scale-125 transition-transform duration-300"></div>
+                    <p class="text-slate-300 leading-relaxed group-hover/feature:text-white transition-colors duration-300">
+                      {{ feature }}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
-              {{ step.title }}
-            </h3>
-            <p class="text-slate-300 leading-relaxed text-lg">
-              {{ step.description }}
-            </p>
           </div>
         </div>
       </div>
@@ -352,20 +383,64 @@ const services = [
 
 const processSteps = [
   {
-    title: 'Découverte',
-    description: 'Analyse de vos besoins et objectifs pour comprendre votre projet.'
+    number: '1',
+    title: 'Phase de brief',
+    subtitle: 'Comprendre pour mieux créer',
+    description: 'Je commence par une immersion complète dans votre univers afin de poser des bases solides pour le projet.',
+    features: [
+      'Clarification de vos objectifs business et attentes spécifiques',
+      'Analyse de votre audience cible et de vos personas',
+      'Étude de votre positionnement et de l\'identité de votre marque',
+      'Définition des fonctionnalités essentielles au projet'
+    ]
   },
   {
-    title: 'Conception',
-    description: 'Création de maquettes et prototypes pour visualiser le résultat.'
+    number: '2',
+    title: 'Analyse stratégique',
+    subtitle: 'Définir une vision digitale cohérente',
+    description: 'J\'élabore une stratégie sur mesure, alignée sur vos enjeux métier et les meilleures pratiques digitales.',
+    features: [
+      'Étude approfondie de votre marché et de vos concurrents',
+      'Élaboration de l\'architecture de l\'information',
+      'Conception de parcours utilisateurs optimisés',
+      'Mise en place d\'une stratégie SEO personnalisée'
+    ]
   },
   {
+    number: '3',
+    title: 'Direction artistique',
+    subtitle: 'Donner vie à votre image de marque',
+    description: 'Je conçois une identité visuelle forte et des interfaces engageantes, centrées sur l\'expérience utilisateur.',
+    features: [
+      'Création de moodboards et définition de la direction artistique',
+      'Design d\'interfaces (UI) claires, modernes et adaptées à vos cibles',
+      'Conception d\'expériences utilisateur (UX) fluides et intuitives',
+      'Réalisation de maquettes interactives et prototypage'
+    ]
+  },
+  {
+    number: '4',
     title: 'Développement',
-    description: 'Développement itératif avec des livraisons régulières.'
+    subtitle: 'Concrétiser avec performance et fiabilité',
+    description: 'Je développe un site robuste, rapide et évolutif, parfaitement adapté à vos besoins.',
+    features: [
+      'Développement front-end responsive et optimisé',
+      'Programmation back-end sécurisée et scalable',
+      'Intégration de CMS personnalisés si nécessaire',
+      'Batteries de tests multi-appareils et navigateurs'
+    ]
   },
   {
-    title: 'Livraison',
-    description: 'Mise en ligne et accompagnement post-livraison.'
+    number: '5',
+    title: 'Lancement & accompagnement',
+    subtitle: 'Déployer, former et faire évoluer',
+    description: 'Je vous accompagne jusqu\'au bout du projet — et au-delà — pour garantir la pérennité de votre solution digitale.',
+    features: [
+      'Mise en production sécurisée et optimisée',
+      'Formation à l\'administration de votre site',
+      'Support technique réactif et maintenance',
+      'Suivi des performances et amélioration continue'
+    ]
   }
 ]
 
@@ -495,12 +570,13 @@ onMounted(async () => {
     { start: "top 90%" }
   )
 
-  // 🎯 ANIMATION STAGGER DES ÉTAPES PROCESSUS - PLUS LENTE ET FLUIDE
+  // 🎯 ANIMATION STAGGER DES ÉTAPES PROCESSUS - TIMELINE VERTICALE
   animateOnScroll('[data-gsap="process-grid"]',
     animateCardsStagger('[data-gsap^="process-step"]', {
-      duration: 1.0, // Plus lent et fluide
-      stagger: 0.15, // Plus lent et fluide
-      ease: "back.out(1.7)"
+      duration: 1.2, // Plus lent pour timeline
+      stagger: 0.3, // Plus d'espacement entre les étapes
+      ease: "power2.out",
+      distance: 100 // Animation depuis le bas
     }),
     { start: "top 90%" }
   )
