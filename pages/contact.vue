@@ -14,12 +14,12 @@
       
       <div class="container-custom relative z-10 py-20">
         <div class="text-center max-w-5xl mx-auto">
-          <h1 class="text-6xl md:text-8xl font-black mb-12 gsap-3d force-visible" ref="mainTitle" data-gsap="main-title">
-            <span class="block bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent gsap-optimized force-visible whitespace-nowrap" data-gsap="title-line-1">
-              Parlons&nbsp;de
+          <h1 class="text-6xl md:text-8xl font-black mb-12 gsap-3d force-visible leading-tight" ref="mainTitle" data-gsap="main-title">
+            <span class="block bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent gsap-optimized force-visible" data-gsap="title-line-1">
+              Parlons de
             </span>
-            <span class="block bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent gsap-optimized force-visible whitespace-nowrap" data-gsap="title-line-2">
-              votre&nbsp;projet
+            <span class="block bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent gsap-optimized force-visible" data-gsap="title-line-2">
+              votre projet
             </span>
           </h1>
           <p class="text-2xl md:text-3xl text-slate-300 mb-16 leading-relaxed gsap-optimized force-visible" ref="subtitle" data-gsap="subtitle">
@@ -40,8 +40,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
           <!-- Contact Info avec Animations -->
           <div>
-            <h2 class="text-4xl md:text-6xl font-black text-white mb-12 gsap-optimized" data-gsap="contact-title">
-              Commençons par&nbsp;<span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap">discuter</span>
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-12 leading-tight no-word-break">
+              Commençons par <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">discuter</span>
             </h2>
             <p class="text-xl text-slate-300 mb-16 leading-relaxed gsap-optimized" data-gsap="contact-subtitle">
               Remplissez le formulaire ci-contre ou contactez-moi directement. 
@@ -339,15 +339,7 @@ onMounted(async () => {
   )
 
   // 🚀 ANIMATIONS AU SCROLL - CONTACT - PLUS LENTES ET FLUIDES
-  splitText('[data-gsap="contact-title"]')
-  animateOnScroll('[data-gsap="contact-title"]',
-    animateTextReveal('[data-gsap="contact-title"] .char', {
-      duration: 0.8, // Plus lent et fluide
-      stagger: 0.04, // Plus lent et fluide
-      ease: "power2.out"
-    }),
-    { start: "top 85%" }
-  )
+  // Note: Animation du titre "Commençons par discuter" désactivée pour éviter la césure du mot "discuter"
 
   splitWords('[data-gsap="contact-subtitle"]')
   animateOnScroll('[data-gsap="contact-subtitle"]',
