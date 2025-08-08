@@ -434,7 +434,7 @@ const processSteps = [
     number: '5',
     title: 'Lancement & accompagnement',
     subtitle: 'Déployer, former et faire évoluer',
-    description: 'Je vous accompagne jusqu\'au bout du projet — et au-delà — pour garantir la pérennité de votre solution digitale.',
+    description: 'Je vous accompagne jusqu\'au bout du projet et au-delà pour garantir la pérennité de votre solution digitale.',
     features: [
       'Mise en production sécurisée et optimisée',
       'Formation à l\'administration de votre site',
