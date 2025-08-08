@@ -5,7 +5,7 @@
       <nav class="container-custom py-6">
         <div class="flex items-center justify-between">
           <!-- Logo avec Animation 3D -->
-          <div class="flex items-center space-x-3 group">
+          <NuxtLink to="/" class="flex items-center space-x-3 group cursor-pointer">
             <div class="relative">
               <div class="w-24 h-24 flex items-center justify-center transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
                 <img src="/logos/logo-webinovaa.png" alt="Webinovaa" class="w-32 h-32 object-contain" />
@@ -14,7 +14,7 @@
             <span class="text-2xl font-black bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
               Webinovaa
             </span>
-          </div>
+          </NuxtLink>
 
           <!-- Navigation Desktop avec Effets Hover -->
           <div class="hidden md:flex items-center space-x-8">
