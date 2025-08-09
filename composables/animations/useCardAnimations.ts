@@ -27,12 +27,18 @@ export const useCardAnimations = () => {
 
   // Animation de cards avec effet stagger sophistiqué
   const animateCardsStagger = (selector: string, options = {}) => {
+    // Vérifier si l'élément existe
+    const elements = gsap.utils.toArray(selector)
+    if (!elements || elements.length === 0) {
+      console.warn(`GSAP: Target ${selector} not found for animateCardsStagger`)
+      return gsap.timeline()
+    }
+    
     // Vérifier si on est sur mobile
     const isMobile = process.server ? false : window.innerWidth <= 768
     
     // Sur mobile, utiliser des animations plus simples
     if (isMobile) {
-      const elements = gsap.utils.toArray(selector)
       elements.forEach((element: any) => {
         gsap.set(element, { opacity: 1, y: 0, scale: 1, rotation: 0 })
       })
@@ -81,6 +87,11 @@ export const useCardAnimations = () => {
     const config = { ...defaults, ...options }
 
     const elements = gsap.utils.toArray(selector)
+    
+    if (!elements || elements.length === 0) {
+      console.warn(`GSAP: Target ${selector} not found for addMagneticHover`)
+      return
+    }
     
     elements.forEach((element: any) => {
       const magnetic = element.querySelector('.magnetic') || element

@@ -6,16 +6,20 @@ export const useScrollAnimations = () => {
 
   // Animation avec ScrollTrigger
   const animateOnScroll = (selector: string, animation: gsap.core.Animation, options = {}) => {
+    // Vérifier si l'élément existe
+    const element = document.querySelector(selector)
+    if (!element) {
+      console.warn(`GSAP: Target ${selector} not found for scroll animation`)
+      return null
+    }
+    
     // Vérifier si on est sur mobile
     const isMobile = window.innerWidth <= 768
     
     // Sur mobile, désactiver certaines animations pour éviter le scroll saccadé
     if (isMobile) {
       // Pour mobile, on utilise des animations plus simples ou on les désactive
-      const element = document.querySelector(selector)
-      if (element) {
-        gsap.set(element, { opacity: 1, y: 0, scale: 1 })
-      }
+      gsap.set(element, { opacity: 1, y: 0, scale: 1 })
       return null
     }
     

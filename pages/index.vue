@@ -310,56 +310,74 @@ onMounted(async () => {
   const heroTl = gsapInstance.timeline()
   
   // Animation du background
-  heroTl.fromTo('.absolute.inset-0',
-    { opacity: 0, scale: 1.5, filter: "blur(20px)" },
-    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
-  )
+  const backgroundElement = document.querySelector('.absolute.inset-0')
+  if (backgroundElement) {
+    heroTl.fromTo('.absolute.inset-0',
+      { opacity: 0, scale: 1.5, filter: "blur(20px)" },
+      { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
+    )
+  }
   
   // Animation des boutons
-  heroTl.fromTo('[data-gsap="cta-buttons"]',
-    { opacity: 0, y: 100, scale: 0.5 },
-    { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
-    "-=0.3"
-  )
+  const ctaButtons = document.querySelector('[data-gsap="cta-buttons"]')
+  if (ctaButtons) {
+    heroTl.fromTo('[data-gsap="cta-buttons"]',
+      { opacity: 0, y: 100, scale: 0.5 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.7)" },
+      "-=0.3"
+    )
+  }
   
   // 🚀 ANIMATIONS AU SCROLL - SERVICES - RAPIDES ET FLUIDES
   // Animation d'entrée pour le titre services
-  animateOnScroll('[data-gsap="services-title"]', 
-    animateTextReveal('[data-gsap="services-title"] .char', {
-      duration: 0.5, // Plus rapide
-      stagger: 0.025, // Plus rapide
-      ease: "power2.out"
-    })
-  )
+  const servicesTitle = document.querySelector('[data-gsap="services-title"]')
+  if (servicesTitle) {
+    animateOnScroll('[data-gsap="services-title"]', 
+      animateTextReveal('[data-gsap="services-title"] .char', {
+        duration: 0.5, // Plus rapide
+        stagger: 0.025, // Plus rapide
+        ease: "power2.out"
+      })
+    )
+  }
   
   // Animation du sous-titre services
-  animateOnScroll('[data-gsap="services-subtitle"]',
-    animateTextReveal('[data-gsap="services-subtitle"] .word', {
-      duration: 0.4, // Plus rapide
-      stagger: 0.025, // Plus rapide
-      ease: "power2.out"
-    })
-  )
+  const servicesSubtitle = document.querySelector('[data-gsap="services-subtitle"]')
+  if (servicesSubtitle) {
+    animateOnScroll('[data-gsap="services-subtitle"]',
+      animateTextReveal('[data-gsap="services-subtitle"] .word', {
+        duration: 0.4, // Plus rapide
+        stagger: 0.025, // Plus rapide
+        ease: "power2.out"
+      })
+    )
+  }
   
   // 💫 ANIMATION STAGGER DES CARTES SERVICES
-  animateOnScroll('[data-gsap="services-grid"]',
-    animateCardsStagger('.service-card', {
-      duration: 1.0, // Plus lent et fluide
-      stagger: 0.15, // Plus lent et fluide
-      ease: "power2.out",
-      distance: 120
-    }),
-    {
-      start: "top 90%"
-    }
-  )
+  const servicesGrid = document.querySelector('[data-gsap="services-grid"]')
+  if (servicesGrid) {
+    animateOnScroll('[data-gsap="services-grid"]',
+      animateCardsStagger('.service-card', {
+        duration: 1.0, // Plus lent et fluide
+        stagger: 0.15, // Plus lent et fluide
+        ease: "power2.out",
+        distance: 120
+      }),
+      {
+        start: "top 90%"
+      }
+    )
+  }
   
   // 🧲 EFFETS MAGNÉTIQUES SUBTILS - DÉSACTIVÉS SUR MOBILE
   if (window.innerWidth > 768) {
-    addMagneticHover('.magnetic', {
-      strength: 0.08, // Plus subtil
-      speed: 0.4 // Fluide
-    })
+    const magneticElements = document.querySelectorAll('.magnetic')
+    if (magneticElements.length > 0) {
+      addMagneticHover('.magnetic', {
+        strength: 0.08, // Plus subtil
+        speed: 0.4 // Fluide
+      })
+    }
   }
   
   // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - OPTIMISÉE POUR MOBILE
@@ -367,16 +385,19 @@ onMounted(async () => {
   
   if (!isMobile) {
     // Animation complète sur desktop
-    animateOnScroll('[data-gsap="why-choose-me"]',
-      animateWhyChooseMe('[data-gsap="why-choose-me"]', {
-        duration: 0.8, // Plus lent et fluide
-        stagger: 0.12, // Plus lent et fluide
-        ease: "power2.out"
-      }),
-      {
-        start: "top 85%"
-      }
-    )
+    const whyChooseMe = document.querySelector('[data-gsap="why-choose-me"]')
+    if (whyChooseMe) {
+      animateOnScroll('[data-gsap="why-choose-me"]',
+        animateWhyChooseMe('[data-gsap="why-choose-me"]', {
+          duration: 0.8, // Plus lent et fluide
+          stagger: 0.12, // Plus lent et fluide
+          ease: "power2.out"
+        }),
+        {
+          start: "top 85%"
+        }
+      )
+    }
   } else {
     // Animation simplifiée sur mobile pour éviter le scroll saccadé
     gsapInstance.set('[data-gsap="why-choose-me"]', { opacity: 1, y: 0, scale: 1 })

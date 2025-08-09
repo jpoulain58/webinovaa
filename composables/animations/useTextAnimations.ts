@@ -30,9 +30,15 @@ export const useTextAnimations = () => {
     // Vérifier si on est sur mobile
     const isMobile = process.server ? false : window.innerWidth <= 768
     
+    // Vérifier si l'élément existe
+    const elements = gsap.utils.toArray(selector)
+    if (!elements || elements.length === 0) {
+      console.warn(`GSAP: Target ${selector} not found`)
+      return gsap.timeline()
+    }
+    
     // Sur mobile, utiliser des animations plus simples
     if (isMobile) {
-      const elements = gsap.utils.toArray(selector)
       elements.forEach((element: any) => {
         gsap.set(element, { opacity: 1, y: 0, rotationX: 0 })
       })
@@ -103,6 +109,11 @@ export const useTextAnimations = () => {
   const splitText = (selector: string) => {
     const elements = document.querySelectorAll(selector)
     
+    if (!elements || elements.length === 0) {
+      console.warn(`GSAP: Target ${selector} not found for splitText`)
+      return
+    }
+    
     elements.forEach(element => {
       const text = element.textContent || ''
       const chars = text.split('')
@@ -121,6 +132,11 @@ export const useTextAnimations = () => {
   // Animation de split words (divise le texte en mots)
   const splitWords = (selector: string) => {
     const elements = document.querySelectorAll(selector)
+    
+    if (!elements || elements.length === 0) {
+      console.warn(`GSAP: Target ${selector} not found for splitWords`)
+      return
+    }
     
     elements.forEach(element => {
       const text = element.textContent || ''

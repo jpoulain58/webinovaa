@@ -17,7 +17,7 @@ export default defineNuxtConfig({
         { name: 'keywords', content: 'développeur web freelance lyon, création site web lyon, développement web lyon, développeur front-end lyon, freelance lyon, développeur lyon, développement frontend freelance' },
         { name: 'author', content: 'Webinovaa - Développeur Web Freelance' },
         { name: 'theme-color', content: '#0ea5e9' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
         { name: 'language', content: 'fr' },
         { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
