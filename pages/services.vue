@@ -496,7 +496,15 @@ const scrollToContact = () => {
 }
 
 const goToContact = (planType) => {
-  navigateTo(`/contact?type=${encodeURIComponent(planType)}`)
+  // Mapper les noms de plans vers les valeurs du formulaire
+  const typeMapping = {
+    'Site Vitrine': 'site-vitrine',
+    'E-commerce': 'e-commerce',
+    'Application Web': 'application'
+  }
+  
+  const mappedType = typeMapping[planType] || planType
+  navigateTo(`/contact?type=${encodeURIComponent(mappedType)}`)
 }
 
 // Références pour les animations

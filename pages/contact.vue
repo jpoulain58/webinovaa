@@ -404,8 +404,11 @@ onMounted(async () => {
       'Application Web': 'application'
     }
     
-    const mappedType = typeMapping[projectType] || 'autre'
-    form.value.projectType = mappedType
+    const mappedType = typeMapping[projectType] || projectType
+    // Ajouter le type au tableau projectTypes
+    if (!form.value.projectTypes.includes(mappedType)) {
+      form.value.projectTypes.push(mappedType)
+    }
   }
 })
 
@@ -420,7 +423,7 @@ const submitForm = async () => {
         firstName: form.value.firstName,
         lastName: form.value.lastName,
         email: form.value.email,
-        projectType: form.value.projectType,
+        projectType: form.value.projectTypes, // Envoyer le tableau des types de projet
         message: form.value.message
       }
     })
@@ -430,7 +433,7 @@ const submitForm = async () => {
       firstName: '',
       lastName: '',
       email: '',
-      projectType: '',
+      projectTypes: [], // Reset le tableau des types de projet
       message: '',
       privacy: false
     }

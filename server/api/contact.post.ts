@@ -20,13 +20,25 @@ export default defineEventHandler(async (event) => {
       })
     }
 
+    // Traitement du type de projet
+    let projectTypeDisplay = 'Non spécifié'
+    if (projectType) {
+      if (Array.isArray(projectType)) {
+        // Si c'est un tableau, joindre les types
+        projectTypeDisplay = projectType.length > 0 ? projectType.join(', ') : 'Non spécifié'
+      } else {
+        // Si c'est une string, l'utiliser directement
+        projectTypeDisplay = projectType
+      }
+    }
+
     // Préparer le contenu de l'email
     const emailContent = `
 Nouveau message de contact depuis Webinovaa
 
 Nom: ${firstName} ${lastName}
 Email: ${email}
-Type de projet: ${projectType || 'Non spécifié'}
+Type de projet: ${projectTypeDisplay}
 
 Message:
 ${message}
