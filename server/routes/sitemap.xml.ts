@@ -117,6 +117,9 @@ ${pages.map(page => {
 }).join('\n')}
 </urlset>`
 
-  setHeader(event, 'Content-Type', 'application/xml')
+  // Définir les headers appropriés pour un sitemap XML
+  setHeader(event, 'Content-Type', 'application/xml; charset=utf-8')
+  setHeader(event, 'Cache-Control', 'public, max-age=3600')
+  
   return sitemap
 }) 
