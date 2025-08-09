@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const baseUrl = 'https://webinovaa.com'
+  const baseUrl = 'https://webinovaa.fr'
   
   const pages = [
     {

@@ -49,7 +49,7 @@ export default defineNuxtConfig({
   // Configuration runtime
   runtimeConfig: {
     public: {
-      siteUrl: 'https://webinovaa.com',
+      siteUrl: 'https://webinovaa.fr',
       siteName: 'Webinovaa'
     }
   },
