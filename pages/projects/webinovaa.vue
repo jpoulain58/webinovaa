@@ -391,11 +391,30 @@
 </template>
 
 <script setup lang="ts">
-// SEO
+// SEO optimisé avec le composable
+const { generateProjectMetaTags } = useMetaSeo()
+const seoData = generateProjectMetaTags('Webinovaa', 'Découvrez le site Webinovaa : vitrine premium avec Nuxt, animations GSAP, PWA et performance optimisée. Design moderne et expérience exceptionnelle.')
+
+// Configuration SEO complète
 useHead({
-  title: 'Webinovaa - Site Vitrine Premium | Webinovaa',
-  meta: [
-    { name: 'description', content: 'Découvrez le site Webinovaa : vitrine premium avec Nuxt, animations GSAP, PWA et performance optimisée. Design moderne et expérience exceptionnelle.' }
+  title: seoData.title,
+  meta: seoData.meta,
+  link: seoData.link
+})
+
+// Données structurées JSON-LD
+const { generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
+const jsonLdData = [
+  generateLocalBusinessJsonLd(),
+  generateWebSiteJsonLd()
+]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdData)
+    }
   ]
 })
 </script>

@@ -258,11 +258,30 @@
 import ProfileCard from '~/components/contact/ProfileCard.vue'
 import CompanyCard from '~/components/contact/CompanyCard.vue'
 
-// SEO
+// SEO optimisé avec le composable
+const { generateContactMetaTags } = useMetaSeo()
+const seoData = generateContactMetaTags()
+
+// Configuration SEO complète
 useHead({
-  title: 'Contact - Webinovaa',
-  meta: [
-    { name: 'description', content: 'Contactez Webinovaa pour discuter de votre projet web. Réponse sous 24h, devis gratuit et transparent.' }
+  title: seoData.title,
+  meta: seoData.meta,
+  link: seoData.link
+})
+
+// Données structurées JSON-LD
+const { generateLocalBusinessJsonLd, generatePersonJsonLd } = useJsonLd()
+const jsonLdData = [
+  generateLocalBusinessJsonLd(),
+  generatePersonJsonLd()
+]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdData)
+    }
   ]
 })
 

@@ -298,11 +298,30 @@
 </template>
 
 <script setup>
-// SEO
+// SEO optimisé avec le composable
+const { generateServicesMetaTags } = useMetaSeo()
+const seoData = generateServicesMetaTags()
+
+// Configuration SEO complète
 useHead({
-  title: 'Services - Webinovaa',
-  meta: [
-    { name: 'description', content: 'Services de développement web sur mesure : sites vitrine, e-commerce, applications web avec Nuxt.js, Vue.js et Tailwind CSS.' }
+  title: seoData.title,
+  meta: seoData.meta,
+  link: seoData.link
+})
+
+// Données structurées JSON-LD
+const { generateLocalBusinessJsonLd, generateServiceJsonLd } = useJsonLd()
+const jsonLdData = [
+  generateLocalBusinessJsonLd(),
+  generateServiceJsonLd('Services de développement web', 'Services complets de développement web à Lyon')
+]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdData)
+    }
   ]
 })
 

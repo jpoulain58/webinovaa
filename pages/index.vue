@@ -27,8 +27,8 @@
 
           <!-- Sous-titre avec Animation Typewriter -->
           <p class="text-2xl md:text-3xl text-slate-300 mb-16 leading-relaxed gsap-optimized force-visible" ref="subtitle" data-gsap="subtitle">
-            Développeur web freelance spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
-            Je crée des sites performants, responsives et SEO-friendly qui transforment votre vision en réalité.
+            <strong>Développeur web freelance à Lyon</strong> spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
+            Je crée des <strong>sites web performants, responsives et SEO-friendly</strong> qui transforment votre vision en réalité.
           </p>
 
           <!-- Boutons CTA avec Animations GSAP -->
@@ -150,7 +150,7 @@
       </div>
     </section>
 
-            <!-- Vision Section avec Effet de fond -->
+    <!-- Vision Section avec Effet de fond -->
     <section class="py-32 bg-gradient-to-br from-slate-800 to-slate-900 text-white relative overflow-hidden">
       <div class="absolute inset-0">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -245,11 +245,24 @@
 // Import du composant Icons
 import Icons from '~/components/ui/Icons.vue'
 
-// SEO
+// SEO optimisé avec le nouveau composable
+const { setupHomePageSeo } = useSeoOptimization()
+const seoData = setupHomePageSeo()
+
+// Configuration SEO complète
 useHead({
-  title: 'Webinovaa - Développeur Web Freelance',
-  meta: [
-    { name: 'description', content: 'Développeur web freelance spécialisé en Nuxt.js, Vue.js et Tailwind CSS. Création de sites performants, responsives et SEO-friendly.' }
+  title: seoData.metaTags.title,
+  meta: seoData.metaTags.meta,
+  link: seoData.metaTags.link
+})
+
+// Données structurées JSON-LD
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(seoData.jsonLdData)
+    }
   ]
 })
 
@@ -264,8 +277,6 @@ const subtitle = ref(null)
 const ctaButtons = ref(null)
 const stats = ref(null)
 const serviceRefs = ref([])
-
-
 
 // Animations GSAP épiques et effets avancés - ACCÉLÉRÉES
 const { 
@@ -442,7 +453,7 @@ onMounted(async () => {
 onUnmounted(() => {
   cleanupScrollTriggers()
 })
-</script> 
+</script>
 
 <style scoped>
 /* Optimisations pour mobile - évite le scroll saccadé */

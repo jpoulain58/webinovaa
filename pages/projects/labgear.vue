@@ -391,11 +391,30 @@
 </template>
 
 <script setup lang="ts">
-// SEO
+// SEO optimisé avec le composable
+const { generateProjectMetaTags } = useMetaSeo()
+const seoData = generateProjectMetaTags('LabGear', 'Découvrez LabGear : application web pour la gestion d\'inventaire et réservation de matériel scientifique. Développement avec Vue.js, Node.js et MongoDB.')
+
+// Configuration SEO complète
 useHead({
-  title: 'LabGear - Gestion Laboratoire Scientifique | Webinovaa',
-  meta: [
-    { name: 'description', content: 'Découvrez LabGear : application web pour la gestion d\'inventaire et réservation de matériel scientifique. Développement avec Vue.js, Node.js et MongoDB.' }
+  title: seoData.title,
+  meta: seoData.meta,
+  link: seoData.link
+})
+
+// Données structurées JSON-LD
+const { generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
+const jsonLdData = [
+  generateLocalBusinessJsonLd(),
+  generateWebSiteJsonLd()
+]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdData)
+    }
   ]
 })
 </script>

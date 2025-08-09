@@ -191,11 +191,30 @@
 </template>
 
 <script setup lang="ts">
-// SEO
+// SEO optimisé avec le composable
+const { generateProjectsMetaTags } = useMetaSeo()
+const seoData = generateProjectsMetaTags()
+
+// Configuration SEO complète
 useHead({
-  title: 'Réalisations - Webinovaa',
-  meta: [
-    { name: 'description', content: 'Découvrez mes réalisations en développement web : e-commerce, applications web et sites vitrine avec les technologies modernes.' }
+  title: seoData.title,
+  meta: seoData.meta,
+  link: seoData.link
+})
+
+// Données structurées JSON-LD
+const { generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
+const jsonLdData = [
+  generateLocalBusinessJsonLd(),
+  generateWebSiteJsonLd()
+]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdData)
+    }
   ]
 })
 

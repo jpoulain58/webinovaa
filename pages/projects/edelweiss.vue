@@ -106,11 +106,30 @@
 <script setup lang="ts">
 import ProjectLayout from '~/components/projects/ProjectLayout.vue'
 
-// SEO
+// SEO optimisé avec le composable
+const { generateProjectMetaTags } = useMetaSeo()
+const seoData = generateProjectMetaTags('Edelweiss', 'Découvrez Edelweiss : plateforme e-commerce moderne pour créations artisanales au crochet. Nuxt, Strapi, Stripe - Performance et authenticité.')
+
+// Configuration SEO complète
 useHead({
-  title: 'Edelweiss - E-commerce Artisanal | Webinovaa',
-  meta: [
-    { name: 'description', content: 'Découvrez Edelweiss : plateforme e-commerce moderne pour créations artisanales au crochet. Nuxt, Strapi, Stripe - Performance et authenticité.' }
+  title: seoData.title,
+  meta: seoData.meta,
+  link: seoData.link
+})
+
+// Données structurées JSON-LD
+const { generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
+const jsonLdData = [
+  generateLocalBusinessJsonLd(),
+  generateWebSiteJsonLd()
+]
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdData)
+    }
   ]
 })
 </script> 
