@@ -1,21 +1,16 @@
 <template>
   <div>
-    <!-- Hero Section avec Effets 3D -->
     <section class="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden flex flex-col justify-center">
-      <!-- Particules Interactives -->
       <div class="absolute inset-0" ref="particlesContainer"></div>
       
-      <!-- Effet de fond animé -->
       <div class="absolute inset-0 opacity-20">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
-      <!-- Content avec Animations GSAP -->
       <div class="container-custom relative z-10 py-20">
         <div class="text-center max-w-5xl mx-auto">
-          <!-- Titre Principal avec Animation GSAP -->
           <h1 ref="mainTitle" class="text-6xl md:text-8xl font-black mb-12 gsap-3d force-visible">
             <span class="block bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent gsap-optimized force-visible" data-gsap="title-line-1">
               Créons un site
@@ -25,13 +20,11 @@
             </span>
           </h1>
 
-          <!-- Sous-titre avec Animation Typewriter -->
           <p class="text-2xl md:text-3xl text-slate-300 mb-16 leading-relaxed gsap-optimized force-visible" ref="subtitle" data-gsap="subtitle">
             <strong>Développeur web freelance à Lyon</strong> spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
             Je crée des <strong>sites web performants, responsives et SEO-friendly</strong> qui transforment votre vision en réalité.
           </p>
 
-          <!-- Boutons CTA avec Animations GSAP -->
           <div ref="ctaButtons" class="flex flex-col sm:flex-row gap-6 justify-center items-center" data-gsap="cta-buttons">
             <button 
               @click="scrollToContact"
@@ -54,7 +47,6 @@
         </div>
       </div>
 
-      <!-- Scroll Indicator avec Animation -->
       <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
         <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
           <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce"></div>
@@ -62,9 +54,7 @@
       </div>
     </section>
 
-    <!-- Section Stats avec Effets 3D -->
     <section class="py-20 bg-gradient-to-br from-slate-800 to-slate-900 text-white relative overflow-hidden">
-      <!-- Effet de fond animé -->
       <div class="absolute inset-0">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
@@ -80,7 +70,6 @@
           </p>
         </div>
 
-        <!-- Stats avec Animations -->
         <div ref="stats" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
           <div class="text-center group">
             <div class="text-4xl md:text-5xl font-bold text-blue-400 mb-2 counter group-hover:text-blue-300 transition-colors duration-300" data-target="95">0</div>
@@ -95,9 +84,7 @@
       </div>
     </section>
 
-    <!-- Services Teaser avec Effets 3D -->
     <section class="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden flex flex-col justify-center">
-      <!-- Effet de fond animé -->
       <div class="absolute inset-0">
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -150,7 +137,6 @@
       </div>
     </section>
 
-    <!-- Vision Section avec Effet de fond -->
     <section class="py-32 bg-gradient-to-br from-slate-800 to-slate-900 text-white relative overflow-hidden">
       <div class="absolute inset-0">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -242,21 +228,17 @@
 </template>
 
 <script setup>
-// Import du composant Icons
 import Icons from '~/components/ui/Icons.vue'
 
-// SEO optimisé avec le nouveau composable
 const { setupHomePageSeo } = useSeoOptimization()
 const seoData = setupHomePageSeo()
 
-// Configuration SEO complète
 useHead({
   title: seoData.metaTags.title,
   meta: seoData.metaTags.meta,
   link: seoData.metaTags.link
 })
 
-// Données structurées JSON-LD
 useHead({
   script: [
     {
@@ -266,11 +248,9 @@ useHead({
   ]
 })
 
-// Utilisation du composable pour les données
 const homeData = useHomeData()
 const { services, scrollToContact } = homeData
 
-// Références pour les animations GSAP
 const badge = ref(null)
 const mainTitle = ref(null)
 const subtitle = ref(null)
@@ -278,7 +258,6 @@ const ctaButtons = ref(null)
 const stats = ref(null)
 const serviceRefs = ref([])
 
-// Animations GSAP épiques et effets avancés - ACCÉLÉRÉES
 const { 
   animateTextReveal, 
   animateTypewriter, 
@@ -294,22 +273,16 @@ const {
 } = useGsapAnimations()
 
 onMounted(async () => {
-  // Attendre que GSAP soit disponible
   await nextTick()
   
-  // 🎭 TITRES TOUJOURS VISIBLES - PAS D'ANIMATION GSAP SUR EUX
-  // Récupérer GSAP
   const { $gsap: gsapInstance } = useNuxtApp()
   
-  // S'assurer que les titres principaux sont visibles
   gsapInstance.set('[data-gsap="title-line-1"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="title-line-2"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="subtitle"]', { opacity: 1, visibility: 'visible' })
   
-  // Animer seulement les boutons et le background
   const heroTl = gsapInstance.timeline()
   
-  // Animation du background
   const backgroundElement = document.querySelector('.absolute.inset-0')
   if (backgroundElement) {
     heroTl.fromTo('.absolute.inset-0',
@@ -318,7 +291,6 @@ onMounted(async () => {
     )
   }
   
-  // Animation des boutons
   const ctaButtons = document.querySelector('[data-gsap="cta-buttons"]')
   if (ctaButtons) {
     heroTl.fromTo('[data-gsap="cta-buttons"]',
@@ -328,38 +300,34 @@ onMounted(async () => {
     )
   }
   
-  // 🚀 ANIMATIONS AU SCROLL - SERVICES - RAPIDES ET FLUIDES
-  // Animation d'entrée pour le titre services
   const servicesTitle = document.querySelector('[data-gsap="services-title"]')
   if (servicesTitle) {
     animateOnScroll('[data-gsap="services-title"]', 
       animateTextReveal('[data-gsap="services-title"] .char', {
-        duration: 0.5, // Plus rapide
-        stagger: 0.025, // Plus rapide
+        duration: 0.5,
+        stagger: 0.025,
         ease: "power2.out"
       })
     )
   }
   
-  // Animation du sous-titre services
   const servicesSubtitle = document.querySelector('[data-gsap="services-subtitle"]')
   if (servicesSubtitle) {
     animateOnScroll('[data-gsap="services-subtitle"]',
       animateTextReveal('[data-gsap="services-subtitle"] .word', {
-        duration: 0.4, // Plus rapide
-        stagger: 0.025, // Plus rapide
+        duration: 0.4,
+        stagger: 0.025,
         ease: "power2.out"
       })
     )
   }
   
-  // 💫 ANIMATION STAGGER DES CARTES SERVICES
   const servicesGrid = document.querySelector('[data-gsap="services-grid"]')
   if (servicesGrid) {
     animateOnScroll('[data-gsap="services-grid"]',
       animateCardsStagger('.service-card', {
-        duration: 1.0, // Plus lent et fluide
-        stagger: 0.15, // Plus lent et fluide
+        duration: 1.0,
+        stagger: 0.15,
         ease: "power2.out",
         distance: 120
       }),
@@ -369,28 +337,25 @@ onMounted(async () => {
     )
   }
   
-  // 🧲 EFFETS MAGNÉTIQUES SUBTILS - DÉSACTIVÉS SUR MOBILE
   if (window.innerWidth > 768) {
     const magneticElements = document.querySelectorAll('.magnetic')
     if (magneticElements.length > 0) {
       addMagneticHover('.magnetic', {
-        strength: 0.08, // Plus subtil
-        speed: 0.4 // Fluide
+        strength: 0.08,
+        speed: 0.4
       })
     }
   }
   
-  // 💎 ANIMATION SPÉCIALE "POURQUOI ME CHOISIR" - OPTIMISÉE POUR MOBILE
   const isMobile = window.innerWidth <= 768
   
   if (!isMobile) {
-    // Animation complète sur desktop
     const whyChooseMe = document.querySelector('[data-gsap="why-choose-me"]')
     if (whyChooseMe) {
       animateOnScroll('[data-gsap="why-choose-me"]',
         animateWhyChooseMe('[data-gsap="why-choose-me"]', {
-          duration: 0.8, // Plus lent et fluide
-          stagger: 0.12, // Plus lent et fluide
+          duration: 0.8,
+          stagger: 0.12,
           ease: "power2.out"
         }),
         {
@@ -399,13 +364,11 @@ onMounted(async () => {
       )
     }
   } else {
-    // Animation simplifiée sur mobile pour éviter le scroll saccadé
     gsapInstance.set('[data-gsap="why-choose-me"]', { opacity: 1, y: 0, scale: 1 })
     gsapInstance.set('[data-gsap="why-choose-title"]', { opacity: 1 })
     gsapInstance.set('[data-gsap="why-choose-item-1"], [data-gsap="why-choose-item-2"], [data-gsap="why-choose-item-3"], [data-gsap="why-choose-item-4"]', { opacity: 1, y: 0 })
   }
   
-  // ⚡ ANIMATION DES COMPTEURS AVEC GSAP - PROTÉGÉ CONTRE NaN
   const { $gsap } = useNuxtApp()
   const counters = document.querySelectorAll('.counter')
   
@@ -413,10 +376,8 @@ onMounted(async () => {
     const target = parseInt(counter.getAttribute('data-target'))
     let isAnimated = false
     
-    // Initialisation sécurisée de la valeur
     counter.textContent = '0' + (target === 95 ? '%' : 'h')
     
-    // Animation initiale seulement
     const counterAnimation = $gsap.fromTo(counter, 
       { textContent: 0 },
       {
@@ -424,32 +385,28 @@ onMounted(async () => {
         duration: 2,
         ease: "power2.out",
         snap: { textContent: 1 },
-        paused: true, // Démarre en pause
+        paused: true,
         onUpdate: function() {
           const currentText = this.targets()[0].textContent
           const value = Math.ceil(parseFloat(currentText) || 0)
-          // Protection renforcée contre NaN et valeurs invalides
           if (!isNaN(value) && value >= 0 && value <= target && isFinite(value)) {
             this.targets()[0].textContent = value + (target === 95 ? '%' : 'h')
           } else {
-            // Fallback sécurisé en cas de problème
             this.targets()[0].textContent = '0' + (target === 95 ? '%' : 'h')
           }
         },
         onComplete: function() {
-          // S'assurer que la valeur finale est correcte
           this.targets()[0].textContent = target + (target === 95 ? '%' : 'h')
           isAnimated = true
         }
       }
     )
     
-    // ScrollTrigger pour déclencher une seule fois
     $gsap.timeline({
       scrollTrigger: {
         trigger: counter,
         start: "top 80%",
-        once: true, // Important : ne se déclenche qu'une seule fois
+        once: true,
         onEnter: () => {
           if (!isAnimated) {
             counterAnimation.play()
@@ -459,52 +416,40 @@ onMounted(async () => {
     })
   })
   
-  // 🎨 PRÉPARATION DES TITRES POUR LES ANIMATIONS
-  // Note: services-title contient du HTML (span coloré) donc pas de splitText
   splitWords('[data-gsap="services-subtitle"]')
   
-  // Effet de parallaxe désactivé pour éviter les backgrounds qui bougent bizarrement
-  
-  // Particules interactives optimisées
   const { createParticles } = useParticles()
   createParticles('.absolute.inset-0', 15)
 })
 
-// Nettoyage à la destruction du composant
 onUnmounted(() => {
   cleanupScrollTriggers()
 })
 </script>
 
 <style scoped>
-/* Optimisations pour mobile - évite le scroll saccadé */
 @media (max-width: 768px) {
-  /* Désactiver les animations complexes sur mobile */
   .gsap-optimized {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
   
-  /* Optimiser les performances de scroll */
   section {
     will-change: auto;
     transform: translateZ(0);
     backface-visibility: hidden;
   }
   
-  /* Réduire les effets de blur sur mobile */
   .blur-3xl {
     filter: blur(1rem) !important;
   }
   
-  /* Optimiser les animations de hover */
   .group:hover .transform {
     transform: none !important;
   }
 }
 
-/* Animation des gradients */
 .bg-gradient-to-r {
   background-size: 200% 200%;
   animation: gradientShift 4s ease infinite;

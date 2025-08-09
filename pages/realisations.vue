@@ -191,18 +191,15 @@
 </template>
 
 <script setup lang="ts">
-// SEO optimisé avec le composable
 const { generateProjectsMetaTags } = useMetaSeo()
 const seoData = generateProjectsMetaTags()
 
-// Configuration SEO complète
 useHead({
   title: seoData.title,
   meta: seoData.meta,
   link: seoData.link
 })
 
-// Données structurées JSON-LD
 const { generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
 const jsonLdData = [
   generateLocalBusinessJsonLd(),
@@ -218,10 +215,8 @@ useHead({
   ]
 })
 
-// Utilisation du composable centralisé
 const { projects, getProjectLink } = useProjectData()
 
-// Animations GSAP épiques
 const { 
   animateTextReveal, 
   animateCardsStagger,
@@ -232,32 +227,25 @@ const {
   cleanupScrollTriggers
 } = useGsapAnimations()
 
-// Animations et effets interactifs
 onMounted(async () => {
-  // Attendre que GSAP soit disponible
   await nextTick()
   
-  // Titres toujours visibles - pas d'animation GSAP sur eux
-  // Récupérer GSAP
   const { $gsap: gsapInstance } = useNuxtApp()
   
-  // S'assurer que les titres principaux sont visibles
   gsapInstance.set('[data-gsap="title-line-1"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="title-line-2"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="subtitle"]', { opacity: 1, visibility: 'visible' })
   
-  // Animer seulement le background
   const heroTl = gsapInstance.timeline()
   heroTl.fromTo('.absolute.inset-0',
     { opacity: 0, scale: 1.5, filter: "blur(20px)" },
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
   
-  // Animation stagger des cartes projets - ultra rapide
   animateOnScroll('[data-gsap="projects-grid"]',
     animateCardsStagger('.project-card', {
-      duration: 0.5, // Encore plus rapide
-      stagger: 0.1, // Encore plus rapide
+      duration: 0.5,
+      stagger: 0.1,
       ease: "power2.out",
       distance: 150
     }),
@@ -266,17 +254,10 @@ onMounted(async () => {
     }
   )
   
-  // Effet zoom bump simple - pas d'effet magnétique
-  // Les cartes ont maintenant un simple effet hover:scale en CSS
-  
-  // Effet de parallaxe désactivé pour éviter les backgrounds qui bougent bizarrement
-  
-  // Particules interactives optimisées
   const { createParticles } = useParticles()
   createParticles('.absolute.inset-0', 20)
 })
 
-// Nettoyage à la destruction
 onUnmounted(() => {
   cleanupScrollTriggers()
 })

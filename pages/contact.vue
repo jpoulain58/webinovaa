@@ -285,7 +285,6 @@ useHead({
   ]
 })
 
-// 🚀 Animations GSAP épiques et rapides
 const { 
   animateTextReveal,
   animateCardsStagger,
@@ -297,7 +296,6 @@ const {
   cleanupScrollTriggers
 } = useGsapAnimations()
 
-// Types de projets disponibles
 const projectTypes = [
   {
     value: 'site-vitrine',
@@ -336,58 +334,46 @@ const form = ref({
 
 const isSubmitting = ref(false)
 
-// Récupérer le type de projet depuis l'URL
 const route = useRoute()
 onMounted(async () => {
-  // 🎭 ANIMATIONS GSAP ÉPIQUES ET ULTRA RAPIDES
   await nextTick()
   
-  // Récupérer GSAP
   const { $gsap: gsapInstance } = useNuxtApp()
   
-  // 🎯 TITRES TOUJOURS VISIBLES - PAS D'ANIMATION GSAP SUR EUX
   gsapInstance.set('[data-gsap="title-line-1"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="title-line-2"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="subtitle"]', { opacity: 1, visibility: 'visible' })
   
-  // Animer seulement le background
   const heroTl = gsapInstance.timeline()
   heroTl.fromTo('.absolute.inset-0',
     { opacity: 0, scale: 1.5, filter: "blur(20px)" },
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
 
-  // 🚀 ANIMATIONS AU SCROLL - CONTACT - RAPIDES ET FLUIDES
-  // Note: Animation du titre "Commençons par discuter" désactivée pour éviter la césure du mot "discuter"
-
   splitWords('[data-gsap="contact-subtitle"]')
   animateOnScroll('[data-gsap="contact-subtitle"]',
     animateTextReveal('[data-gsap="contact-subtitle"] .word', {
-      duration: 0.4, // Plus rapide
-      stagger: 0.025, // Plus rapide
+      duration: 0.4,
+      stagger: 0.025,
       ease: "power2.out"
     }),
     { start: "top 85%" }
   )
 
-  // 💳 ANIMATIONS CARDS PROFIL - RAPIDES ET FLUIDES
   animateOnScroll('[data-gsap="profile-cards"]',
     animateCardsStagger('[data-gsap="profile-card"], [data-gsap="company-card"]', {
-      duration: 0.7, // Plus rapide
-      stagger: 0.1, // Plus rapide
+      duration: 0.7,
+      stagger: 0.1,
       ease: "back.out(1.7)"
     }),
     { start: "top 90%" }
   )
-
-  // 📝 PAS D'ANIMATION SUR LE FORMULAIRE - TROP DÉRANGEANT POUR L'UX
   
-  // 💎 Animation titre "Pourquoi me choisir" - RAPIDE ET FLUIDE
   splitText('[data-gsap="why-choose-main-title"]')
   animateOnScroll('[data-gsap="why-choose-main-title"]',
     animateTextReveal('[data-gsap="why-choose-main-title"] .char', {
-      duration: 0.5, // Plus rapide
-      stagger: 0.025, // Plus rapide
+      duration: 0.5,
+      stagger: 0.025,
       ease: "power2.out"
     }),
     {
@@ -395,11 +381,10 @@ onMounted(async () => {
     }
   )
   
-  // 🚀 Animation des cartes "Pourquoi me choisir" - RAPIDE ET FLUIDE !
   animateOnScroll('[data-gsap="why-choose-cards"]',
     animateWhyChooseMeCards('.why-choose-card', {
-      duration: 0.7, // Plus rapide
-      stagger: 0.1, // Plus rapide
+      duration: 0.7,
+      stagger: 0.1,
       ease: "power2.out"
     }),
     {
@@ -407,16 +392,13 @@ onMounted(async () => {
     }
   )
   
-  // 🧲 Effets magnétiques subtils
   addMagneticHover('.magnetic', {
-    strength: 0.08, // Plus subtil
-    speed: 0.4 // Fluide
+    strength: 0.08,
+    speed: 0.4
   })
   
-  // Type de projet depuis l'URL
   const projectType = route.query.type
   if (projectType) {
-    // Mapper les noms de plans vers les valeurs du select
     const typeMapping = {
       'Site Vitrine': 'site-vitrine',
       'E-commerce': 'e-commerce',
@@ -424,7 +406,6 @@ onMounted(async () => {
     }
     
     const mappedType = typeMapping[projectType] || projectType
-    // Ajouter le type au tableau projectTypes
     if (!form.value.projectTypes.includes(mappedType)) {
       form.value.projectTypes.push(mappedType)
     }

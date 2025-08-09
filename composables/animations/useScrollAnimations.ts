@@ -4,21 +4,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 export const useScrollAnimations = () => {
   const { $gsap, $ScrollTrigger } = useNuxtApp()
 
-  // Animation avec ScrollTrigger
   const animateOnScroll = (selector: string, animation: gsap.core.Animation, options = {}) => {
-    // Vérifier si l'élément existe
     const element = document.querySelector(selector)
     if (!element) {
       console.warn(`GSAP: Target ${selector} not found for scroll animation`)
       return null
     }
     
-    // Vérifier si on est sur mobile
     const isMobile = window.innerWidth <= 768
     
-    // Sur mobile, désactiver certaines animations pour éviter le scroll saccadé
     if (isMobile) {
-      // Pour mobile, on utilise des animations plus simples ou on les désactive
       gsap.set(element, { opacity: 1, y: 0, scale: 1 })
       return null
     }
@@ -37,7 +32,6 @@ export const useScrollAnimations = () => {
     })
   }
 
-  // Animation de héro section épique
   const animateHeroSequence = (selectors: {
     title: string,
     subtitle: string,
@@ -46,7 +40,6 @@ export const useScrollAnimations = () => {
   }, options = {}) => {
     const tl = gsap.timeline()
 
-    // S'assurer que les titres sont visibles dès le début en fallback
     if (selectors.title) {
       gsap.set(selectors.title, { opacity: 1 })
     }
@@ -54,7 +47,6 @@ export const useScrollAnimations = () => {
       gsap.set(selectors.subtitle, { opacity: 1 })
     }
 
-    // Animation du background avec des particules
     if (selectors.background) {
       tl.fromTo(selectors.background,
         {
@@ -75,7 +67,6 @@ export const useScrollAnimations = () => {
     return tl
   }
 
-  // Animation Why Choose Me
   const animateWhyChooseMe = (selector: string, options = {}) => {
     const defaults = {
       duration: 1.2,

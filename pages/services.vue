@@ -529,9 +529,6 @@ const goToContact = (planType) => {
 // Références pour les animations
 const serviceRefs = ref([])
 
-
-
-// 🚀 Animations GSAP épiques et rapides
 const { 
   animateTextReveal,
   animateCardsStagger,
@@ -542,36 +539,29 @@ const {
   cleanupScrollTriggers
 } = useGsapAnimations()
 
-// Animations et effets avancés
 onMounted(async () => {
-  // Particules interactives via composable
   const { createParticles } = useParticles()
   createParticles('.absolute.inset-0', 12)
 
-  // 🎭 ANIMATIONS GSAP ÉPIQUES ET ULTRA RAPIDES
   await nextTick()
   
-  // Récupérer GSAP
   const { $gsap: gsapInstance } = useNuxtApp()
   
-  // 🎯 TITRES TOUJOURS VISIBLES - PAS D'ANIMATION GSAP SUR EUX
   gsapInstance.set('[data-gsap="title-line-1"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="title-line-2"]', { opacity: 1, visibility: 'visible' })
   gsapInstance.set('[data-gsap="subtitle"]', { opacity: 1, visibility: 'visible' })
   
-  // Animer seulement le background
   const heroTl = gsapInstance.timeline()
   heroTl.fromTo('.absolute.inset-0',
     { opacity: 0, scale: 1.5, filter: "blur(20px)" },
     { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "power2.out" }
   )
 
-  // 🚀 ANIMATIONS AU SCROLL - SERVICES - RAPIDES ET FLUIDES
   splitText('[data-gsap="process-title"]')
   animateOnScroll('[data-gsap="process-title"]',
     animateTextReveal('[data-gsap="process-title"] .char', {
-      duration: 0.5, // Plus rapide
-      stagger: 0.025, // Plus rapide
+      duration: 0.5,
+      stagger: 0.025,
       ease: "power2.out"
     }),
     { start: "top 85%" }
@@ -580,40 +570,37 @@ onMounted(async () => {
   splitWords('[data-gsap="process-subtitle"]')
   animateOnScroll('[data-gsap="process-subtitle"]',
     animateTextReveal('[data-gsap="process-subtitle"] .word', {
-      duration: 0.4, // Plus rapide
-      stagger: 0.025, // Plus rapide
+      duration: 0.4,
+      stagger: 0.025,
       ease: "power2.out"
     }),
     { start: "top 85%" }
   )
 
-  // 💫 ANIMATION STAGGER DES SERVICES - RAPIDE ET FLUIDE
   animateOnScroll('[data-gsap="services-grid"]',
     animateCardsStagger('[data-gsap^="service-card"]', {
-      duration: 0.7, // Plus rapide
-      stagger: 0.1, // Plus rapide
+      duration: 0.7,
+      stagger: 0.1,
       ease: "back.out(1.7)"
     }),
     { start: "top 90%" }
   )
 
-  // 🎯 ANIMATION STAGGER DES ÉTAPES PROCESSUS - TIMELINE VERTICALE
   animateOnScroll('[data-gsap="process-grid"]',
     animateCardsStagger('[data-gsap^="process-step"]', {
-      duration: 0.8, // Plus rapide
-      stagger: 0.2, // Plus rapide
+      duration: 0.8,
+      stagger: 0.2,
       ease: "power2.out",
-      distance: 100 // Animation depuis le bas
+      distance: 100
     }),
     { start: "top 90%" }
   )
 
-  // 💰 ANIMATIONS PRICING - RAPIDES ET FLUIDES
   splitText('[data-gsap="pricing-title"]')
   animateOnScroll('[data-gsap="pricing-title"]',
     animateTextReveal('[data-gsap="pricing-title"] .char', {
-      duration: 0.6, // Plus rapide
-      stagger: 0.03, // Plus rapide
+      duration: 0.6,
+      stagger: 0.03,
       ease: "power1.out"
     }),
     { start: "top 85%" }
@@ -622,8 +609,8 @@ onMounted(async () => {
   splitWords('[data-gsap="pricing-subtitle"]')
   animateOnScroll('[data-gsap="pricing-subtitle"]',
     animateTextReveal('[data-gsap="pricing-subtitle"] .word', {
-      duration: 0.5, // Plus rapide
-      stagger: 0.025, // Plus rapide
+      duration: 0.5,
+      stagger: 0.025,
       ease: "power1.out"
     }),
     { start: "top 85%" }
@@ -638,8 +625,6 @@ onMounted(async () => {
     { start: "top 90%" }
   )
 
-  // 🎉 ANIMATION CTA FINALE - PLUS LENTE ET FLUIDE
-  splitText('[data-gsap="cta-title"]')
   animateOnScroll('[data-gsap="cta-title"]',
     animateTextReveal('[data-gsap="cta-title"] .char', {
       duration: 1.0, // Plus lent et fluide
@@ -668,7 +653,6 @@ onMounted(async () => {
     { start: "top 95%" }
   )
 
-  // 🧲 Effets magnétiques subtils
   addMagneticHover('.magnetic', {
     strength: 0.08, // Plus subtil
     speed: 0.4 // Fluide

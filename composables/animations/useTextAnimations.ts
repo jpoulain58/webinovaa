@@ -3,7 +3,6 @@ import { gsap } from 'gsap'
 export const useTextAnimations = () => {
   const { $gsap } = useNuxtApp()
 
-  // Configuration adaptative basée sur les performances de l'appareil
   const getAdaptiveConfig = (options: any = {}) => {
     if (process.server) return options
     
@@ -25,19 +24,15 @@ export const useTextAnimations = () => {
     return options
   }
 
-  // Animation de révélation de texte caractère par caractère
   const animateTextReveal = (selector: string, options = {}) => {
-    // Vérifier si on est sur mobile
     const isMobile = process.server ? false : window.innerWidth <= 768
     
-    // Vérifier si l'élément existe
     const elements = gsap.utils.toArray(selector)
     if (!elements || elements.length === 0) {
       console.warn(`GSAP: Target ${selector} not found`)
       return gsap.timeline()
     }
     
-    // Sur mobile, utiliser des animations plus simples
     if (isMobile) {
       elements.forEach((element: any) => {
         gsap.set(element, { opacity: 1, y: 0, rotationX: 0 })
@@ -72,7 +67,6 @@ export const useTextAnimations = () => {
     )
   }
 
-  // Animation typewriter avec curseur clignotant
   const animateTypewriter = (selector: string, text: string, options = {}) => {
     const defaults = {
       duration: 2,
@@ -82,17 +76,14 @@ export const useTextAnimations = () => {
 
     const tl = gsap.timeline()
     
-    // Efface le texte existant
     tl.set(selector, { text: "" })
     
-    // Animation typewriter
     tl.to(selector, {
       duration: config.duration,
       text: text,
       ease: config.ease
     })
 
-    // Ajoute le curseur clignotant
     tl.set(selector, {
       onComplete: () => {
         const element = document.querySelector(selector)
@@ -105,7 +96,6 @@ export const useTextAnimations = () => {
     return tl
   }
 
-  // Animation de split text (divise le texte en caractères) - préserve HTML et espaces
   const splitText = (selector: string) => {
     const elements = document.querySelectorAll(selector)
     
@@ -129,7 +119,6 @@ export const useTextAnimations = () => {
     })
   }
 
-  // Animation de split words (divise le texte en mots)
   const splitWords = (selector: string) => {
     const elements = document.querySelectorAll(selector)
     

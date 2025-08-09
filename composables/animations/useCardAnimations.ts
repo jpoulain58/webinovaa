@@ -3,7 +3,6 @@ import { gsap } from 'gsap'
 export const useCardAnimations = () => {
   const { $gsap } = useNuxtApp()
 
-  // Configuration adaptative basée sur les performances de l'appareil
   const getAdaptiveConfig = (options: any = {}) => {
     if (process.server) return options
     
@@ -25,19 +24,15 @@ export const useCardAnimations = () => {
     return options
   }
 
-  // Animation de cards avec effet stagger sophistiqué
   const animateCardsStagger = (selector: string, options = {}) => {
-    // Vérifier si l'élément existe
     const elements = gsap.utils.toArray(selector)
     if (!elements || elements.length === 0) {
       console.warn(`GSAP: Target ${selector} not found for animateCardsStagger`)
       return gsap.timeline()
     }
     
-    // Vérifier si on est sur mobile
     const isMobile = process.server ? false : window.innerWidth <= 768
     
-    // Sur mobile, utiliser des animations plus simples
     if (isMobile) {
       elements.forEach((element: any) => {
         gsap.set(element, { opacity: 1, y: 0, scale: 1, rotation: 0 })
@@ -76,7 +71,6 @@ export const useCardAnimations = () => {
     )
   }
 
-  // Animation de hover magnétique pour les cartes
   const addMagneticHover = (selector: string, options = {}) => {
     const isMobile = process.server ? false : ('ontouchstart' in window || navigator.maxTouchPoints > 0)
     
@@ -129,7 +123,6 @@ export const useCardAnimations = () => {
     })
   }
 
-  // Animation spécialisée pour les cartes "Pourquoi me choisir"
   const animateWhyChooseMeCards = (selector: string, options = {}) => {
     const defaults = {
       duration: 0.8,
