@@ -1,59 +1,120 @@
 export default defineEventHandler(async (event) => {
-  const baseUrl = 'https://webinovaa.fr'
+  const baseUrl = 'https://www.webinovaa.fr'
   
   const pages = [
     {
-      url: '/',
-      lastmod: new Date().toISOString(),
+      loc: '/',
+      lastmod: '2024-12-19',
       changefreq: 'weekly',
-      priority: 1.0
+      priority: 1.0,
+      images: [
+        {
+          loc: `${baseUrl}/logos/logo-webinovaa.png`,
+          title: 'Webinovaa Logo',
+          caption: 'Logo de Webinovaa'
+        }
+      ]
     },
     {
-      url: '/services',
-      lastmod: new Date().toISOString(),
+      loc: '/services',
+      lastmod: '2024-12-19',
       changefreq: 'monthly',
       priority: 0.9
     },
     {
-      url: '/realisations',
-      lastmod: new Date().toISOString(),
+      loc: '/realisations',
+      lastmod: '2024-12-19',
       changefreq: 'monthly',
-      priority: 0.8
+      priority: 0.8,
+      images: [
+        {
+          loc: `${baseUrl}/images/realisation-audelweiss.avif`,
+          title: 'Projet Audelweiss',
+          caption: 'Réalisation Audelweiss'
+        },
+        {
+          loc: `${baseUrl}/images/realisation-labgear.avif`,
+          title: 'Projet Labgear',
+          caption: 'Réalisation Labgear'
+        },
+        {
+          loc: `${baseUrl}/images/realisation-webinovaa.png`,
+          title: 'Projet Webinovaa',
+          caption: 'Réalisation Webinovaa'
+        }
+      ]
     },
     {
-      url: '/contact',
-      lastmod: new Date().toISOString(),
+      loc: '/contact',
+      lastmod: '2024-12-19',
       changefreq: 'monthly',
-      priority: 0.7
+      priority: 0.7,
+      images: [
+        {
+          loc: `${baseUrl}/images/photo.jpeg`,
+          title: 'Photo de profil',
+          caption: 'Photo de profil'
+        }
+      ]
     },
     {
-      url: '/projects/edelweiss',
-      lastmod: new Date().toISOString(),
+      loc: '/projects/edelweiss',
+      lastmod: '2024-12-19',
       changefreq: 'monthly',
-      priority: 0.6
+      priority: 0.6,
+      images: [
+        {
+          loc: `${baseUrl}/images/realisation-audelweiss.avif`,
+          title: 'Projet Audelweiss',
+          caption: 'Réalisation Audelweiss'
+        }
+      ]
     },
     {
-      url: '/projects/labgear',
-      lastmod: new Date().toISOString(),
+      loc: '/projects/labgear',
+      lastmod: '2024-12-19',
       changefreq: 'monthly',
-      priority: 0.6
+      priority: 0.6,
+      images: [
+        {
+          loc: `${baseUrl}/images/realisation-labgear.avif`,
+          title: 'Projet Labgear',
+          caption: 'Réalisation Labgear'
+        }
+      ]
     },
     {
-      url: '/projects/webinovaa',
-      lastmod: new Date().toISOString(),
+      loc: '/projects/webinovaa',
+      lastmod: '2024-12-19',
       changefreq: 'monthly',
-      priority: 0.6
+      priority: 0.6,
+      images: [
+        {
+          loc: `${baseUrl}/images/realisation-webinovaa.png`,
+          title: 'Projet Webinovaa',
+          caption: 'Réalisation Webinovaa'
+        }
+      ]
     }
   ]
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(page => `  <url>
-    <loc>${baseUrl}${page.url}</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${pages.map(page => {
+  const imageElements = page.images ? page.images.map(image => `    <image:image>
+      <image:loc>${image.loc}</image:loc>
+      <image:title>${image.title}</image:title>
+      <image:caption>${image.caption}</image:caption>
+    </image:image>`).join('\n') : ''
+  
+  return `  <url>
+    <loc>${baseUrl}${page.loc}</loc>
     <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
-  </url>`).join('\n')}
+    <priority>${page.priority}</priority>${page.images && page.images.length > 0 ? '\n' + imageElements : ''}
+  </url>`
+}).join('\n')}
 </urlset>`
 
   setHeader(event, 'Content-Type', 'application/xml')

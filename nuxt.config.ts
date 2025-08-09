@@ -42,14 +42,13 @@ export default defineNuxtConfig({
 
   // Modules
   modules: [
-    '@nuxt/image',
-    '@nuxtjs/sitemap'
+    '@nuxt/image'
   ],
 
   // Configuration runtime
   runtimeConfig: {
     public: {
-      siteUrl: 'https://webinovaa.fr',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.webinovaa.fr',
       siteName: 'Webinovaa'
     }
   },
