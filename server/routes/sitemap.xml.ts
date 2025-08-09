@@ -120,6 +120,8 @@ ${pages.map(page => {
   // Définir les headers appropriés pour un sitemap XML
   setHeader(event, 'Content-Type', 'application/xml; charset=utf-8')
   setHeader(event, 'Cache-Control', 'public, max-age=3600')
+  setHeader(event, 'X-Content-Type-Options', 'nosniff')
+  setHeader(event, 'X-Frame-Options', 'DENY')
   
   return sitemap
 }) 
