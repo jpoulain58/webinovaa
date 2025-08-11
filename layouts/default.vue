@@ -164,8 +164,6 @@
               <li><NuxtLink to="/realisations" class="footer-link">Réalisations</NuxtLink></li>
               <li><NuxtLink to="/blog" class="footer-link">Blog</NuxtLink></li>
               <li><NuxtLink to="/contact" class="footer-link">Contact</NuxtLink></li>
-              <li><NuxtLink to="/developpeur-freelance-lyon" class="footer-link">Développeur freelance Lyon</NuxtLink></li>
-              <li><NuxtLink to="/creation-site-internet-lyon" class="footer-link">Création site internet Lyon</NuxtLink></li>
             </ul>
           </div>
 
@@ -180,7 +178,15 @@
           </div>
         </div>
 
-        <div class="border-t border-white/10 mt-16 pt-8 text-center text-slate-400">
+        <div class="mt-10 text-center">
+          <p class="text-xs text-slate-400/70">
+            <NuxtLink to="/developpeur-freelance-lyon" class="underline decoration-slate-500/30 hover:decoration-blue-400/60">Développeur freelance Lyon</NuxtLink>
+            <span class="mx-2 text-slate-500/40">•</span>
+            <NuxtLink to="/creation-site-internet-lyon" class="underline decoration-slate-500/30 hover:decoration-blue-400/60">Création site internet Lyon</NuxtLink>
+          </p>
+        </div>
+
+        <div class="border-t border-white/10 mt-6 pt-8 text-center text-slate-400">
           <p>&copy; 2025 Webinovaa. Tous droits réservés.</p>
         </div>
       </div>

@@ -31,7 +31,7 @@ const siteUrl = useRuntimeConfig().public.siteUrl || 'https://www.webinovaa.fr'
 const url = `${siteUrl}/developpeur-freelance-lyon`
 
 useHead(generateMetaTags({
-  title: 'Développeur freelance Lyon',
+  title: 'Développeur freelance à Lyon',
   description: 'Développeur freelance à Lyon: création de sites rapides, SEO, performance Web Vitals, maintenance. Vue.js/Nuxt.js.',
   keywords: 'développeur freelance lyon, développeur web lyon, freelance web lyon, création site web lyon',
   url

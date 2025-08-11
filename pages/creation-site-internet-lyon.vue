@@ -31,7 +31,7 @@ const siteUrl = useRuntimeConfig().public.siteUrl || 'https://www.webinovaa.fr'
 const url = `${siteUrl}/creation-site-internet-lyon`
 
 useHead(generateMetaTags({
-  title: 'Création site internet Lyon',
+  title: 'Création de site internet à Lyon',
   description: 'Création de site internet à Lyon: design, performance, SEO et mise en ligne. Vue.js/Nuxt.js.',
   keywords: 'création site internet lyon, créer site web lyon, site vitrine lyon, développeur web lyon',
   url
