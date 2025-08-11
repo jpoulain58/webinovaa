@@ -40,6 +40,7 @@ export default defineEventHandler(async (event) => {
       await sendEmail(to, subject, html)
       sent += 1
     } catch (e) {
+      console.error('Notify error for', to, e)
       failed.push(to)
     }
   }

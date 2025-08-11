@@ -2,6 +2,8 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+const FROM = process.env.RESEND_FROM || 'Webinovaa <onboarding@resend.dev>'
+
 export const sendEmail = async (to: string, subject: string, content: string) => {
   try {
     // Créer une version texte simple du contenu
@@ -12,7 +14,7 @@ export const sendEmail = async (to: string, subject: string, content: string) =>
       .trim()
 
     const { data, error } = await resend.emails.send({
-      from: 'Webinovaa <onboarding@resend.dev>',
+      from: FROM,
       to: [to],
       subject: subject,
       html: `
@@ -57,12 +59,14 @@ export const sendEmail = async (to: string, subject: string, content: string) =>
 
     if (error) {
       console.error('Erreur Resend:', error)
-      throw new Error('Erreur lors de l\'envoi de l\'email')
+      const message = typeof error === 'string' ? error : (error as any)?.message || JSON.stringify(error)
+      throw new Error(message)
     }
 
     return data
   } catch (error) {
     console.error('Erreur envoi email:', error)
-    throw error
+    const message = (error as any)?.message || 'Erreur lors de l\'envoi de l\'email'
+    throw new Error(message)
   }
 } 
