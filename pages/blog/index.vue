@@ -93,7 +93,9 @@ onMounted(() => {
 const email = ref('')
 const submitting = ref(false)
 const message = ref('')
-const enableSubscribe = useRuntimeConfig().public.enableSubscribeForm === 'true'
+const enableSubscribe = ['true', '1', 'yes', 'on'].includes(
+  (useRuntimeConfig().public.enableSubscribeForm || '').toString().toLowerCase()
+)
 const subscribe = async () => {
   message.value = ''
   const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+/

@@ -80,7 +80,15 @@ export default defineNuxtConfig({
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.webinovaa.fr',
       siteName: 'Webinovaa',
-      enableSubscribeForm: process.env.NUXT_PUBLIC_ENABLE_SUBSCRIBE_FORM || 'false'
+      // Active le formulaire si NUXT_PUBLIC_ENABLE_SUBSCRIBE_FORM est truthy (true/1/yes/on)
+      // ou automatiquement si Upstash est configuré côté serveur (sans exposer les secrets)
+      enableSubscribeForm:
+        (() => {
+          const raw = (process.env.NUXT_PUBLIC_ENABLE_SUBSCRIBE_FORM || '').toString().toLowerCase()
+          const truthy = ['true', '1', 'yes', 'on'].includes(raw)
+          const upstashConfigured = !!(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN)
+          return (truthy || upstashConfigured) ? 'true' : 'false'
+        })()
     }
   },
 
