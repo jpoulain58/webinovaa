@@ -1,0 +1,41 @@
+name: Notify New Blog Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Titre de l'article"
+        required: true
+        type: string
+      url:
+        description: "URL de l'article"
+        required: true
+        type: string
+      excerpt:
+        description: "Résumé court"
+        required: false
+        type: string
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run notify script
+        env:
+          NOTIFY_API_URL: ${{ secrets.NOTIFY_API_URL }}
+          NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY }}
+          NOTIFY_TITLE: ${{ inputs.title }}
+          NOTIFY_URL: ${{ inputs.url }}
+          NOTIFY_EXCERPT: ${{ inputs.excerpt }}
+        run: |
+          node scripts/notify-new-post.mjs --title "$NOTIFY_TITLE" --url "$NOTIFY_URL" --excerpt "$NOTIFY_EXCERPT" --api "$NOTIFY_API_URL" --key "$NOTIFY_API_KEY"
+
+

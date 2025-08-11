@@ -4,45 +4,63 @@ export default defineEventHandler(async (event) => {
   const pages = [
     {
       loc: '/',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'weekly',
       priority: 1.0
     },
     {
       loc: '/services',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'monthly',
       priority: 0.9
     },
     {
       loc: '/realisations',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'monthly',
       priority: 0.8
     },
     {
       loc: '/contact',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'monthly',
       priority: 0.7
     },
     {
       loc: '/projects/edelweiss',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'monthly',
       priority: 0.6
     },
     {
       loc: '/projects/labgear',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'monthly',
       priority: 0.6
     },
     {
       loc: '/projects/webinovaa',
-      lastmod: '2024-12-19',
+      lastmod: '2025-08-10',
       changefreq: 'monthly',
       priority: 0.6
+    },
+    {
+      loc: '/blog',
+      lastmod: '2025-08-10',
+      changefreq: 'weekly',
+      priority: 0.7
+    },
+    {
+      loc: '/blog/combien-coute-un-site-web-2025',
+      lastmod: '2025-08-10',
+      changefreq: 'monthly',
+      priority: 0.7
+    },
+    {
+      loc: '/blog/pourquoi-choisir-vuejs-pour-votre-site-web',
+      lastmod: '2025-08-10',
+      changefreq: 'monthly',
+      priority: 0.7
     }
   ]
 

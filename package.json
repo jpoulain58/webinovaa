@@ -8,12 +8,14 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "generate-icons": "node scripts/generate-icons.cjs"
+    "generate-icons": "node scripts/generate-icons.cjs",
+    "notify:new-post": "node scripts/notify-new-post.mjs"
   },
   "dependencies": {
     "@nuxt/image": "^1.11.0",
     "@nuxt/ui": "^3.3.0",
     "@nuxtjs/sitemap": "^7.4.3",
+    "@upstash/redis": "^1.28.4",
     "gsap": "^3.13.0",
     "nuxt": "^4.0.1",
     "resend": "^6.0.0",

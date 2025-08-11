@@ -162,6 +162,7 @@
               <li><NuxtLink to="/" class="footer-link">Accueil</NuxtLink></li>
               <li><NuxtLink to="/services" class="footer-link">Services</NuxtLink></li>
               <li><NuxtLink to="/realisations" class="footer-link">Réalisations</NuxtLink></li>
+              <li><NuxtLink to="/blog" class="footer-link">Blog</NuxtLink></li>
               <li><NuxtLink to="/contact" class="footer-link">Contact</NuxtLink></li>
             </ul>
           </div>
@@ -194,6 +195,7 @@ const navigationItems: NavigationItem[] = [
   { label: 'Accueil', path: '/' },
   { label: 'Services', path: '/services' },
   { label: 'Réalisations', path: '/realisations' },
+  { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/contact' }
 ]
 

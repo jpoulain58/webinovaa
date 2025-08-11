@@ -64,7 +64,8 @@ export default defineNuxtConfig({
         { rel: 'manifest', href: '/manifest.json' },
         
         // Canonical
-        { rel: 'canonical', href: 'https://www.webinovaa.fr' }
+        { rel: 'canonical', href: 'https://www.webinovaa.fr' },
+        
       ]
     }
   },
@@ -78,7 +79,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.webinovaa.fr',
-      siteName: 'Webinovaa'
+      siteName: 'Webinovaa',
+      enableSubscribeForm: process.env.NUXT_PUBLIC_ENABLE_SUBSCRIBE_FORM || 'false'
     }
   },
 

@@ -1,0 +1,40 @@
+name: Notify on Blog Update
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'data/blogPosts.ts'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Extract latest post
+        id: extract
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: |
+          node scripts/extract-latest-post.mjs >> $GITHUB_OUTPUT
+
+      - name: Notify subscribers
+        env:
+          NOTIFY_API_URL: ${{ secrets.NOTIFY_API_URL }}
+          NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY }}
+        run: |
+          node scripts/notify-new-post.mjs \
+            --title "${{ steps.extract.outputs.title }}" \
+            --url "${{ steps.extract.outputs.url }}" \
+            --excerpt "${{ steps.extract.outputs.excerpt }}" \
+            --api "$NOTIFY_API_URL" \
+            --key "$NOTIFY_API_KEY"
+
+

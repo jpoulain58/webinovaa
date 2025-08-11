@@ -294,6 +294,39 @@
         </div>
       </div>
     </section>
+
+    <!-- Blog Teaser -->
+    <section class="py-32 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      <div class="container-custom relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-5xl md:text-7xl font-black text-white mb-6">
+            À lire <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">aussi</span>
+          </h2>
+          <p class="text-xl text-slate-300 max-w-3xl mx-auto">Articles utiles pour préparer votre projet et optimiser votre budget.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <NuxtLink
+            v-for="post in latestPosts"
+            :key="post.slug"
+            :to="`/blog/${post.slug}`"
+            class="block bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-2"
+          >
+            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">{{ post.title }}</h3>
+            <p class="text-slate-300 mb-4">{{ post.description }}</p>
+            <div class="text-sm text-blue-200">Publié le {{ new Date(post.date).toLocaleDateString('fr-FR') }}</div>
+          </NuxtLink>
+        </div>
+        <div class="text-center mt-12">
+          <NuxtLink to="/blog" class="inline-flex items-center px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xl font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">
+            Tous les articles
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -313,7 +346,7 @@ useHead({
 const { generateLocalBusinessJsonLd, generateServiceJsonLd } = useJsonLd()
 const jsonLdData = [
   generateLocalBusinessJsonLd(),
-  generateServiceJsonLd('Services de développement web', 'Services complets de développement web à Lyon')
+  generateServiceJsonLd('Services de développement web', 'Services complets de développement web')
 ]
 
 useHead({
@@ -528,6 +561,8 @@ const goToContact = (planType) => {
 
 // Références pour les animations
 const serviceRefs = ref([])
+import { blogPosts } from '~/data/blogPosts'
+const latestPosts = computed(() => [...blogPosts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 2))
 
 const { 
   animateTextReveal,

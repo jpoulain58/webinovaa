@@ -21,7 +21,7 @@
           </h1>
 
           <p class="text-2xl md:text-3xl text-slate-300 mb-16 leading-relaxed gsap-optimized force-visible" ref="subtitle" data-gsap="subtitle">
-            <strong>Développeur web freelance à Lyon</strong> spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
+            <strong>Développeur web freelance</strong> spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
             Je crée des <strong>sites web performants, responsives et SEO-friendly</strong> qui transforment votre vision en réalité.
           </p>
 
@@ -80,6 +80,39 @@
             <div class="text-4xl md:text-5xl font-bold text-blue-400 mb-2 counter group-hover:text-blue-300 transition-colors duration-300" data-target="24">0</div>
             <div class="text-slate-300 text-lg">Temps de réponse</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Teaser -->
+    <section class="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+      <div class="container-custom relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-5xl md:text-7xl font-black text-white mb-6">
+            Derniers <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">articles</span>
+          </h2>
+          <p class="text-xl text-slate-300 max-w-3xl mx-auto">Guides pratiques sur la création de sites, Vue.js/Nuxt.js et SEO.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <NuxtLink
+            v-for="post in latestPosts"
+            :key="post.slug"
+            :to="`/blog/${post.slug}`"
+            class="block bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-2"
+          >
+            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">{{ post.title }}</h3>
+            <p class="text-slate-300 mb-4">{{ post.description }}</p>
+            <div class="text-sm text-blue-200">Publié le {{ new Date(post.date).toLocaleDateString('fr-FR') }}</div>
+          </NuxtLink>
+        </div>
+        <div class="text-center mt-12">
+          <NuxtLink to="/blog" class="inline-flex items-center px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xl font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">
+            Voir tous les articles
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -229,6 +262,7 @@
 
 <script setup>
 import Icons from '~/components/ui/Icons.vue'
+import { blogPosts } from '~/data/blogPosts'
 
 const { setupHomePageSeo } = useSeoOptimization()
 const seoData = setupHomePageSeo()
@@ -257,6 +291,7 @@ const subtitle = ref(null)
 const ctaButtons = ref(null)
 const stats = ref(null)
 const serviceRefs = ref([])
+const latestPosts = computed(() => [...blogPosts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 2))
 
 const { 
   animateTextReveal, 
