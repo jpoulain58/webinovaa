@@ -56,7 +56,7 @@ export const useMetaSeo = () => {
 
   const generateHomeMetaTags = () => {
     return generateMetaTags({
-      title: 'Webinovaa',
+      title: 'Accueil',
       description: "Je m'appelle Jérémy, développeur front-end spécialisé Vue.js basé à Lyon. Je crée des sites web modernes, rapides et responsives adaptés à vos besoins.",
       keywords: 'développeur web freelance lyon, création site web lyon, développement web lyon, développeur front-end lyon, freelance lyon, développeur lyon, développement frontend freelance',
       url: 'https://www.webinovaa.fr'
