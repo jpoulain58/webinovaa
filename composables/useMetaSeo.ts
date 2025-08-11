@@ -56,7 +56,7 @@ export const useMetaSeo = () => {
 
   const generateHomeMetaTags = () => {
     return generateMetaTags({
-      title: 'Développeur Web Freelance à Lyon | Création de Sites Web - Webinovaa',
+      title: 'Développeur web freelance à Lyon – Création de sites',
       description: 'Je suis Jérémy, développeur front-end spécialisé Vue.js basé à Lyon. Je crée des sites web modernes, rapides et responsives adaptés à vos besoins.',
       keywords: 'développeur web freelance lyon, création site web lyon, développement web lyon, développeur front-end lyon, freelance lyon, développeur lyon, développement frontend freelance',
       url: 'https://www.webinovaa.fr'
@@ -65,7 +65,7 @@ export const useMetaSeo = () => {
 
   const generateServicesMetaTags = () => {
     return generateMetaTags({
-      title: 'Services de Développement Web à Lyon | Création de Sites Web - Webinovaa',
+      title: 'Services – Développement web & création de sites',
       description: 'Services de développement web à Lyon : création de sites web, développement front-end, optimisation SEO. Développeur web freelance expert en Vue.js, Nuxt.js et Tailwind CSS. Projets sur mesure.',
       keywords: 'services développement web lyon, création site web lyon, développement front-end lyon, optimisation seo lyon, développeur web freelance lyon',
       url: 'https://www.webinovaa.fr/services'
@@ -74,7 +74,7 @@ export const useMetaSeo = () => {
 
   const generateContactMetaTags = () => {
     return generateMetaTags({
-      title: 'Contact Développeur Web Freelance à Lyon | Webinovaa',
+      title: 'Contact',
       description: 'Contactez votre développeur web freelance à Lyon. Création de sites web, développement front-end, optimisation SEO. Devis gratuit et personnalisé. Réponse rapide garantie !',
       keywords: 'contact développeur web lyon, devis site web lyon, développeur freelance lyon, création site web lyon',
       url: 'https://www.webinovaa.fr/contact'
@@ -83,7 +83,7 @@ export const useMetaSeo = () => {
 
   const generateProjectsMetaTags = () => {
     return generateMetaTags({
-      title: 'Réalisations Développeur Web Freelance à Lyon | Projets Web - Webinovaa',
+      title: 'Réalisations',
       description: 'Découvrez les réalisations de votre développeur web freelance à Lyon. Sites web, applications, e-commerce. Projets web modernes et performants. Portfolio complet disponible.',
       keywords: 'réalisations développeur web lyon, projets web lyon, sites web lyon, applications web lyon, e-commerce lyon',
       url: 'https://www.webinovaa.fr/realisations'
@@ -92,7 +92,7 @@ export const useMetaSeo = () => {
 
   const generateProjectMetaTags = (projectName: string, description: string) => {
     return generateMetaTags({
-      title: `${projectName} - Projet Développeur Web Freelance Lyon | Webinovaa`,
+      title: `${projectName} – Réalisation`,
       description: `${description} Découvrez ce projet réalisé par votre développeur web freelance à Lyon. Portfolio et réalisations disponibles.`,
       keywords: `${projectName.toLowerCase()}, projet web lyon, développeur web freelance lyon, création site web lyon`,
       url: `https://www.webinovaa.fr/projects/${projectName.toLowerCase()}`

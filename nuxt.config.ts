@@ -6,7 +6,8 @@ export default defineNuxtConfig({
   // Configuration de base
   app: {
     head: {
-      title: 'Webinovaa - Développeur Web Freelance à Lyon | Création de Sites Web',
+      title: 'Webinovaa',
+      titleTemplate: '%s | Webinovaa',
       htmlAttrs: {
         lang: 'fr'
       },
@@ -25,7 +26,7 @@ export default defineNuxtConfig({
         
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: 'Webinovaa - Développeur Web Freelance à Lyon | Création de Sites Web' },
+        { property: 'og:title', content: 'Webinovaa' },
         { property: 'og:description', content: 'Je suis Jérémy, développeur front-end spécialisé Vue.js basé à Lyon. Je crée des sites web modernes, rapides et responsives adaptés à vos besoins.' },
         { property: 'og:url', content: 'https://www.webinovaa.fr' },
         { property: 'og:site_name', content: 'Webinovaa' },
@@ -36,8 +37,8 @@ export default defineNuxtConfig({
         
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Webinovaa - Développeur Web Freelance à Lyon' },
-        { name: 'twitter:description', content: 'Je suis Jérémy, développeur front-end spécialisé Vue.js basé à Lyon. Je crée des sites web modernes, rapides et responsives adaptés à vos besoins.' },
+        { name: 'twitter:title', content: 'Webinovaa' },
+        { name: 'twitter:description', content: "Je m'appelle Jérémy, développeur front-end spécialisé Vue.js basé à Lyon. Je crée des sites web modernes, rapides et responsives adaptés à vos besoins." },
         { name: 'twitter:image', content: 'https://www.webinovaa.fr/logos/logo-webinovaa.png' },
         
         // Local Business
