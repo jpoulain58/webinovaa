@@ -28,69 +28,62 @@
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
             <div class="prose prose-invert prose-lg max-w-none">
-      <h2>Vue.js en bref</h2>
-      <p>
-        Vue.js est un framework JavaScript progressif, simple à prendre en main et puissant en production. Couplé à Nuxt (son méta‑framework), il déploie un rendu côté serveur, un <em>routing</em> structuré, la gestion des métadonnées et des optimisations automatiques pour le SEO et les Web Vitals.
-      </p>
+      <h2>TL;DR — Pourquoi Vue.js + Nuxt ?</h2>
+      <ul>
+        <li><strong>SEO natif</strong> (SSR/SSG): HTML servi immédiatement, métadonnées propres.</li>
+        <li><strong>Vitesse</strong>: code splitting, lazy‑loading, images optimisées.</li>
+        <li><strong>Qualité</strong>: composants clairs, typage, dette technique sous contrôle.</li>
+        <li><strong>UX</strong>: transitions et interactions fluides, surtout sur mobile.</li>
+      </ul>
+
+      <h2>Vue.js en 2 phrases</h2>
+      <p>Framework progressif, facile à prendre en main et robuste. Avec Nuxt, vous obtenez un routage organisé, le rendu côté serveur et des optimisations automatiques.</p>
 
       <h2>Performance et SEO par conception</h2>
       <ul>
-        <li><strong>Rendu SSR/SSG</strong>: du HTML complet servi immédiatement, idéal pour Google et les réseaux sociaux.</li>
-        <li><strong>Code splitting & lazy‑loading</strong>: ne chargez que ce qui est nécessaire, là où c’est nécessaire.</li>
-        <li><strong>Hydratation sélective</strong>: interactions fluides sans sacrifier le temps au premier affichage.</li>
-        <li><strong>Optimisation images</strong>: avec <code>@nuxt/image</code>, formats modernes (WebP/AVIF), tailles responsives.</li>
+        <li><strong>SSR/SSG</strong>: indexation optimale et pré‑rendu rapide.</li>
+        <li><strong>Hydratation efficace</strong>: interactivité sans sacrifier le TTFB.</li>
+        <li><strong>Images</strong>: WebP/AVIF, tailles responsives via <code>@nuxt/image</code>.</li>
       </ul>
 
-      <h2>Productivité, qualité et maintenabilité</h2>
-      <p>
-        L’API de composition de Vue favorise une architecture claire et réutilisable. Les composants sont isolés, testables et documentés. Résultat: un délai de mise sur le marché plus court et un coût total de possession mieux maîtrisé pour votre <strong>création site internet Lyon</strong>.
-      </p>
+      <h2>Productivité et maintenabilité</h2>
       <ul>
-        <li><strong>Rapidité de développement</strong>: composants UI réutilisables, conventions Nuxt.</li>
-        <li><strong>Code lisible et typé</strong>: intégration fluide avec TypeScript.</li>
-        <li><strong>Écosystème mature</strong>: outils de tests, linting, internationalisation, accessibilité.</li>
+        <li><strong>Composants réutilisables</strong> et architecture claire.</li>
+        <li><strong>TypeScript</strong> pour prévenir les régressions.</li>
+        <li><strong>Écosystème</strong> mature: tests, i18n, accessibilité.</li>
       </ul>
 
-      <h2>Expérience utilisateur au cœur</h2>
-        <p>
-        Vue facilite les transitions, micro‑interactions et interfaces dynamiques performantes, sans alourdir la page. Une UX soignée augmente la conversion, en particulier sur mobile.
-      </p>
-
-      <h2>Cas d’usage typiques</h2>
+      <h2>Cas d’usage adaptés</h2>
       <ul>
-        <li><strong>Site vitrine premium</strong>: pages rapides, SEO local, formulaire de contact performant.</li>
-        <li><strong>Blog / média</strong>: architecture éditoriale, données structurées, pages AMP si besoin.</li>
-        <li><strong>E‑commerce</strong>: vitrine + tunnel d’achat optimisé, intégrations paiement/livraison.</li>
-        <li><strong>Application web</strong>: tableau de bord, espace client, intégrations métier et API.</li>
+        <li>Vitrine premium, formulaire performant</li>
+        <li>Blog / média SEO</li>
+        <li>E‑commerce (vitrine + checkout)</li>
+        <li>Application web (dashboard, espace client)</li>
       </ul>
 
-      <h2>Comparaison rapide avec d’autres frameworks</h2>
-        <p>
-        Vue.js se distingue par son approche progressive: vous pouvez démarrer modestement et monter en complexité sans refonte lourde. Par rapport à des piles plus rigides, la courbe d’apprentissage est douce et le ratio valeur/effort très favorable pour un <strong>développeur web</strong> focalisé sur la qualité perçue et la performance.
-      </p>
+      <h2>Comparaison rapide</h2>
+      <p>Approche progressive: on démarre simple, on monte en complexité sans refonte. Très bon ratio valeur/effort.</p>
 
-      <h2>SEO local: gagnez des positions</h2>
-        <p>
-        Nuxt facilite la gestion fine des balises (titres, descriptions, canonicals), des <em>sitemaps</em>, des données structurées (Article, FAQ, LocalBusiness) et du maillage interne. Couplé à une stratégie éditoriale, vous renforcez vos positions sur les requêtes locales pertinentes.
-      </p>
+      <h2>SEO: mise en place concrète</h2>
+      <p>Balises, canonical, sitemaps, JSON‑LD (Article/FAQ/Organization), maillage interne. Tout est outillé dans Nuxt pour gagner des positions.</p>
 
-      <h2>Coût total de possession (TCO) maîtrisé</h2>
-      <p>
-        Grâce à sa productivité et à la stabilité de son écosystème, Vue réduit les risques projet, la dette technique et les coûts de maintenance. Vous investissez là où cela compte: contenu, UX et acquisition.
-      </p>
+      <h2>Erreurs fréquentes</h2>
+      <ul>
+        <li>Ignorer le SSR/SSG et n’envoyer que du JS au crawler.</li>
+        <li>Oublier les images responsives et les Web Vitals.</li>
+        <li>Négliger l’accessibilité et la structure sémantique.</li>
+      </ul>
 
-      <h2>FAQ rapide</h2>
-      <h3>Vue.js est‑il adapté aux sites SEO ?</h3>
-      <p>Oui, surtout avec Nuxt (SSR/SSG), qui sert du HTML indexable et gère les métadonnées proprement.</p>
-      <h3>Et si je migre un site existant ?</h3>
-      <p>Nous pouvons migrer progressivement page par page, préserver l’historique SEO et mesurer l’impact.</p>
-      <h3>Qu’en est‑il des performances ?</h3>
-      <p>Les sites Nuxt atteignent d’excellents scores Core Web Vitals grâce aux optimisations natives et aux bonnes pratiques de développement.</p>
+      <h2>FAQ express</h2>
+      <h3>Adapté au SEO ?</h3>
+      <p>Oui, surtout avec SSR/SSG: HTML indexable, métadonnées maîtrisées.</p>
+      <h3>Migrer un site existant ?</h3>
+      <p>Progressivement, page par page, en conservant l’historique SEO.</p>
+      <h3>Performances ?</h3>
+      <p>Très bons scores Core Web Vitals en appliquant les bonnes pratiques Nuxt.</p>
 
       <div class="mt-10 p-6 rounded-2xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30">
-        <p class="font-semibold">
-          Envie d’un site rapide, bien référencé et évolutif ? Parlons de votre projet.
-        </p>
+        <p class="font-semibold">Envie d’un site rapide, bien référencé et évolutif ? Parlons de votre projet.</p>
         <div class="mt-4 flex flex-wrap gap-3">
           <NuxtLink to="/services" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">Voir les services</NuxtLink>
           <NuxtLink to="/contact" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">Obtenir un devis</NuxtLink>

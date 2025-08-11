@@ -28,94 +28,82 @@
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
             <div class="prose prose-invert prose-lg max-w-none">
-      <h2>Quels facteurs influencent le prix d’un site web en 2025 ?</h2>
-      <p>
-        Le coût d’un site internet dépend de la nature du projet, des objectifs business, des exigences techniques et du niveau d’accompagnement souhaité. Voici les variables principales qui font évoluer le budget.
-      </p>
-
-      <h3>1) Type de site et périmètre fonctionnel</h3>
+      <h2>TL;DR — Budget rapide</h2>
       <ul>
-        <li><strong>Site vitrine</strong>: Présenter votre activité, vos services, vos coordonnées, vos témoignages. Souvent 3 à 10 pages clés.</li>
-        <li><strong>Blog / média</strong>: Architecture éditoriale, taxonomies, recherche, filtres, optimisation SEO avancée.</li>
-        <li><strong>E‑commerce</strong>: Catalogue, gestion des stocks, paiement, livraison, facturation, tunnel d’achat optimisé, RGPD.</li>
-        <li><strong>Application web sur‑mesure</strong>: Espace client, workflows spécifiques, intégrations API, tableaux de bord.</li>
+        <li><strong>Site vitrine</strong> (4–8 pages, SEO technique, design soigné): <strong>1 500 € – 4 500 €</strong></li>
+        <li><strong>Vitrine avancé</strong> (blog, formulaires, intégrations): <strong>3 500 € – 8 000 €</strong></li>
+        <li><strong>E‑commerce</strong> (catalogue, paiement, commandes): <strong>5 000 € – 20 000 €</strong></li>
+        <li><strong>Sur‑mesure</strong> (espace client, logique métier, API): <strong>10 000 €+</strong></li>
+      </ul>
+      <p class="mt-2">Coûts récurrents: hébergement 10–60 €/mois, domaine ~12 €/an, maintenance/monitoring selon besoins.</p>
+
+      <h2>Quels facteurs font varier le prix ?</h2>
+      <h3>1) Type de site et périmètre</h3>
+      <ul>
+        <li><strong>Vitrine</strong>: présenter vos services, preuves sociales, contact.</li>
+        <li><strong>Blog / média</strong>: taxonomies, recherche, performance SEO.</li>
+        <li><strong>E‑commerce</strong>: paiement, livraison, facturation, anti‑fraude.</li>
+        <li><strong>Sur‑mesure</strong>: workflows spécifiques, intégrations métiers.</li>
       </ul>
 
-      <h3>2) Design et expérience utilisateur</h3>
-      <p>
-        Un design sur‑mesure centré utilisateur (UX/UI), des composants animés, une charte graphique cohérente et inclusive, des maquettes interactives et des tests utilisateurs font grimper le budget, mais améliorent la conversion. Sur Lyon, c’est souvent un bon investissement si votre acquisition passe par le site.
-      </p>
+      <h3>2) Design et expérience</h3>
+      <p>Charte UI, composants interactifs, tests utilisateurs: plus d’impact, plus d’effort. Bien mené, c’est ce qui améliore le plus la conversion.</p>
 
-      <h3>3) Stack technique, performance et maintenance</h3>
-      <p>
-        En 2025, les sites performants combinent rendu côté serveur et optimisation front‑end. Mon stack de prédilection <strong>Nuxt.js (Vue.js)</strong> + <strong>Tailwind CSS</strong> livre des temps de chargement rapides, indispensables pour le SEO et l’expérience mobile. Le choix entre CMS headless et développement custom impacte aussi l’enveloppe, tout comme la <em>scalabilité</em> et les SLA d’hébergement.
-      </p>
+      <h3>3) Tech, performance, maintenance</h3>
+      <p><strong>Nuxt.js (Vue.js)</strong> + <strong>Tailwind CSS</strong> offrent un rendu rapide et une base saine pour le SEO mobile. Le choix CMS headless vs. custom et les SLA d’hébergement influencent le budget.</p>
 
-      <h3>4) SEO, accessibilité et conformité</h3>
-      <p>
-        Balises, maillage interne, données structurées, vitesse mobile, accessibilité WCAG, conformité RGPD et sécurité sont des postes à prévoir. Un site mal optimisé coûtera plus cher sur la durée en trafic perdu et en corrections tardives. Votre <strong>création site internet Lyon</strong> doit intégrer ces sujets dès le départ.
-      </p>
+      <h3>4) SEO, accessibilité, conformité</h3>
+      <p>Balises, maillage interne, données structurées, Web Vitals, WCAG et RGPD sont à intégrer dès le départ pour éviter des coûts correctifs.</p>
 
-      <h3>5) Contenus, photos et vidéos</h3>
-      <p>
-        Rédaction orientée SEO, iconographie cohérente, prises de vues, motion design… Le contenu est le moteur de la visibilité. Il explique souvent les écarts de prix entre deux devis.
-      </p>
+      <h3>5) Contenus</h3>
+      <p>Rédaction orientée objectifs, médias cohérents, ton de marque: c’est le premier moteur de visibilité et d’activation.</p>
 
-        <h2>Fourchettes de prix indicatives (2025)</h2>
-      <p>
-        Les montants ci‑dessous sont donnés à titre indicatif pour des projets menés par un freelance expérimenté. Un cadrage précis est toujours réalisé lors du devis.
-      </p>
+      <h2>Fourchettes de prix (2025)</h2>
+      <p>Ordres de grandeur pour un freelance expérimenté. Un chiffrage précis suit un cadrage court.</p>
       <ul>
-        <li><strong>Site vitrine professionnel</strong> (4–8 pages, design soigné, SEO technique, performances optimisées): <strong>1 500 € – 4 500 €</strong>.</li>
-        <li><strong>Site vitrine avancé</strong> (prise de RDV, blog, sections dynamiques, intégrations): <strong>3 500 € – 8 000 €</strong>.</li>
-        <li><strong>E‑commerce</strong> (catalogue, paiement, gestion commandes, optimisations CRO): <strong>5 000 € – 20 000 €</strong> selon catalogue et spécificités.</li>
-        <li><strong>Application web sur‑mesure</strong> (espace client, logique métier, API): à partir de <strong>10 000 €</strong>, selon le périmètre et la roadmap.</li>
+        <li><strong>Vitrine</strong>: 1 500 € – 4 500 €</li>
+        <li><strong>Vitrine avancé</strong>: 3 500 € – 8 000 €</li>
+        <li><strong>E‑commerce</strong>: 5 000 € – 20 000 €</li>
+        <li><strong>Sur‑mesure</strong>: 10 000 €+</li>
       </ul>
-      <p>
-        À cela s’ajoutent les <strong>coûts récurrents</strong>: hébergement (10–60 €/mois selon besoins), nom de domaine (~12 €/an), maintenance évolutive, monitoring, sauvegardes et mises à jour de sécurité.
-      </p>
 
-      <h2>Comment optimiser votre budget sans sacrifier la qualité</h2>
+      <h2>Comment optimiser le budget</h2>
       <ol>
-        <li><strong>Prioriser les objectifs</strong>: clarifiez vos KPI (contacts, ventes, candidatures). Un périmètre resserré évite la dispersion.</li>
-        <li><strong>Adopter un MVP</strong>: lancez une première version solide, mesurable, améliorable. Ajoutez les fonctionnalités à impact après validation.</li>
-        <li><strong>Réutiliser des composants</strong>: une bibliothèque UI cohérente (Vue + Tailwind) accélère et réduit les coûts.</li>
-        <li><strong>Soigner la performance</strong>: le budget investi dans la vitesse de chargement se rentabilise via le SEO et la conversion.</li>
-        <li><strong>Planifier le contenu</strong>: un plan éditorial évite les retards, fluidifie la production et maximise l’impact SEO local.</li>
+        <li><strong>Priorisez les objectifs</strong> (KPI clairs → périmètre utile).</li>
+        <li><strong>Lancez un MVP</strong> puis itérez avec les données.</li>
+        <li><strong>Réutilisez des composants</strong> pour accélérer.</li>
+        <li><strong>Investissez dans la performance</strong> (SEO + conversion).</li>
+        <li><strong>Plan éditorial</strong> dès le départ pour éviter les blocages.</li>
       </ol>
 
-      <h2>Processus de création avec Webinovaa (Lyon)</h2>
-      <p>
-        Voici une méthode pour livrer un site efficace et durable, que vous soyez TPE, PME ou indépendant.
-      </p>
+      <h2>Processus de création avec Webinovaa</h2>
       <ol>
-        <li><strong>Cadrage</strong>: compréhension des enjeux, audit concurrentiel, sélection de mots‑clés, architecture.</li>
-        <li><strong>Design</strong>: maquettes responsives, micro‑interactions, validation par itérations courtes.</li>
-        <li><strong>Développement</strong>: Nuxt 3, rendu SSR/SSG, optimisation des ressources, RGPD by design.</li>
-        <li><strong>SEO & Analytics</strong>: données structurées (JSON‑LD), maillage interne, suivi des conversions, plan de mesure.</li>
-        <li><strong>Recette & mise en ligne</strong>: tests multi‑navigateurs et mobiles, monitoring post‑prod, plan de maintenance.</li>
+        <li><strong>Cadrage</strong>: objectifs, benchmark, mots‑clés, architecture.</li>
+        <li><strong>Design</strong>: maquettes responsives, micro‑interactions, itérations courtes.</li>
+        <li><strong>Développement</strong>: Nuxt, SSR/SSG, qualité, RGPD by design.</li>
+        <li><strong>SEO & Analytics</strong>: données structurées, maillage, plan de mesure.</li>
+        <li><strong>Recette & mise en ligne</strong>: tests, monitoring, maintenance.</li>
       </ol>
 
-      <h2>Exemples de livrables inclus</h2>
+      <h2>Erreurs courantes à éviter</h2>
       <ul>
-        <li>Pages clés (Accueil, Services, Réalisations, Contact) + pages campagnes locales ciblant Lyon.</li>
-        <li>Optimisations Web Vitals (LCP, INP, CLS) et meilleures pratiques d’accessibilité.</li>
-        <li>Rédaction SEO on‑page, balisage sémantique, données structurées Article/FAQ si pertinent.</li>
-        <li>Tableau de bord Analytics/Tagging pour piloter vos conversions.</li>
+        <li>Vouloir “tout” dès V1 au lieu d’un MVP utile.</li>
+        <li>Négliger contenus et visuels (le premier levier d’acquisition).</li>
+        <li>Oublier la performance mobile et l’accessibilité.</li>
+        <li>Repousser SEO/analytics après la mise en ligne.</li>
       </ul>
 
-      <h2>FAQ rapide</h2>
-      <h3>Combien de temps pour un site vitrine ?</h3>
-      <p>Entre 2 et 5 semaines selon le périmètre, la disponibilité des contenus et la réactivité de validation.</p>
-      <h3>Peut‑on étaler le budget ?</h3>
-      <p>Oui, via des jalons (MVP → évolutions). Je propose aussi des forfaits de maintenance mensuels.</p>
-      <h3>Pourquoi travailler avec un freelance ?</h3>
-      <p>Proximité, réactivité, accompagnement sur‑mesure et expertise technique focalisée.</p>
+      <h2>Checklist avant devis</h2>
+      <ul>
+        <li>Objectifs mesurables et priorisés</li>
+        <li>Pages indispensables et parcours clé</li>
+        <li>Références d’inspiration et contraintes</li>
+        <li>Contenus disponibles / à produire</li>
+        <li>Budget cible et délais</li>
+      </ul>
 
       <div class="mt-10 p-6 rounded-2xl bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30">
-        <p class="font-semibold">
-          Prêt à estimer votre projet ? Parlons‑en. J’accompagne la création de site internet, du cadrage à la performance.
-        </p>
+        <p class="font-semibold">Prêt à estimer votre projet ? Parlons‑en.</p>
         <div class="mt-4 flex flex-wrap gap-3">
           <NuxtLink to="/services" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">Découvrir mes services</NuxtLink>
           <NuxtLink to="/contact" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">Demander un devis</NuxtLink>
