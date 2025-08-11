@@ -1,26 +1,102 @@
 <template>
   <article class="text-slate-200">
+    <!-- Hero -->
     <section class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
-      <div class="container-custom py-16">
-        <h1 class="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">Création de site internet à Lyon</h1>
-        <p class="mt-4 text-slate-300 max-w-3xl">Sites modernes, rapides et optimisés SEO. Conseils, design, développement, mise en ligne et suivi.</p>
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      <div class="container-custom relative z-10 py-16">
+        <nav class="text-sm text-blue-200/80 mb-6">
+          <NuxtLink to="/" class="hover:text-white">Accueil</NuxtLink>
+          <span class="mx-2">/</span>
+          <NuxtLink to="/services" class="hover:text-white">Services</NuxtLink>
+        </nav>
+        <h1 class="text-4xl md:text-6xl font-black leading-tight bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent max-w-5xl">
+          Création de site internet à Lyon
+        </h1>
+        <p class="mt-4 text-slate-300 max-w-3xl">
+          Sites modernes, rapides et optimisés SEO. Conseils, design, développement, mise en ligne et suivi.
+        </p>
       </div>
     </section>
-    <section class="container-custom py-12">
-      <div class="prose prose-invert prose-lg max-w-none">
-        <h2>Ce que vous obtenez</h2>
-        <ul>
-          <li>Architecture claire et contenus orientés conversion</li>
-          <li>Performances mobiles (Core Web Vitals) et accessibilité</li>
-          <li>SEO technique (balises, JSON‑LD, maillage, sitemap)</li>
-          <li>Maintenance et évolutions</li>
-        </ul>
+
+    <!-- Contenu principal -->
+    <div class="container-custom">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 py-12">
+        <!-- Colonne principale -->
+        <div class="lg:col-span-2">
+          <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+            <div class="prose prose-invert prose-lg max-w-none">
+              <h2 class="mb-4">Ce que vous obtenez</h2>
+            </div>
+
+            <!-- Features grid -->
+            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">Architecture orientée conversion</h3>
+                  <p class="text-slate-300">Parcours clairs, contenus pertinents, appels à l’action visibles.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-600 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v2H4zM4 11h10v2H4zM4 18h7v2H4z"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">Performances mobiles (Web Vitals)</h3>
+                  <p class="text-slate-300">Temps de chargement courts, interactions fluides, mise en page stable.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l4 4-4 4-4-4 4-4zm0 12l4 4-4 4-4-4 4-4zM2 12l4-4 4 4-4 4-4-4zm12 0l4-4 4 4-4 4-4-4z"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">SEO technique intégré</h3>
+                  <p class="text-slate-300">Balises, JSON‑LD, maillage interne, sitemap et canonical propres.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/40 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 6a6 6 0 016 6v3l2 2v1H4v-1l2-2v-3a6 6 0 016-6z"/></svg>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">Maintenance & évolutions</h3>
+                  <p class="text-slate-300">Suivi, mises à jour, sécurité et améliorations continues.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-8 flex flex-wrap gap-3">
+              <NuxtLink to="/services" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50">Voir les services</NuxtLink>
+              <NuxtLink to="/contact" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-700 text-white font-bold rounded-2xl transform hover:scale-105 transition-all duration-300">Obtenir un devis</NuxtLink>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar simple -->
+        <aside class="lg:col-span-1 space-y-6">
+          <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-2xl p-6 border border-white/10">
+            <h3 class="text-white font-bold text-xl mb-3">Technos</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-sm bg-blue-500/15 text-blue-200 border border-blue-400/30">Nuxt.js</span>
+              <span class="px-3 py-1 rounded-full text-sm bg-blue-500/15 text-blue-200 border border-blue-400/30">Vue.js</span>
+              <span class="px-3 py-1 rounded-full text-sm bg-blue-500/15 text-blue-200 border border-blue-400/30">Tailwind</span>
+              <span class="px-3 py-1 rounded-full text-sm bg-blue-500/15 text-blue-200 border border-blue-400/30">SEO</span>
+            </div>
+          </div>
+          <NuxtLink to="/developpeur-freelance-lyon" class="block bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-300">
+            <h3 class="text-white font-bold mb-2">À lire aussi</h3>
+            <p class="text-slate-300">Développeur freelance à Lyon</p>
+          </NuxtLink>
+        </aside>
       </div>
-      <div class="mt-8 flex gap-3">
-        <NuxtLink to="/services" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl font-bold">Voir les services</NuxtLink>
-        <NuxtLink to="/contact" class="px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-700 rounded-2xl font-bold">Obtenir un devis</NuxtLink>
-      </div>
-    </section>
+    </div>
   </article>
 </template>
 
