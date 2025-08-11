@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-08-10',
     keywords:
       'développeur web lyon, création site internet lyon, coût site web 2025, prix site internet lyon, devis site web lyon',
-    image: '/images/blog/blog-prix-site.png'
+    image: '/images/blog/blog-prix-site.webp'
   },
   {
     slug: 'pourquoi-choisir-vuejs-pour-votre-site-web',
@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-08-03',
     keywords:
       'développeur web lyon, création site internet lyon, vue.js, nuxt.js, seo lyon, performance web',
-    image: '/images/blog/blog-vue-js.png'
+    image: '/images/blog/blog-vue-js.webp'
   },
   {
     slug: 'ameliorer-performances-web-2025',
@@ -36,6 +36,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-08-11',
     keywords:
       'développeur web lyon, création site internet lyon, performance web, core web vitals, optimisation site, vitesse site',
+    image: '/images/blog/blog-perf.webp'
   }
 ]
 

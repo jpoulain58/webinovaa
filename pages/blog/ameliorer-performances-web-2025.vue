@@ -25,20 +25,20 @@
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
             <div class="prose prose-invert prose-lg max-w-none">
-              <h2>L’essentiel — 12 actions prioritaires</h2>
+              <h2>L’essentiel : 12 actions prioritaires</h2>
               <ol>
-                <li>Optimiser les images (formats AVIF/WebP, tailles responsives, lazy‑loading).</li>
-                <li>Réduire le JS expédié (code‑split, tree‑shaking, hydrations ciblées).</li>
-                <li>Pré‑rendre les pages (SSR/SSG) et soigner le TTFB.</li>
-                <li>Mettre en cache intelligemment (HTTP cache, CDN, headers corrects).</li>
-                <li>Précharger ce qui compte (preload/prefetch police, critical CSS).</li>
-                <li>Limiter les scripts tiers (tag manager, consentement, chargement différé).</li>
-                <li>Nettoyer le CSS (utilitaires, purge, Tailwind bien configuré).</li>
-                <li>Optimiser les polices (display swap, formats modernes, subsets).</li>
-                <li>Stabiliser la mise en page (dimensions fixes, éviter les CLS).</li>
-                <li>Surveiller les erreurs (logging, monitoring, métriques Web Vitals).</li>
-                <li>Servir en HTTP/2+/3 et activer la compression (gzip/br).</li>
-                <li>Mettre à jour dépendances et images de base régulièrement.</li>
+                <li>- Optimiser les images (formats AVIF/WebP, tailles responsives, lazy‑loading).</li><br>
+                <li>- Réduire le JS expédié (code‑split, tree‑shaking, hydrations ciblées).</li><br>
+                <li>- Pré‑rendre les pages (SSR/SSG) et soigner le TTFB.</li><br>
+                <li>- Mettre en cache intelligemment (HTTP cache, CDN, headers corrects).</li><br>
+                <li>- Précharger ce qui compte (preload/prefetch police, critical CSS).</li><br>
+                <li>- Limiter les scripts tiers (tag manager, consentement, chargement différé).</li><br>
+                <li>- Nettoyer le CSS (utilitaires, purge, Tailwind bien configuré).</li><br>
+                <li>- Optimiser les polices (display swap, formats modernes, subsets).</li><br>
+                <li>- Stabiliser la mise en page (dimensions fixes, éviter les CLS).</li><br>
+                <li>- Surveiller les erreurs (logging, monitoring, métriques Web Vitals).</li><br>
+                <li>- Servir en HTTP/2+/3 et activer la compression (gzip/br).</li><br>
+                <li>- Mettre à jour dépendances et images de base régulièrement.</li><br>
               </ol>
 
               <h2>Pourquoi la performance impacte vos résultats</h2>
