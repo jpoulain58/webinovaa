@@ -164,6 +164,8 @@
               <li><NuxtLink to="/realisations" class="footer-link">Réalisations</NuxtLink></li>
               <li><NuxtLink to="/blog" class="footer-link">Blog</NuxtLink></li>
               <li><NuxtLink to="/contact" class="footer-link">Contact</NuxtLink></li>
+              <li><NuxtLink to="/developpeur-freelance-lyon" class="footer-link">Développeur freelance Lyon</NuxtLink></li>
+              <li><NuxtLink to="/creation-site-internet-lyon" class="footer-link">Création site internet Lyon</NuxtLink></li>
             </ul>
           </div>
 

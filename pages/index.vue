@@ -22,7 +22,9 @@
 
           <p class="text-2xl md:text-3xl text-slate-300 mb-16 leading-relaxed gsap-optimized force-visible" ref="subtitle" data-gsap="subtitle">
             <strong>Développeur web freelance</strong> spécialisé en <span class="text-blue-400 font-bold">Nuxt.js</span>, <span class="text-purple-400 font-bold">Vue.js</span> et <span class="text-cyan-400 font-bold">Tailwind CSS</span>. 
-            Je crée des <strong>sites web performants, responsives et SEO-friendly</strong> qui transforment votre vision en réalité.
+            Je crée des <strong>sites web performants, responsives et SEO-friendly</strong> qui transforment votre vision en réalité. 
+            <NuxtLink to="/developpeur-freelance-lyon" class="underline decoration-blue-400/60 hover:decoration-blue-300 ml-1">Développeur freelance Lyon</NuxtLink> — 
+            <NuxtLink to="/creation-site-internet-lyon" class="underline decoration-blue-400/60 hover:decoration-blue-300">Création site internet Lyon</NuxtLink>.
           </p>
 
           <div ref="ctaButtons" class="flex flex-col sm:flex-row gap-6 justify-center items-center" data-gsap="cta-buttons">
