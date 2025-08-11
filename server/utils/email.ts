@@ -4,7 +4,9 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 const FROM = process.env.RESEND_FROM || 'Webinovaa <onboarding@resend.dev>'
 
-export const sendEmail = async (to: string, subject: string, content: string) => {
+type SendOptions = { wrap?: boolean }
+
+export const sendEmail = async (to: string, subject: string, content: string, options: SendOptions = { wrap: true }) => {
   try {
     // Créer une version texte simple du contenu
     const textContent = content
@@ -13,47 +15,36 @@ export const sendEmail = async (to: string, subject: string, content: string) =>
       .replace(/\s+/g, ' ') // Normaliser les espaces
       .trim()
 
-    const { data, error } = await resend.emails.send({
-      from: FROM,
-      to: [to],
-      subject: subject,
-      html: `
+    const wrap = options?.wrap !== false
+    const htmlWrapped = wrap
+      ? `
         <!DOCTYPE html>
         <html lang="fr">
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Nouveau Contact - Webinovaa</title>
+          <title>Webinovaa</title>
         </head>
-        <body style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333333; background-color: #f4f4f4; margin: 0; padding: 20px;">
-          <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); overflow: hidden;">
-            <!-- Header -->
-            <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: bold;">Webinovaa - Nouveau Contact</h1>
+        <body style="font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #0f172a; background-color: #f4f7fb; margin: 0; padding: 24px;">
+          <div style="max-width: 640px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 6px 24px rgba(15,23,42,0.12); overflow: hidden;">
+            <div style="background: linear-gradient(135deg, #0ea5e9 0%, #8b5cf6 100%); padding: 28px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 0.2px;">Webinovaa</h1>
             </div>
-            
-            <!-- Content -->
-            <div style="padding: 30px;">
-              <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6;">
-                ${content.replace(/\n/g, '<br>')}
-              </div>
-              
-              <!-- Footer -->
-              <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; font-size: 14px; color: #6b7280;">
-                <p style="margin: 5px 0;">Envoyé depuis le formulaire de contact de Webinovaa</p>
-                <p style="margin: 5px 0;">Date: ${new Date().toLocaleString('fr-FR', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit'
-                })}</p>
-              </div>
+            <div style="padding: 28px;">
+              ${content.replace(/\n/g, '<br>')}
+              <p style="margin-top:28px;font-size:13px;color:#64748b">Vous recevez cet email car vous vous êtes abonné(e) aux nouveautés Webinovaa.</p>
             </div>
           </div>
         </body>
         </html>
-      `,
+      `
+      : content
+
+    const { data, error } = await resend.emails.send({
+      from: FROM,
+      to: [to],
+      subject: subject,
+      html: htmlWrapped,
       text: textContent // Version texte simple pour la compatibilité
     })
 

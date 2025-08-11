@@ -27,17 +27,16 @@ export default defineEventHandler(async (event) => {
 
   const subject = `🆕 ${title}`
   const html = `
-    <h2 style="margin:0 0 12px 0;">${title}</h2>
-    <p style="margin:0 0 16px 0; color:#334155;">${excerpt}</p>
-    <p style="margin:0 0 20px 0;"><a href="${url}" style="background:#3b82f6;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:inline-block">Lire l'article</a></p>
-    <p style="font-size:13px;color:#64748b">Vous recevez cet email car vous vous êtes abonné(e) aux nouveautés Webinovaa.</p>
+    <h2 style="margin:0 0 12px 0;font-size:20px;color:#0f172a;">${title}</h2>
+    ${excerpt ? `<p style="margin:0 0 16px 0; color:#334155;">${excerpt}</p>` : ''}
+    ${url ? `<p style="margin:0 0 20px 0;"><a href="${url}" style="background:#3b82f6;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;display:inline-block">Lire l'article</a></p>` : ''}
   `
 
   let sent = 0
   const failed: Array<{ to: string; error: string }> = []
   for (const to of emails) {
     try {
-      await sendEmail(to, subject, html)
+      await sendEmail(to, subject, html, { wrap: true })
       sent += 1
     } catch (e) {
       console.error('Notify error for', to, e)
