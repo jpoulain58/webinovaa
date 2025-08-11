@@ -72,8 +72,7 @@ export default defineNuxtConfig({
 
   // Modules
   modules: [
-    '@nuxt/image',
-    '@vercel/analytics/nuxt'
+    '@nuxt/image'
   ],
 
   // Configuration runtime
