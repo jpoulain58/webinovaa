@@ -30,7 +30,9 @@ export default defineEventHandler(async (event) => {
       url = `${siteUrl}/blog/${latest.slug}`
       console.log('[notify] Fallback to latest post:', { title, url })
     } else {
-      title = title || 'Nouvel article'
+      // Si aucune donnée exploitable, NE PAS envoyer
+      setResponseStatus(event, 400)
+      return { ok: false, message: 'Aucun article à notifier' }
     }
   }
 
