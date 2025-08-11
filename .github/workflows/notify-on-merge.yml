@@ -21,13 +21,13 @@ jobs:
       - name: Extract latest post
         id: extract
         env:
-          SITE_URL: ${{ secrets.SITE_URL }}
+          SITE_URL: ${{ secrets.SITE_URL || vars.SITE_URL || 'https://www.webinovaa.fr' }}
         run: |
           node scripts/extract-latest-post.mjs >> $GITHUB_OUTPUT
 
       - name: Notify subscribers
         env:
-          NOTIFY_API_URL: ${{ secrets.NOTIFY_API_URL }}
+          NOTIFY_API_URL: ${{ secrets.NOTIFY_API_URL || vars.NOTIFY_API_URL || 'https://www.webinovaa.fr/api/notify-new-post' }}
           NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY }}
         run: |
           node scripts/notify-new-post.mjs \
