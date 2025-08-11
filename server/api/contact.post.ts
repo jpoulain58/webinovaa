@@ -63,7 +63,7 @@ export default defineEventHandler(async (event) => {
     const { sendEmail } = await import('~/server/utils/email')
     
     await sendEmail(
-      'contact.webinovaa@gmail.com',
+      'contact@webinovaa.fr',
       `Nouveau contact - ${firstName} ${lastName}`,
       emailContent
     )

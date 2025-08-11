@@ -144,8 +144,8 @@
                 </svg>
               </a>
               <a 
-                href="mailto:contact.webinovaa@gmail.com" 
-                aria-label="Envoyer un email à contact.webinovaa@gmail.com"
+                href="mailto:contact@webinovaa.fr" 
+                aria-label="Envoyer un email à contact@webinovaa.fr"
                 class="group p-3 bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl border border-white/10 hover:border-cyan-500/50 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/25"
               >
                 <svg class="w-6 h-6 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

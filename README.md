@@ -196,7 +196,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 📞 Contact
 
-- **Email** : contact.webinovaa@gmail.com
+- **Email** : contact@webinovaa.fr
 - **LinkedIn** : [Jérémy POULAIN](https://linkedin.com/in/jérémy-poulain-8a6038227)
 - **Site Web** : [Webinovaa.com](https://webinovaa.com)
 

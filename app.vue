@@ -3,6 +3,7 @@
     <NuxtPage />
     <MagicCursor :settings="cursorSettings" />
     <MagicCursorControls @settings-updated="updateCursorSettings" />
+    <Analytics />
   </NuxtLayout>
 </template> 
 
@@ -11,6 +12,7 @@ import { ref } from 'vue'
 import type { CursorSettings } from '~/types'
 import MagicCursor from '@/components/ui/MagicCursor.vue'
 import MagicCursorControls from '@/components/ui/MagicCursorControls.vue'
+import { Analytics } from '@vercel/analytics/nuxt'
 
 const cursorSettings = ref<CursorSettings>({
   enabled: true,
