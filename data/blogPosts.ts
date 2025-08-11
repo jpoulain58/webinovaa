@@ -27,6 +27,15 @@ export const blogPosts: BlogPost[] = [
     keywords:
       'développeur web lyon, création site internet lyon, vue.js, nuxt.js, seo lyon, performance web',
     image: '/images/blog/blog-vue-js.png'
+  },
+  {
+    slug: 'ameliorer-performances-web-2025',
+    title: 'Performance web en 2025 : la check‑list pour un site rapide',
+    description:
+      'Core Web Vitals, images, cache, code‑split, sécurité : 12 actions concrètes pour accélérer votre site.',
+    date: '2025-08-11',
+    keywords:
+      'développeur web lyon, création site internet lyon, performance web, core web vitals, optimisation site, vitesse site',
   }
 ]
 

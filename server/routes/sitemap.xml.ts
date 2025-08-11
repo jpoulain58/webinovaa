@@ -46,7 +46,7 @@ export default defineEventHandler(async (event) => {
     },
     {
       loc: '/blog',
-      lastmod: '2025-08-10',
+      lastmod: '2025-08-11',
       changefreq: 'weekly',
       priority: 0.7
     },
@@ -59,6 +59,12 @@ export default defineEventHandler(async (event) => {
     {
       loc: '/blog/pourquoi-choisir-vuejs-pour-votre-site-web',
       lastmod: '2025-08-10',
+      changefreq: 'monthly',
+      priority: 0.7
+    },
+    {
+      loc: '/blog/ameliorer-performances-web-2025',
+      lastmod: '2025-08-11',
       changefreq: 'monthly',
       priority: 0.7
     }
