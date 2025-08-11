@@ -29,7 +29,7 @@
                 required
                 inputmode="email"
                 autocomplete="email"
-                placeholder="Entrez votre e‑mail pour recevoir les nouveaux articles"
+                placeholder="Entrez votre e‑mail pour vous abonner à la newsletter"
                 class="flex-1 w-full px-6 py-5 rounded-2xl md:rounded-l-2xl md:rounded-r-none bg-slate-800/70 text-white placeholder-slate-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base md:text-lg"
               />
               <button
