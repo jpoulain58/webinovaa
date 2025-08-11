@@ -25,11 +25,19 @@ jobs:
         run: |
           node scripts/extract-latest-post.mjs >> $GITHUB_OUTPUT
 
+      - name: Debug endpoint (no secrets)
+        env:
+          NOTIFY_API_URL: ${{ secrets.NOTIFY_API_URL || vars.NOTIFY_API_URL || 'https://www.webinovaa.fr/api/notify-new-post' }}
+        run: |
+          echo "Notify URL: $NOTIFY_API_URL"
+
       - name: Notify subscribers
         env:
           NOTIFY_API_URL: ${{ secrets.NOTIFY_API_URL || vars.NOTIFY_API_URL || 'https://www.webinovaa.fr/api/notify-new-post' }}
-          NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY }}
+          NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY || vars.NOTIFY_API_KEY }}
         run: |
+          # Probe status to aider le debug (la clé sera masquée dans les logs Actions)
+          curl -s -o /dev/null -w "HTTP %{http_code}\n" -H "x-api-key: $NOTIFY_API_KEY" -H 'content-type: application/json' -d '{}' "$NOTIFY_API_URL" || true
           node scripts/notify-new-post.mjs \
             --title "${{ steps.extract.outputs.title }}" \
             --url "${{ steps.extract.outputs.url }}" \
