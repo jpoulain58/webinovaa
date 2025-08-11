@@ -10,7 +10,7 @@
       </div>
 
       <div class="container-custom relative z-10 py-20">
-        <div class="text-center max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[60vh]">
+        <div class="text-center max-w-7xl mx-auto flex flex-col items-center justify-center min-h-[60vh]">
           <h1 class="text-6xl md:text-8xl font-black mb-8">
             Le <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">Blog</span>
           </h1>
@@ -19,7 +19,7 @@
             <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent font-bold">Webinovaa</span>
           </p>
           <div class="mt-10 flex justify-center">
-            <form class="w-full max-w-3xl md:max-w-4xl flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-0" @submit.prevent="subscribe" aria-label="Formulaire d’abonnement au blog">
+            <form class="w-full max-w-6xl md:max-w-7xl flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-0" @submit.prevent="subscribe" aria-label="Formulaire d’abonnement au blog">
               <label for="newsletter-email" class="sr-only">Votre e‑mail</label>
               <input
                 id="newsletter-email"
@@ -30,12 +30,12 @@
                 inputmode="email"
                 autocomplete="email"
                 placeholder="Entrez votre e‑mail pour vous abonner à la newsletter"
-                class="flex-1 w-full px-6 py-5 rounded-2xl md:rounded-l-2xl md:rounded-r-none bg-slate-800/70 text-white placeholder-slate-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base md:text-lg"
+                class="flex-1 w-full px-8 py-6 rounded-2xl md:rounded-l-2xl md:rounded-r-none bg-slate-800/70 text-white placeholder-slate-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-lg md:text-xl"
               />
               <button
                 :disabled="submitting"
                 type="submit"
-                class="w-full md:w-auto md:min-w-[180px] px-8 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl md:rounded-r-2xl md:rounded-l-none transform hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 disabled:opacity-60 disabled:cursor-not-allowed text-base md:text-lg"
+                class="w-full md:w-auto md:min-w-[220px] px-10 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl md:rounded-r-2xl md:rounded-l-none transform hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 disabled:opacity-60 disabled:cursor-not-allowed text-lg md:text-xl"
                 aria-label="S’abonner à la newsletter"
               >
                 {{ submitting ? 'Envoi…' : 'S’abonner' }}
