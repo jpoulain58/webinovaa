@@ -1,5 +1,6 @@
 import { loadSubscribers } from '~/server/utils/subscribers'
 import { sendEmail } from '~/server/utils/email'
+import { blogPosts } from '~/data/blogPosts'
 
 export default defineEventHandler(async (event) => {
   if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
@@ -15,9 +16,23 @@ export default defineEventHandler(async (event) => {
   }
 
   const body = await readBody<{ title?: string; url?: string; excerpt?: string }>(event)
-  const title = body?.title || 'Nouvel article'
-  const url = body?.url || ''
-  const excerpt = body?.excerpt || ''
+  let title = (body?.title || '').trim()
+  let url = (body?.url || '').trim()
+  let excerpt = (body?.excerpt || '').trim()
+
+  if (!title || !url) {
+    // Fallback serveur: utiliser le dernier article connu
+    const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || 'https://www.webinovaa.fr').replace(/\/$/, '')
+    const latest = [...blogPosts].sort((a, b) => b.date.localeCompare(a.date))[0]
+    if (latest) {
+      title = latest.title
+      excerpt = excerpt || latest.description
+      url = `${siteUrl}/blog/${latest.slug}`
+      console.log('[notify] Fallback to latest post:', { title, url })
+    } else {
+      title = title || 'Nouvel article'
+    }
+  }
 
   const { emails } = await loadSubscribers()
   const total = emails.length

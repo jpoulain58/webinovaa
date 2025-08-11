@@ -16,6 +16,7 @@ export const sendEmail = async (to: string, subject: string, content: string, op
       .trim()
 
     const wrap = options?.wrap !== false
+    const safeContent = content && content.trim().length > 0 ? content : `<p style=\"margin:0 0 12px 0;\">${subject}</p>`
     const htmlWrapped = wrap
       ? `
         <!DOCTYPE html>
@@ -31,14 +32,14 @@ export const sendEmail = async (to: string, subject: string, content: string, op
               <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 0.2px;">Webinovaa</h1>
             </div>
             <div style="padding: 28px;">
-              ${content.replace(/\n/g, '<br>')}
+              ${safeContent.replace(/\n/g, '<br>')}
               <p style="margin-top:28px;font-size:13px;color:#64748b">Vous recevez cet email car vous vous êtes abonné(e) aux nouveautés Webinovaa.</p>
             </div>
           </div>
         </body>
         </html>
       `
-      : content
+      : safeContent
 
     const { data, error } = await resend.emails.send({
       from: FROM,
