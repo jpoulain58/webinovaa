@@ -28,7 +28,7 @@
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
             <div class="prose prose-invert prose-lg max-w-none">
-      <h2>TL;DR — Budget rapide</h2>
+      <h2>L’essentiel — Budget rapide</h2>
       <ul>
         <li><strong>Site vitrine</strong> (4–8 pages, SEO technique, design soigné): <strong>1 500 € – 4 500 €</strong></li>
         <li><strong>Vitrine avancé</strong> (blog, formulaires, intégrations): <strong>3 500 € – 8 000 €</strong></li>

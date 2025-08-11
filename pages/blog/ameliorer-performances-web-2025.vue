@@ -25,7 +25,7 @@
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
             <div class="prose prose-invert prose-lg max-w-none">
-              <h2>TL;DR — vos 12 actions prioritaires</h2>
+              <h2>L’essentiel — 12 actions prioritaires</h2>
               <ol>
                 <li>Optimiser les images (formats AVIF/WebP, tailles responsives, lazy‑loading).</li>
                 <li>Réduire le JS expédié (code‑split, tree‑shaking, hydrations ciblées).</li>

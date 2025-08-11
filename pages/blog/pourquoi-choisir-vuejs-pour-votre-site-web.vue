@@ -28,7 +28,7 @@
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
             <div class="prose prose-invert prose-lg max-w-none">
-      <h2>TL;DR — Pourquoi Vue.js + Nuxt ?</h2>
+      <h2>L’essentiel — Pourquoi Vue.js + Nuxt ?</h2>
       <ul>
         <li><strong>SEO natif</strong> (SSR/SSG): HTML servi immédiatement, métadonnées propres.</li>
         <li><strong>Vitesse</strong>: code splitting, lazy‑loading, images optimisées.</li>
