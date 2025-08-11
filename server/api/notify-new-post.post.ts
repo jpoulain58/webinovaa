@@ -20,8 +20,9 @@ export default defineEventHandler(async (event) => {
   const excerpt = body?.excerpt || ''
 
   const { emails } = await loadSubscribers()
-  if (emails.length === 0) {
-    return { ok: true, sent: 0 }
+  const total = emails.length
+  if (total === 0) {
+    return { ok: true, sent: 0, total }
   }
 
   const subject = `🆕 ${title}`
@@ -33,14 +34,17 @@ export default defineEventHandler(async (event) => {
   `
 
   let sent = 0
+  const failed: string[] = []
   for (const to of emails) {
     try {
       await sendEmail(to, subject, html)
       sent += 1
-    } catch {}
+    } catch (e) {
+      failed.push(to)
+    }
   }
 
-  return { ok: true, sent }
+  return { ok: true, sent, total, failed }
 })
 
 
