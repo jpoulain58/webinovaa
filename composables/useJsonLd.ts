@@ -76,7 +76,7 @@ export const useJsonLd = () => {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Webinovaa",
-      "alternateName": "webinovaa.fr",
+      "alternateName": "Webinovaa",
       "url": "https://www.webinovaa.fr",
       "description": "Développeur web freelance à Lyon spécialisé en Nuxt.js, Vue.js et Tailwind CSS",
       "potentialAction": {
