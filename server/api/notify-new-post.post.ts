@@ -7,8 +7,9 @@ export default defineEventHandler(async (event) => {
     return { ok: false, message: 'Service abonnement non configuré' }
   }
   // Sécurité simple via clé API
-  const apiKey = getHeader(event, 'x-api-key')
-  if (!apiKey || apiKey !== process.env.NOTIFY_API_KEY) {
+  const providedKey = (getHeader(event, 'x-api-key') || '').trim()
+  const configuredKey = (process.env.NOTIFY_API_KEY || '').trim()
+  if (!providedKey || providedKey !== configuredKey) {
     setResponseStatus(event, 401)
     return { ok: false, message: 'Non autorisé' }
   }
