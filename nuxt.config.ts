@@ -23,6 +23,8 @@ export default defineNuxtConfig({
         { name: 'language', content: 'fr' },
         { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' },
         { name: 'googlebot', content: 'index, follow' },
+        { name: 'application-name', content: 'Webinovaa' },
+        { name: 'apple-mobile-web-app-title', content: 'Webinovaa' },
         
         // Open Graph
         { property: 'og:type', content: 'website' },
@@ -50,8 +52,10 @@ export default defineNuxtConfig({
       link: [
         // Favicons standard
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'shortcut icon', href: '/favicon.ico' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/favicon-48x48.png' },
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
         
         // Apple Touch Icons
