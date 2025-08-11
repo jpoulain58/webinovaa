@@ -34,14 +34,15 @@ export default defineEventHandler(async (event) => {
   `
 
   let sent = 0
-  const failed: string[] = []
+  const failed: Array<{ to: string; error: string }> = []
   for (const to of emails) {
     try {
       await sendEmail(to, subject, html)
       sent += 1
     } catch (e) {
       console.error('Notify error for', to, e)
-      failed.push(to)
+      const message = (e as any)?.message || 'unknown'
+      failed.push({ to, error: message })
     }
   }
 
