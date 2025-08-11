@@ -19,9 +19,25 @@
             <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent font-bold">Webinovaa</span>
           </p>
           <div class="mt-10 flex justify-center">
-            <form class="flex w-full max-w-xl" @submit.prevent="subscribe">
-              <input v-model="email" type="email" required placeholder="Recevez les nouveaux articles du blog par email !" class="flex-1 px-5 py-4 rounded-l-2xl bg-slate-800/70 text-white placeholder-slate-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              <button :disabled="submitting" type="submit" class="px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-r-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 disabled:opacity-60 disabled:cursor-not-allowed">
+            <form class="w-full max-w-3xl md:max-w-4xl flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-0" @submit.prevent="subscribe" aria-label="Formulaire d’abonnement au blog">
+              <label for="newsletter-email" class="sr-only">Votre e‑mail</label>
+              <input
+                id="newsletter-email"
+                name="email"
+                v-model="email"
+                type="email"
+                required
+                inputmode="email"
+                autocomplete="email"
+                placeholder="Entrez votre e‑mail pour recevoir les nouveaux articles"
+                class="flex-1 w-full px-6 py-5 rounded-2xl md:rounded-l-2xl md:rounded-r-none bg-slate-800/70 text-white placeholder-slate-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base md:text-lg"
+              />
+              <button
+                :disabled="submitting"
+                type="submit"
+                class="w-full md:w-auto md:min-w-[180px] px-8 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl md:rounded-r-2xl md:rounded-l-none transform hover:scale-[1.02] transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 disabled:opacity-60 disabled:cursor-not-allowed text-base md:text-lg"
+                aria-label="S’abonner à la newsletter"
+              >
                 {{ submitting ? 'Envoi…' : 'S’abonner' }}
               </button>
             </form>
