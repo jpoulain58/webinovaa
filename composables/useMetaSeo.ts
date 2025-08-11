@@ -56,7 +56,7 @@ export const useMetaSeo = () => {
 
   const generateHomeMetaTags = () => {
     return generateMetaTags({
-      title: 'Développeur web freelance à Lyon – Création de sites',
+      title: 'Accueil',
       description: 'Je suis Jérémy, développeur front-end spécialisé Vue.js basé à Lyon. Je crée des sites web modernes, rapides et responsives adaptés à vos besoins.',
       keywords: 'développeur web freelance lyon, création site web lyon, développement web lyon, développeur front-end lyon, freelance lyon, développeur lyon, développement frontend freelance',
       url: 'https://www.webinovaa.fr'
@@ -65,7 +65,7 @@ export const useMetaSeo = () => {
 
   const generateServicesMetaTags = () => {
     return generateMetaTags({
-      title: 'Services – Développement web & création de sites',
+      title: 'Services',
       description: 'Services de développement web à Lyon : création de sites web, développement front-end, optimisation SEO. Développeur web freelance expert en Vue.js, Nuxt.js et Tailwind CSS. Projets sur mesure.',
       keywords: 'services développement web lyon, création site web lyon, développement front-end lyon, optimisation seo lyon, développeur web freelance lyon',
       url: 'https://www.webinovaa.fr/services'

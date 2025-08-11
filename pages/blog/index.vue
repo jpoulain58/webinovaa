@@ -94,7 +94,7 @@ const { createParticles } = useParticles()
 const siteUrl = useRuntimeConfig().public.siteUrl || 'https://www.webinovaa.fr'
 const url = `${siteUrl}/blog`
 
-const title = 'Blog | Développeur web Lyon & Création site internet Lyon'
+const title = 'Blog'
 const description = 'Articles pratiques sur la création de site internet, Vue.js, Nuxt.js, SEO et performance web.'
 const keywords = 'développeur web lyon, création site internet lyon, blog web lyon, vue.js, nuxt.js, seo lyon'
 
