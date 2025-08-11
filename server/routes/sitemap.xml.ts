@@ -51,6 +51,24 @@ export default defineEventHandler(async (event) => {
       priority: 0.7
     },
     {
+      loc: '/webinova',
+      lastmod: '2025-08-11',
+      changefreq: 'monthly',
+      priority: 0.6
+    },
+    {
+      loc: '/developpeur-freelance-lyon',
+      lastmod: '2025-08-11',
+      changefreq: 'monthly',
+      priority: 0.7
+    },
+    {
+      loc: '/creation-site-internet-lyon',
+      lastmod: '2025-08-11',
+      changefreq: 'monthly',
+      priority: 0.7
+    },
+    {
       loc: '/blog/combien-coute-un-site-web-2025',
       lastmod: '2025-08-10',
       changefreq: 'monthly',
