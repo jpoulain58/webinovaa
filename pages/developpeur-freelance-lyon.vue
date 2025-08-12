@@ -98,7 +98,7 @@
 
 <script setup lang="ts">
 const { generateMetaTags } = useMetaSeo()
-const { generateBreadcrumbJsonLd, generateLocalBusinessJsonLd } = useJsonLd()
+const { generateBreadcrumbJsonLd, generateLocalBusinessJsonLd, generateOrganizationJsonLd } = useJsonLd()
 const siteUrl = useRuntimeConfig().public.siteUrl || 'https://www.webinovaa.fr'
 const url = `${siteUrl}/developpeur-freelance-lyon`
 
@@ -111,6 +111,7 @@ useHead(generateMetaTags({
 
 useHead({
   script: [
+    { type: 'application/ld+json', textContent: JSON.stringify(generateOrganizationJsonLd()) },
     { type: 'application/ld+json', textContent: JSON.stringify(generateLocalBusinessJsonLd()) },
     { type: 'application/ld+json', textContent: JSON.stringify(generateBreadcrumbJsonLd([
       { name: 'Accueil', url: siteUrl },

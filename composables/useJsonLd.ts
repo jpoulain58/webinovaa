@@ -7,6 +7,7 @@ export const useJsonLd = () => {
       "alternateName": ["Webinova"],
       "description": "Développeur web freelance à Lyon spécialisé en Nuxt.js, Vue.js et Tailwind CSS. Création de sites web performants, responsives et SEO-friendly.",
       "url": "https://www.webinovaa.fr",
+      "logo": "https://www.webinovaa.fr/logos/logo-webinovaa.png",
       "telephone": "+33-6-XX-XX-XX-XX",
       "email": "contact@webinovaa.fr",
       "address": {
@@ -76,8 +77,9 @@ export const useJsonLd = () => {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Webinovaa",
-      "alternateName": "Webinovaa",
+      "alternateName": ["Webinovaa", "webinovaa.fr", "Webinova"],
       "url": "https://www.webinovaa.fr",
+      "inLanguage": "fr",
       "description": "Développeur web freelance à Lyon spécialisé en Nuxt.js, Vue.js et Tailwind CSS",
       "potentialAction": {
         "@type": "SearchAction",
@@ -225,9 +227,12 @@ export const useJsonLd = () => {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Webinovaa",
-      "alternateName": ["Webinova"],
+      "alternateName": ["Webinovaa", "webinovaa.fr", "Webinova"],
       "url": "https://www.webinovaa.fr",
-      "logo": "https://www.webinovaa.fr/logos/logo-webinovaa.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.webinovaa.fr/logos/logo-webinovaa.png"
+      },
       "description": "Développeur web freelance à Lyon spécialisé en Nuxt.js, Vue.js et Tailwind CSS",
       "address": {
         "@type": "PostalAddress",

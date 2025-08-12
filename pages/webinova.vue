@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 const { generateMetaTags } = useMetaSeo()
-const { generateBreadcrumbJsonLd } = useJsonLd()
+const { generateBreadcrumbJsonLd, generateOrganizationJsonLd } = useJsonLd()
 const siteUrl = useRuntimeConfig().public.siteUrl || 'https://www.webinovaa.fr'
 const url = `${siteUrl}/webinova`
 
@@ -35,6 +35,7 @@ useHead(generateMetaTags({
 
 useHead({
   script: [
+    { type: 'application/ld+json', textContent: JSON.stringify(generateOrganizationJsonLd()) },
     { type: 'application/ld+json', textContent: JSON.stringify(generateBreadcrumbJsonLd([
       { name: 'Accueil', url: siteUrl },
       { name: 'Webinova', url }

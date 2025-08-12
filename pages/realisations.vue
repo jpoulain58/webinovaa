@@ -200,8 +200,9 @@ useHead({
   link: seoData.link
 })
 
-const { generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
+const { generateOrganizationJsonLd, generateLocalBusinessJsonLd, generateWebSiteJsonLd } = useJsonLd()
 const jsonLdData = [
+  generateOrganizationJsonLd(),
   generateLocalBusinessJsonLd(),
   generateWebSiteJsonLd()
 ]

@@ -270,8 +270,9 @@ useHead({
 })
 
 // Données structurées JSON-LD
-const { generateLocalBusinessJsonLd, generatePersonJsonLd } = useJsonLd()
+const { generateOrganizationJsonLd, generateLocalBusinessJsonLd, generatePersonJsonLd } = useJsonLd()
 const jsonLdData = [
+  generateOrganizationJsonLd(),
   generateLocalBusinessJsonLd(),
   generatePersonJsonLd()
 ]

@@ -18,8 +18,9 @@ export const useSeoOptimization = () => {
     
     // Données structurées JSON-LD
     const jsonLdData = [
-      generateLocalBusinessJsonLd(),
+      generateOrganizationJsonLd(),
       generateWebSiteJsonLd(),
+      generateLocalBusinessJsonLd(),
       generatePersonJsonLd()
     ]
 

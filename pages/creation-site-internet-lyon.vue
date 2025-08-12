@@ -102,7 +102,7 @@
 
 <script setup lang="ts">
 const { generateMetaTags } = useMetaSeo()
-const { generateBreadcrumbJsonLd, generateServiceJsonLd } = useJsonLd()
+const { generateBreadcrumbJsonLd, generateServiceJsonLd, generateOrganizationJsonLd } = useJsonLd()
 const siteUrl = useRuntimeConfig().public.siteUrl || 'https://www.webinovaa.fr'
 const url = `${siteUrl}/creation-site-internet-lyon`
 
@@ -115,6 +115,7 @@ useHead(generateMetaTags({
 
 useHead({
   script: [
+    { type: 'application/ld+json', textContent: JSON.stringify(generateOrganizationJsonLd()) },
     { type: 'application/ld+json', textContent: JSON.stringify(generateServiceJsonLd('Création de site internet à Lyon', 'Conception et développement de sites performants et SEO')) },
     { type: 'application/ld+json', textContent: JSON.stringify(generateBreadcrumbJsonLd([
       { name: 'Accueil', url: siteUrl },
