@@ -41,4 +41,4 @@ export const blogPosts: BlogPost[] = [
 ]
 
 
-// Changement mineur pour déclencher la notification automatique (test envoi #9)
+// Changement mineur pour déclencher la notification automatique (test envoi #10)
